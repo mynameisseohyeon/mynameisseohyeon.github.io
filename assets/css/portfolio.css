@@ -904,6 +904,20 @@ dd {
   line-height: 1;
 }
 
+@media (max-width: 1180px) {
+  :root {
+    --page-gutter: 20px;
+  }
+
+  .profile-rail {
+    display: none !important;
+  }
+
+  .section {
+    width: min(var(--max), calc(100% - 40px));
+  }
+}
+
 @media (max-width: 980px) {
   .section {
     width: min(100% - 40px, var(--max));
