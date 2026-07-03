@@ -91,19 +91,25 @@ a {
 
 .nav {
   padding: 10px 14px;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.42)),
+    rgba(255, 255, 255, 0.34);
   color: var(--muted);
   font-size: 14px;
   font-weight: 640;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
-  backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.82),
+    0 18px 42px rgba(29, 29, 31, 0.10);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(22px) saturate(180%);
 }
 
 .nav a {
   padding: 6px 10px;
   border-radius: 999px;
+  transition: background 160ms ease, color 160ms ease;
 }
 
 .nav a:hover {
@@ -527,7 +533,7 @@ dd {
 
 .project-summary .link-list {
   display: grid;
-  gap: 8px;
+  gap: 10px;
 }
 
 .link-list a {
@@ -547,7 +553,20 @@ dd {
 
 .project-summary .link-list a {
   width: 100%;
-  min-height: 34px;
+  min-height: 42px;
+  padding: 0 13px 0 12px;
+  border: 1px solid rgba(0, 113, 227, 0.22);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.64);
+  color: #0057b8;
+  box-shadow: 0 8px 20px rgba(0, 113, 227, 0.06);
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.project-summary .link-list a:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 113, 227, 0.36);
+  background: rgba(0, 113, 227, 0.08);
 }
 
 .link-label {
@@ -567,10 +586,22 @@ dd {
   stroke-width: 2;
 }
 
+.project-summary .link-label svg {
+  width: 17px;
+  height: 17px;
+}
+
 .link-list .external-icon {
   width: 13px;
   height: 13px;
   opacity: 0.68;
+}
+
+.project-summary .link-list .external-icon {
+  width: 15px;
+  height: 15px;
+  margin-left: auto;
+  opacity: 0.78;
 }
 
 .project-headline {
@@ -909,8 +940,13 @@ dd {
     --page-gutter: 20px;
   }
 
-  .profile-rail {
+  .profile-rail,
+  .profile-rail.is-visible {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: none !important;
   }
 
   .section {
@@ -924,8 +960,12 @@ dd {
     padding: 54px 0;
   }
 
-  .profile-rail {
-    display: none;
+  .profile-rail,
+  .profile-rail.is-visible {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
 
   .hero,
