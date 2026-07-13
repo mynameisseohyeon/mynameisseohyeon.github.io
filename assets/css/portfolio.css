@@ -769,6 +769,36 @@ dd {
   font-weight: 720;
 }
 
+.stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 0;
+}
+
+.stack-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(0, 113, 227, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.64);
+  color: #0057b8;
+  font-size: 12px;
+  font-weight: 720;
+}
+
+.stack-tags span::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.72;
+  content: "";
+}
+
 .skill-card ul,
 .timeline {
   display: grid;
