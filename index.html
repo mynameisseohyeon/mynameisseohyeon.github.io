@@ -137,6 +137,7 @@
             <div class="skill-tags" aria-label="Infrastructure stack">
               <span>AWS S3</span>
               <span>AWS EC2</span>
+              <span>Docker</span>
             </div>
           </article>
           <article class="skill-group-card">
@@ -144,6 +145,16 @@
             <div class="skill-tags" aria-label="Tools">
               <a href="https://www.notion.com/" target="_blank" rel="noreferrer">Notion</a>
               <span>Git</span>
+              <span>IntelliJ IDEA</span>
+              <span>Postman</span>
+              <span>Swagger</span>
+            </div>
+          </article>
+          <article class="skill-group-card">
+            <h3>AI-Assisted Development</h3>
+            <div class="skill-tags" aria-label="AI-assisted development tools">
+              <span>OpenAI Codex</span>
+              <span>Claude</span>
             </div>
           </article>
         </div>
@@ -430,7 +441,14 @@
             </aside>
             <div class="entry-content timeline-body">
               <h4>우수상</h4>
-              <p>제니엘 주최 프로젝트에서 받은 수상 내역입니다. 수상 배경, 담당 역할, 기여 내용을 작성하세요.</p>
+              <p>
+                구직 상담사의 업무 효율화를 위해 내담자 데이터를 분석하고<br>
+                맞춤형 상담 시나리오를 추천하는 생성형 AI 기반 상담 지원 서비스를 개발했습니다.<br>
+                Spring Boot와 React를 활용해 AI 추천 서버 연동 API와 분석·통계·상담 준비 화면을 구현하며<br>
+                서비스의 핵심 기능 개발에 기여했습니다.<br>
+                실제 상담 업무에 활용할 수 있는 완성도와 실용성을 인정받아<br>
+                제니엘 단기 프로젝트에서 우수상을 수상했습니다.
+              </p>
             </div>
           </article>
 
@@ -441,7 +459,14 @@
             </aside>
             <div class="entry-content timeline-body">
               <h4>대상</h4>
-              <p>KOSA 프로젝트 수상 내역입니다. 문제 정의, 구현 범위, 백엔드 기여도를 작성하세요.</p>
+              <p>
+                직장인이 자투리 시간과 업무 역량을 활용해 자신의 시간을 판매하고,<br>
+                추가 수익을 창출할 수 있도록 돕는 N잡 마이크로 컨설팅 플랫폼 ‘FILL’을 기획·개발했습니다.<br>
+                백엔드에서는 예약 생성·상세 및 조건별 조회,<br>
+                멘토의 신청 승인·거절 등 스케줄 도메인을 담당했으며,<br>
+                조회 로직 분리와 쿼리 최적화를 통해 성능과 유지보수성을 높였습니다.<br>
+                서비스의 문제 해결력과 구현 완성도를 인정받아 KOSA 파이널 프로젝트에서 대상을 수상했습니다.
+              </p>
             </div>
           </article>
 
@@ -492,7 +517,12 @@
             </aside>
             <div class="entry-content timeline-body">
               <h4>장려상</h4>
-              <p>연세대, Google, Tencent 공동 후원 해커톤 수상 내역입니다. 해결하려 한 사회문제와 구현 내용을 작성하세요.</p>
+              <p>
+                건강검진 데이터를 활용해 뇌동맥류 위험도를 예측하고<br>
+                주변 병원을 안내하는 ‘Brain Protect’ 서비스를 개발했습니다.<br>
+                개발 리더로서 Spring Boot 기반 API 설계·구현과 데이터 입력·검증,<br>
+                지도 API 연동을 담당했으며, 최종 장려상을 수상했습니다.
+              </p>
             </div>
           </article>
         </div>
@@ -602,10 +632,17 @@
       </section>
     </main>
     <a class="back-to-top" href="#top" aria-label="맨 위로 이동">⌃</a>
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="확대 이미지 닫기">×</button>
+      <img src="" alt="">
+    </div>
     <script>
       const navLinks = [...document.querySelectorAll(".nav a")];
       const profileRail = document.querySelector(".profile-rail");
       const headline = document.querySelector("[data-typewriter]");
+      const lightbox = document.querySelector("[data-image-lightbox]");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxClose = document.querySelector("[data-lightbox-close]");
       const sections = navLinks
         .map((link) => document.querySelector(link.getAttribute("href")))
         .filter(Boolean);
@@ -664,6 +701,32 @@
       };
 
       runTypewriter();
+
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("is-lightbox-open");
+      };
+
+      document.querySelectorAll(".mockup-gallery img").forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          document.body.classList.add("is-lightbox-open");
+        });
+      });
+
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
 
       document.querySelector("[data-copy-email]")?.addEventListener("click", async (event) => {
         const button = event.currentTarget;

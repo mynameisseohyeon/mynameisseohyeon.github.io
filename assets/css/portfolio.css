@@ -728,6 +728,7 @@ dd {
 .mockup-gallery img {
   display: block;
   object-fit: contain;
+  cursor: zoom-in;
 }
 
 .mockup-placeholder {
@@ -760,7 +761,7 @@ dd {
 
 .skills-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 1px;
   overflow: hidden;
   border-radius: var(--radius);
@@ -1015,6 +1016,54 @@ dd {
   font-weight: 700;
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
   line-height: 1;
+}
+
+.is-lightbox-open {
+  overflow: hidden;
+}
+
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(22px, 4vw, 54px);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.image-lightbox[hidden] {
+  display: none;
+}
+
+.image-lightbox img {
+  display: block;
+  max-width: min(1180px, 92vw);
+  max-height: 82vh;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+  object-fit: contain;
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: clamp(18px, 3vw, 34px);
+  right: clamp(18px, 3vw, 34px);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
 }
 
 @media (max-width: 1180px) {
