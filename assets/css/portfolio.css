@@ -693,7 +693,12 @@ dd {
 }
 
 .execution-only .mockup-card {
-  min-height: clamp(210px, 22vw, 310px);
+  min-height: 0;
+  padding: 14px;
+}
+
+.execution-only .mockup-gallery {
+  align-items: start;
 }
 
 .mockup-bar {
