@@ -7,7 +7,7 @@
       name="description"
       content="기획과 백엔드 개발을 함께 수행하는 백엔드 개발자 이서현의 포트폴리오입니다."
     >
-    <title>이서현 | Planning Backend Developer</title>
+    <title>이서현 | Backend Develope</title>
     <link rel="stylesheet" href="/assets/css/portfolio.css">
   </head>
   <body>
@@ -56,7 +56,7 @@
     <main id="top">
       <section class="hero section">
         <div class="hero-copy">
-          <p class="eyebrow">Planning Backend Developer</p>
+          <p class="eyebrow">Backend Develope</p>
           <h1 data-typewriter>
             <span class="headline-light">서비스의 목적을 정의하고,</span>
             <span>이를 견고한 아키텍처로 구현하는</span>
@@ -123,8 +123,6 @@
             <div class="skill-tags" aria-label="Backend stack">
               <span>Java</span>
               <span>Spring Boot</span>
-              <span>Spring Security</span>
-              <span>JWT</span>
             </div>
           </article>
           <article class="skill-group-card">
@@ -139,13 +137,11 @@
             <div class="skill-tags" aria-label="Infrastructure stack">
               <span>AWS S3</span>
               <span>AWS EC2</span>
-              <span>AWS RDS</span>
             </div>
           </article>
           <article class="skill-group-card">
             <h3>Tools</h3>
             <div class="skill-tags" aria-label="Tools">
-              <a href="https://slack.com/" target="_blank" rel="noreferrer">Slack</a>
               <a href="https://www.notion.com/" target="_blank" rel="noreferrer">Notion</a>
               <span>Git</span>
             </div>
@@ -176,38 +172,24 @@
           <p class="eyebrow">Projects</p>
           <h2>Projects</h2>
           <p>
-            프로젝트 내용은 이후 직접 채워 넣을 수 있도록 실무형 서술 구조만 준비했습니다.
+            문제 정의부터 기술적 판단, 핵심 구현까지 직접 설계하고 구현한 프로젝트입니다.
           </p>
         </div>
 
         <div class="project-list">
           <article class="entry-card project-card glass">
             <aside class="entry-meta project-summary">
-              <p class="project-label">Project Template 01</p>
-              <h3>서비스명</h3>
+              <p class="project-label">Project 01</p>
+              <h3>감자무봤나</h3>
               <dl>
                 <div>
                   <dt>개발 기간</dt>
-                  <dd>YYYY.MM - YYYY.MM</dd>
+                  <dd>2026.06 - 진행 중</dd>
                 </div>
                 <div>
                   <dt>관련 링크</dt>
                   <dd class="link-list">
-                    <a href="#" aria-label="프로젝트 데모 링크 입력">
-                      <span class="link-label">
-                        <svg aria-hidden="true" viewBox="0 0 24 24">
-                          <rect x="3" y="4" width="18" height="13" rx="2"></rect>
-                          <path d="M8 21h8"></path>
-                          <path d="M12 17v4"></path>
-                        </svg>
-                        Demo
-                      </span>
-                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <path d="M7 17 17 7"></path>
-                        <path d="M9 7h8v8"></path>
-                      </svg>
-                    </a>
-                    <a href="#" aria-label="프로젝트 GitHub 링크 입력">
+                    <a href="https://github.com/Code-Badgers/potato-mubwanna" target="_blank" rel="noreferrer" aria-label="감자무봤나 GitHub 열기">
                       <span class="link-label">
                         <svg aria-hidden="true" viewBox="0 0 24 24">
                           <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path>
@@ -226,33 +208,33 @@
             </aside>
             <div class="entry-content">
               <div class="project-headline">
-                <p>한 줄 요약을 입력하세요.</p>
-                <span>Backend Developer / Product Owner</span>
+                <p>강원도 18개 시·군의 관광지를 지도, 미션, 스탬프와 보상으로 연결한 위치 기반 관광 서비스입니다.</p>
+                <span>Backend Developer / Full-stack Contributor</span>
               </div>
               <div class="project-content-grid">
                 <div class="project-detail">
                   <section>
                     <h4>Problem & Ideation</h4>
-                    <p>어떤 문제를 발견했고, 서비스적으로 어떤 기능을 도출했는지 작성하세요.</p>
+                    <p>관광지 조회에서 끝나지 않고 실제 방문, 미션 수행, 보상 수집까지 이어지는 여행 경험을 만들고자 했습니다.</p>
                   </section>
                   <section>
                     <h4>Architecture & Technical Decisions</h4>
-                    <p>왜 해당 인증 방식, 데이터 모델, 서버 구조를 선택했는지 작성하세요.</p>
+                    <p>Spring Boot와 PostgreSQL을 기반으로 도메인 구조를 구성하고, Flyway로 DB 변경 이력을 관리했습니다. 카카오 로그인, JWT 인증, TourAPI와 Kakao Local 기반 관광지 수집 기능을 구현했습니다.</p>
                   </section>
                   <section>
                     <h4>Backend Logic</h4>
-                    <p>데이터 원자성, 정합성, 예외 처리, 성능 개선을 어떻게 설계했는지 작성하세요.</p>
+                    <p>미션별 인증 기준을 DB 정책으로 분리해 퀴즈, 걸음 수, 사진, QR 검증을 확장 가능하게 구성했습니다. 사용자별 미션 완료와 보상 이력에는 중복 방지 조건을 적용했습니다.</p>
                   </section>
                   <section>
                     <h4>Stack</h4>
-                    <p>Spring Boot, Spring Security, JWT, MySQL, PostgreSQL, AWS</p>
+                    <p>Java 21, Spring Boot, JPA, PostgreSQL, Flyway, JWT, Redis, Flutter, Kakao Maps</p>
                   </section>
                 </div>
                 <div class="mockup-frame" aria-label="프로젝트 스크린샷 목업 영역">
                   <div class="mockup-bar"><span></span><span></span><span></span></div>
                   <div class="mockup-screen">
-                    <p>Screenshot</p>
-                    <span>이미지를 넣으면 목업 화면처럼 보이는 영역입니다.</span>
+                    <p>TourAPI · Kakao Local · Mission API</p>
+                    <span>관광 데이터 수집부터 미션 검증, 보상 이력 저장까지 연결한 백엔드 흐름</span>
                   </div>
                 </div>
               </div>
@@ -261,36 +243,23 @@
 
           <article class="entry-card project-card glass muted">
             <aside class="entry-meta project-summary">
-              <p class="project-label">Project Template 02</p>
-              <h3>서비스명</h3>
+              <p class="project-label">Project 02</p>
+              <h3>Turtle Neck Buddy</h3>
               <dl>
                 <div>
                   <dt>개발 기간</dt>
-                  <dd>YYYY.MM - YYYY.MM</dd>
+                  <dd>2026.07</dd>
                 </div>
                 <div>
                   <dt>관련 링크</dt>
                   <dd class="link-list">
-                    <a href="#" aria-label="프로젝트 링크 입력">
+                    <a href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer" aria-label="Turtle Neck Buddy GitHub 열기">
                       <span class="link-label">
                         <svg aria-hidden="true" viewBox="0 0 24 24">
-                          <path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1"></path>
-                          <path d="M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1"></path>
+                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path>
+                          <path d="M9 19c-4 .9-4-2-6-2"></path>
                         </svg>
-                        Link
-                      </span>
-                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
-                        <path d="M7 17 17 7"></path>
-                        <path d="M9 7h8v8"></path>
-                      </svg>
-                    </a>
-                    <a href="#" aria-label="첨부 파일 링크 입력">
-                      <span class="link-label">
-                        <svg aria-hidden="true" viewBox="0 0 24 24">
-                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                          <path d="M14 2v6h6"></path>
-                        </svg>
-                        File
+                        GitHub
                       </span>
                       <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
                         <path d="M7 17 17 7"></path>
@@ -303,28 +272,89 @@
             </aside>
             <div class="entry-content">
               <div class="project-headline">
-                <p>한 줄 요약을 입력하세요.</p>
-                <span>역할을 입력하세요.</span>
+                <p>장시간 브라우저를 사용하는 사용자가 작업 흐름을 크게 방해받지 않으면서 스트레칭 습관을 만들 수 있도록 개발한 Chrome 확장 프로그램입니다.</p>
+                <span>Product Owner / AI-assisted Developer</span>
               </div>
               <div class="project-content-grid">
                 <div class="project-detail compact-grid">
                   <section>
-                    <h4>Problem</h4>
-                    <p>문제 정의를 입력하세요.</p>
+                    <h4>Problem & Iteration</h4>
+                    <p>업무나 학습 중 스트레칭 시점을 놓치기 쉽고, 알림이 강하면 사용을 중단하게 된다는 점에 주목했습니다. 실제 사용 경험과 피드백을 바탕으로 온보딩, 알림 간격, 스트레칭 안내 흐름을 개선했습니다.</p>
                   </section>
                   <section>
-                    <h4>Decision</h4>
-                    <p>주요 기술 결정을 입력하세요.</p>
+                    <h4>Core Logic</h4>
+                    <p>Chrome Extension Manifest V3 기반으로 구현하고, 별도 서버 없이 Local Storage에 알림 설정과 일일 기록을 저장하는 Local-first 방식을 선택했습니다.</p>
                   </section>
                   <section>
-                    <h4>Result</h4>
-                    <p>결과와 배운 점을 입력하세요.</p>
+                    <h4>Stack</h4>
+                    <p>React 18, TypeScript 5, Vite 5, Chrome Extension Manifest V3, Local Storage, pnpm</p>
                   </section>
                 </div>
                 <div class="mockup-frame compact-mockup" aria-label="프로젝트 스크린샷 목업 영역">
                   <div class="mockup-bar"><span></span><span></span><span></span></div>
                   <div class="mockup-screen">
-                    <p>Screenshot</p>
+                    <p>Chrome Extension</p>
+                    <span>온보딩, 알림 설정, 30초 스트레칭 가이드, 완료 횟수 표시</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="entry-card project-card glass">
+            <aside class="entry-meta project-summary">
+              <p class="project-label">Project 03</p>
+              <h3>SPOTL</h3>
+              <dl>
+                <div>
+                  <dt>개발 기간</dt>
+                  <dd>2024.09 - 2024.12</dd>
+                </div>
+                <div>
+                  <dt>관련 링크</dt>
+                  <dd class="link-list">
+                    <a href="https://github.com/mynameisseohyeon/SPOTL" target="_blank" rel="noreferrer" aria-label="SPOTL GitHub 열기">
+                      <span class="link-label">
+                        <svg aria-hidden="true" viewBox="0 0 24 24">
+                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path>
+                          <path d="M9 19c-4 .9-4-2-6-2"></path>
+                        </svg>
+                        GitHub
+                      </span>
+                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M7 17 17 7"></path>
+                        <path d="M9 7h8v8"></path>
+                      </svg>
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </aside>
+            <div class="entry-content">
+              <div class="project-headline">
+                <p>소규모 공연의 등록, 예약, 관객 관리 과정을 하나로 연결한 공연 운영 서비스입니다.</p>
+                <span>Backend Developer / Product Owner</span>
+              </div>
+              <div class="project-content-grid">
+                <div class="project-detail compact-grid">
+                  <section>
+                    <h4>Problem & Ideation</h4>
+                    <p>관객 정보와 예약 현황이 여러 문서에 나뉘어 관리되고, 중복 예약이나 공연 공개 여부를 수동으로 확인해야 하는 문제를 해결하고자 했습니다.</p>
+                  </section>
+                  <section>
+                    <h4>Backend Logic</h4>
+                    <p>예약 생성 전 공연과 사용자의 존재 여부를 확인하고, 동일 사용자의 취소되지 않은 예약을 검사해 중복 예약을 방지했습니다. API 응답은 data, message, code 형식으로 통일했습니다.</p>
+                  </section>
+                  <section>
+                    <h4>Stack</h4>
+                    <p>Java 17, Spring Boot 3.3, Spring Security, JWT, JPA, MySQL, AWS S3, CoolSMS, Swagger</p>
+                  </section>
+                </div>
+                <div class="mockup-frame compact-mockup" aria-label="프로젝트 스크린샷 목업 영역">
+                  <div class="mockup-bar"><span></span><span></span><span></span></div>
+                  <div class="mockup-screen">
+                    <p>Performance Operation Service</p>
+                    <span>공연 등록, 관리자 승인, 예약, 관객 관리를 하나의 흐름으로 연결</span>
                   </div>
                 </div>
               </div>
