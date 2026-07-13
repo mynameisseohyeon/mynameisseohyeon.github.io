@@ -646,13 +646,19 @@ dd {
   background: rgba(255, 255, 255, 0.62);
 }
 
+.project-detail .stack-section {
+  grid-column: 1 / -1;
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
 .project-detail p {
   margin-bottom: 0;
   font-size: 13px;
 }
 
 .compact-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .mockup-frame {
