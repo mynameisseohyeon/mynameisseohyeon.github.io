@@ -662,11 +662,14 @@ dd {
 }
 
 .mockup-frame {
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1px;
   overflow: hidden;
   border: 1px dashed rgba(29, 29, 31, 0.18);
   border-radius: 18px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(245, 245, 247, 0.44)),
+    linear-gradient(135deg, rgba(0, 113, 227, 0.14), rgba(29, 29, 31, 0.08)),
     rgba(255, 255, 255, 0.46);
   box-shadow: none;
 }
@@ -685,9 +688,12 @@ dd {
 .mockup-screen {
   display: grid;
   min-height: 0;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 5;
   place-items: center;
   padding: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(245, 245, 247, 0.52)),
+    rgba(255, 255, 255, 0.68);
   text-align: center;
 }
 
