@@ -325,7 +325,7 @@ h4 {
 .button {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
   min-height: 42px;
   padding: 0 17px;
@@ -348,6 +348,19 @@ h4 {
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2;
+}
+
+.button-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button .button-external-icon {
+  width: 13px;
+  height: 13px;
+  margin-left: 2px;
+  opacity: 0.72;
 }
 
 .button:hover {
@@ -673,6 +686,14 @@ dd {
     linear-gradient(135deg, rgba(0, 113, 227, 0.14), rgba(29, 29, 31, 0.08)),
     rgba(255, 255, 255, 0.46);
   box-shadow: none;
+}
+
+.mockup-frame.execution-only {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.execution-only .mockup-card {
+  min-height: clamp(210px, 22vw, 310px);
 }
 
 .mockup-bar {

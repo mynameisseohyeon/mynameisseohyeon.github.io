@@ -71,27 +71,45 @@
           </p>
           <div class="hero-actions" aria-label="연락 및 링크">
             <a class="button" href="mailto:seohyeon.leee.dev@gmail.com">
-              <svg aria-hidden="true" viewBox="0 0 24 24">
-                <path d="M4 6h16v12H4z"></path>
-                <path d="m4 7 8 6 8-6"></path>
+              <span class="button-label">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 6h16v12H4z"></path>
+                  <path d="m4 7 8 6 8-6"></path>
+                </svg>
+                Email
+              </span>
+              <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M7 17 17 7"></path>
+                <path d="M9 7h8v8"></path>
               </svg>
-              Email
             </a>
             <a class="button" href="https://github.com/mynameisseohyeon" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true" viewBox="0 0 24 24">
-                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path>
-                <path d="M9 19c-4 .9-4-2-6-2"></path>
+              <span class="button-label">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path>
+                  <path d="M9 19c-4 .9-4-2-6-2"></path>
+                </svg>
+                GitHub
+              </span>
+              <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M7 17 17 7"></path>
+                <path d="M9 7h8v8"></path>
               </svg>
-              GitHub
             </a>
             <a class="button" href="https://backenddevelopercorinne.tistory.com/" target="_blank" rel="noreferrer">
-              <svg aria-hidden="true" viewBox="0 0 24 24">
-                <path d="M4 19.5V5a2 2 0 0 1 2-2h11.5A2.5 2.5 0 0 1 20 5.5V21H6a2 2 0 0 1-2-1.5z"></path>
-                <path d="M8 7h8"></path>
-                <path d="M8 11h8"></path>
-                <path d="M8 15h5"></path>
+              <span class="button-label">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 19.5V5a2 2 0 0 1 2-2h11.5A2.5 2.5 0 0 1 20 5.5V21H6a2 2 0 0 1-2-1.5z"></path>
+                  <path d="M8 7h8"></path>
+                  <path d="M8 11h8"></path>
+                  <path d="M8 15h5"></path>
+                </svg>
+                Blog
+              </span>
+              <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M7 17 17 7"></path>
+                <path d="M9 7h8v8"></path>
               </svg>
-              Blog
             </a>
           </div>
         </div>
@@ -99,7 +117,7 @@
         <dl class="hero-profile" aria-label="프로필 요약">
           <div>
             <dt>Education</dt>
-            <dd>강남대학교 소프트웨어학과 졸업</dd>
+            <dd>강남대학교 소프트웨어응용학과 졸업</dd>
           </div>
           <div>
             <dt>Birth</dt>
@@ -244,15 +262,7 @@
                     <p class="stack-tags"><span>Java 21</span><span>Spring Boot</span><span>JPA</span><span>PostgreSQL</span><span>Flyway</span><span>JWT</span><span>Redis</span><span>Flutter</span></p>
                   </section>
                 </div>
-                <div class="mockup-frame" aria-label="프로젝트 스크린샷 목업 영역">
-                  <div class="mockup-card">
-                    <p>Project Artifacts</p>
-                    <div class="mockup-gallery" aria-label="감자무봤나 프로젝트 구조 및 개발 산출물 이미지 영역">
-                      <div class="mockup-placeholder">Architecture</div>
-                      <div class="mockup-placeholder">User Flow</div>
-                      <div class="mockup-placeholder">ERD / Data Flow</div>
-                    </div>
-                  </div>
+                <div class="mockup-frame execution-only" aria-label="프로젝트 스크린샷 목업 영역">
                   <div class="mockup-card">
                     <p>Execution Screens</p>
                     <div class="mockup-gallery" aria-label="감자무봤나 실행 이미지 영역">
@@ -323,15 +333,7 @@
                     <p class="stack-tags"><span>React 18</span><span>TypeScript 5</span><span>Vite 5</span><span>Chrome Extension Manifest V3</span><span>Local Storage</span><span>pnpm</span></p>
                   </section>
                 </div>
-                <div class="mockup-frame compact-mockup" aria-label="프로젝트 스크린샷 목업 영역">
-                  <div class="mockup-card">
-                    <p>Project Artifacts</p>
-                    <div class="mockup-gallery" aria-label="Turtle Neck Buddy 프로젝트 구조 및 개발 산출물 이미지 영역">
-                      <img src="/assets/images/projects/turtle-artifact-01.png" alt="Turtle Neck Buddy 시스템 아키텍처 개발 산출물" loading="lazy" decoding="async">
-                      <img src="/assets/images/projects/turtle-artifact-02.png" alt="Turtle Neck Buddy 컴포넌트 구조도 개발 산출물" loading="lazy" decoding="async">
-                      <div class="mockup-placeholder">Logic Flow</div>
-                    </div>
-                  </div>
+                <div class="mockup-frame compact-mockup execution-only" aria-label="프로젝트 스크린샷 목업 영역">
                   <div class="mockup-card">
                     <p>Execution Screens</p>
                     <div class="mockup-gallery" aria-label="Turtle Neck Buddy 실행 이미지 영역">
