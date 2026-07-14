@@ -15,55 +15,45 @@
         <span>이서현</span>
       </a>
       <nav class="nav" aria-label="주요 섹션">
-        <a href="/#skills">Skills</a>
+        <a href="/">Portfolio</a>
         <a href="/#projects">Projects</a>
         <a href="/#awards">Awards</a>
         <a href="/#education">Education</a>
-        <a class="is-active" href="/resume">Resume</a>
         <a href="/#contact">Contact</a>
       </nav>
     </header>
 
-    <main class="page-shell">
-      <section class="detail-hero section">
-        <p class="eyebrow">Resume</p>
-        <h1>
-          <span>비즈니스 요구사항을</span>
-          <span class="headline-strong">안정적인 백엔드 로직으로 구현하는</span>
-          <span>Backend Developer 이서현입니다.</span>
-        </h1>
-        <p class="hero-description">
-          사용자의 문제를 먼저 정의하고, 데이터 흐름과 예외 조건을 정리해<br>
-          확장 가능하고 유지보수하기 쉬운 서버 구조를 만드는 데 집중합니다.
+    <main class="page-shell resume-page">
+      <section class="resume-hero section glass">
+        <div>
+          <p class="eyebrow">Resume</p>
+          <h1>이서현</h1>
+          <p class="resume-role">Backend Developer</p>
+        </div>
+        <p class="resume-summary">
+          사용자 요구사항을 데이터 흐름과 도메인 로직으로 구체화합니다.<br>
+          Spring Boot 기반 인증, 예약, 미션, 외부 API 연동 경험이 있습니다.<br>
+          기능 구현을 넘어 확장성과 데이터 정합성을 고려한 서버 구조를 설계합니다.
         </p>
-        <div class="hero-actions">
-          <a class="button" href="mailto:seohyeon.leee.dev@gmail.com">
-            <span class="button-label">Email</span>
-          </a>
-          <a class="button" href="https://github.com/mynameisseohyeon" target="_blank" rel="noreferrer">
-            <span class="button-label">GitHub</span>
-          </a>
+        <div class="hero-actions resume-actions" aria-label="이력서 링크">
+          <a class="button" href="mailto:seohyeon.leee.dev@gmail.com">Email</a>
+          <a class="button" href="https://github.com/mynameisseohyeon" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="https://backenddevelopercorinne.tistory.com/" target="_blank" rel="noreferrer">Blog</a>
           <a class="button" href="/">Portfolio</a>
         </div>
       </section>
 
-      <section class="section resume-grid">
-        <article class="resume-card glass">
-          <h2>Summary</h2>
-          <p>
-            Java와 Spring Boot 기반의 백엔드 개발을 중심으로 프로젝트를 수행했습니다.
-            기획, UI/UX, 프론트엔드 흐름을 함께 경험하며 사용자가 실제로 겪는 문제를 개발 범위와 데이터 구조로 구체화하는 데 강점이 있습니다.
-          </p>
-        </article>
-        <article class="resume-card glass">
+      <section class="section resume-section resume-dense-section">
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Skills</p>
           <h2>Skills</h2>
-          <div class="resume-skill-list">
-            <p><strong>Language & Framework</strong><span>Java, Spring Boot</span></p>
-            <p><strong>Database & Infrastructure</strong><span>MySQL, PostgreSQL, Docker, AWS S3, AWS EC2</span></p>
-            <p><strong>Tools</strong><span>IntelliJ IDEA, Git, Swagger, Notion</span></p>
-            <p><strong>AI-Assisted Development</strong><span>OpenAI Codex, Claude</span></p>
-          </div>
-        </article>
+        </div>
+        <div class="resume-skill-table glass">
+          <p><strong>Backend</strong><span>Java, Spring Boot, JPA, Spring Security, JWT</span></p>
+          <p><strong>Database</strong><span>MySQL, PostgreSQL, Redis</span></p>
+          <p><strong>Infrastructure</strong><span>AWS EC2, AWS S3, Docker</span></p>
+          <p><strong>Tools</strong><span>Git, Swagger, IntelliJ IDEA, Notion, OpenAI Codex, Claude</span></p>
+        </div>
       </section>
 
       <section class="section resume-section">
@@ -71,66 +61,133 @@
           <p class="eyebrow">Projects</p>
           <h2>Projects</h2>
         </div>
-        <div class="resume-list">
-          <article class="resume-row glass">
-            <div>
-              <h3>감자무봤나</h3>
-              <p>강원도 관광지를 지도, 미션, 스탬프와 보상으로 연결한 위치 기반 관광 서비스</p>
+        <div class="resume-project-list">
+          <article class="resume-project-card glass">
+            <div class="resume-project-head">
+              <div>
+                <h3>감자무봤나</h3>
+                <p>강원도 관광지를 지도, 미션, 스탬프와 보상으로 연결한 위치 기반 관광 서비스</p>
+              </div>
+              <a href="/projects/gamja">View Details</a>
             </div>
-            <a href="/projects/gamja">View Details</a>
+            <dl class="resume-project-meta">
+              <div><dt>기간</dt><dd>2026.06 - 진행 중</dd></div>
+              <div><dt>역할</dt><dd>Backend Developer / Full-stack Contributor</dd></div>
+              <div><dt>기술</dt><dd>Spring Boot, PostgreSQL, JPA, Flyway, JWT, Redis, Flutter</dd></div>
+            </dl>
+            <ul class="resume-bullets">
+              <li>미션 유형별 인증 정책을 분리해 퀴즈, 걸음 수, 사진, QR 검증을 확장 가능한 구조로 설계했습니다.</li>
+              <li>사용자별 미션 완료와 보상 이력 중복 생성을 막기 위해 완료 조건과 저장 흐름을 분리했습니다.</li>
+              <li>TourAPI와 Kakao Local 기반 관광 데이터 수집 흐름을 정리하고 DB 변경 이력을 Flyway로 관리했습니다.</li>
+            </ul>
           </article>
-          <article class="resume-row glass">
-            <div>
-              <h3>Turtle Neck Buddy</h3>
-              <p>장시간 브라우저 사용자를 위한 스트레칭 리마인더 Chrome 확장 프로그램</p>
+
+          <article class="resume-project-card glass">
+            <div class="resume-project-head">
+              <div>
+                <h3>SPOTL</h3>
+                <p>소규모 공연의 등록, 예약, 입장 관리를 연결한 공연 운영 서비스</p>
+              </div>
+              <a href="/projects/spotl">View Details</a>
             </div>
-            <a href="/projects/turtle-neck-buddy">View Details</a>
+            <dl class="resume-project-meta">
+              <div><dt>기간</dt><dd>2024.09 - 2024.12</dd></div>
+              <div><dt>역할</dt><dd>Backend Developer / Product Owner</dd></div>
+              <div><dt>기술</dt><dd>Spring Boot 3.3, JPA, MySQL, AWS S3, CoolSMS, Swagger</dd></div>
+            </dl>
+            <ul class="resume-bullets">
+              <li>예약 생성 전 공연, 사용자, 취소되지 않은 예약 상태를 검증해 중복 예약을 방지했습니다.</li>
+              <li>공연 등록, 승인, 예약, QR 기반 입장 관리 API를 기능별 컨트롤러와 서비스 흐름으로 분리했습니다.</li>
+              <li>API 응답 형식을 data, message, code 구조로 통일해 프론트엔드 예외 처리를 단순화했습니다.</li>
+            </ul>
           </article>
-          <article class="resume-row glass">
-            <div>
-              <h3>SPOTL</h3>
-              <p>소규모 공연의 등록, 예약, 입장 관리를 연결한 공연 운영 서비스</p>
+
+          <article class="resume-project-card glass">
+            <div class="resume-project-head">
+              <div>
+                <h3>Turtle Neck Buddy</h3>
+                <p>장시간 브라우저 사용자를 위한 스트레칭 리마인더 Chrome 확장 프로그램</p>
+              </div>
+              <a href="/projects/turtle-neck-buddy">View Details</a>
             </div>
-            <a href="/projects/spotl">View Details</a>
+            <dl class="resume-project-meta">
+              <div><dt>기간</dt><dd>2026.07</dd></div>
+              <div><dt>역할</dt><dd>Product Owner / AI-assisted Developer</dd></div>
+              <div><dt>기술</dt><dd>React 18, TypeScript 5, Vite 5, Chrome Extension Manifest V3</dd></div>
+            </dl>
+            <ul class="resume-bullets">
+              <li>chrome.alarms와 Local Storage를 활용해 서버 없이 반복 알림과 일일 기록을 유지했습니다.</li>
+              <li>알림 온오프, 간격 설정, 완료 기록을 분리해 사용자가 방해받지 않고 습관을 유지하도록 설계했습니다.</li>
+              <li>온보딩, 스트레칭 안내, 기록 확인 화면을 반복 개선해 가벼운 확장 프로그램 경험으로 정리했습니다.</li>
+            </ul>
           </article>
         </div>
       </section>
 
       <section class="section resume-section">
         <div class="section-heading compact-heading">
-          <p class="eyebrow">Awards & Education</p>
-          <h2>Awards & Education</h2>
+          <p class="eyebrow">Awards</p>
+          <h2>Awards</h2>
         </div>
         <div class="resume-list">
           <article class="resume-row glass">
             <div>
               <h3>KOSA JAVA 개발자 양성과정 파이널 프로젝트 대상</h3>
-              <p>스케줄 도메인과 예약 조회 로직을 담당하고, 쿼리 구조를 정리해 유지보수성을 높였습니다.</p>
+              <p>직장인이 자투리 시간과 업무 역량을 활용해 시간을 판매하는 N잡 마이크로 컨설팅 플랫폼 FILL을 개발했습니다. 스케줄 도메인에서 예약 생성, 상세 및 조건별 조회, 멘토 승인·거절 흐름을 담당했습니다.</p>
             </div>
             <time>2026.01</time>
           </article>
           <article class="resume-row glass">
             <div>
               <h3>생성형 AI 단기 프로젝트 우수상</h3>
-              <p>AI 상담 지원 서비스의 추천 서버 연동 API와 분석·통계 화면 구현에 기여했습니다.</p>
+              <p>구직 상담사의 업무 효율화를 위한 생성형 AI 기반 상담 지원 서비스를 개발했습니다. Spring Boot와 React 기반 AI 추천 서버 연동 API, 분석·통계·상담 준비 화면 구현에 기여했습니다.</p>
             </div>
             <time>2026.02</time>
           </article>
           <article class="resume-row glass">
             <div>
-              <h3>강남대학교 소프트웨어응용학과 졸업</h3>
-              <p>기획, 모바일 앱, 백엔드 프로젝트를 수행하며 서비스 개발 전반을 경험했습니다.</p>
+              <h3>강남대학교 캡스톤 디자인 우수상</h3>
+              <p>AI 기반 학습 피드백 앱 개발에 팀장으로 참여해 문제 정의, 기능 방향, 역할 분담, 일정 관리를 담당했습니다.</p>
             </div>
-            <time>2026</time>
+            <time>2024.11</time>
+          </article>
+          <article class="resume-row glass">
+            <div>
+              <h3>연세대 공동주최·Google·Tencent 후원 사회문제 해결 해커톤 장려상</h3>
+              <p>건강검진 데이터를 활용해 뇌동맥류 위험도를 예측하고 주변 병원을 안내하는 Brain Protect 서비스를 개발했습니다. 개발 리더로서 Spring Boot API 설계·구현과 지도 API 연동을 담당했습니다.</p>
+            </div>
+            <time>2023.12</time>
           </article>
         </div>
       </section>
 
       <section class="section resume-section">
-        <div class="resume-card glass">
-          <p class="eyebrow">PDF Download</p>
-          <h2>PDF 이력서</h2>
-          <p>PDF 이력서 파일을 추가하면 이 영역에서 바로 다운로드할 수 있도록 연결할 예정입니다.</p>
+        <div class="section-heading compact-heading">
+          <p class="eyebrow">Education</p>
+          <h2>Education</h2>
+        </div>
+        <div class="resume-list">
+          <article class="resume-row glass">
+            <div>
+              <h3>강남대학교 소프트웨어응용학과</h3>
+              <p>기획, 모바일 앱, 백엔드 프로젝트를 수행하며 서비스 개발 전반을 경험했습니다.</p>
+            </div>
+            <time>졸업</time>
+          </article>
+          <article class="resume-row glass">
+            <div>
+              <h3>KOSA JAVA 개발자 양성과정</h3>
+              <p>Java와 Spring Boot 중심의 백엔드 과정을 수료했습니다. 객체지향 프로그래밍, 데이터베이스 연동, API 개발을 학습하고 파이널 프로젝트에서 대상을 수상했습니다.</p>
+            </div>
+            <time>2025.11 - 2026.01</time>
+          </article>
+          <article class="resume-row glass">
+            <div>
+              <h3>강남대학교 멋쟁이사자처럼 11기</h3>
+              <p>React Native 스터디와 아이디어톤, 해커톤에 참여하며 기획, 역할 분담, 기능 구현, 결과 발표까지 프로젝트 전반을 경험했습니다.</p>
+            </div>
+            <time>2023.03 - 2023.12</time>
+          </article>
         </div>
       </section>
     </main>

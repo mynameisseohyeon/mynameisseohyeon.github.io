@@ -1105,6 +1105,135 @@ dd {
   padding-bottom: 80px;
 }
 
+.resume-page {
+  padding-top: 112px;
+}
+
+.resume-hero {
+  display: grid;
+  gap: 18px;
+  min-height: 0;
+  padding: 34px;
+  border-radius: var(--radius);
+}
+
+.resume-hero h1 {
+  min-height: 0;
+  margin-bottom: 4px;
+  font-size: clamp(38px, 6vw, 64px);
+}
+
+.resume-role {
+  margin: 0;
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 780;
+}
+
+.resume-summary {
+  max-width: 760px;
+  margin: 0;
+  color: var(--text);
+  font-size: 17px;
+  font-weight: 620;
+  line-height: 1.75;
+}
+
+.resume-actions {
+  margin-top: 0;
+}
+
+.resume-dense-section {
+  padding-top: 44px;
+}
+
+.resume-skill-table {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.resume-skill-table p {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 18px;
+  margin: 0;
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.resume-skill-table p:last-child {
+  border-bottom: 0;
+}
+
+.resume-skill-table strong {
+  color: var(--text);
+}
+
+.resume-skill-table span {
+  color: var(--muted);
+  font-weight: 620;
+}
+
+.resume-project-list {
+  display: grid;
+  gap: 16px;
+}
+
+.resume-project-card {
+  display: grid;
+  gap: 18px;
+  padding: 26px;
+  border-radius: var(--radius);
+}
+
+.resume-project-head {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.resume-project-head h3 {
+  margin-bottom: 6px;
+}
+
+.resume-project-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.resume-project-head a {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 780;
+}
+
+.resume-project-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.resume-project-meta div {
+  padding: 13px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.resume-bullets {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.68;
+}
+
 .detail-hero {
   min-height: auto;
   padding-top: clamp(88px, 12vh, 136px);
@@ -1454,6 +1583,19 @@ dd {
 
   .resume-grid,
   .resume-row {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-page {
+    padding-top: 88px;
+  }
+
+  .resume-hero {
+    padding: 24px;
+  }
+
+  .resume-skill-table p,
+  .resume-project-meta {
     grid-template-columns: 1fr;
   }
 
