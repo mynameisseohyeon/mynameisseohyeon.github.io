@@ -1258,6 +1258,24 @@ dd {
   background: rgba(255, 255, 255, 0.56);
 }
 
+.detail-main-visual {
+  overflow: hidden;
+  margin-top: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(235, 241, 250, 0.58)),
+    rgba(255, 255, 255, 0.7);
+  box-shadow: 0 18px 48px rgba(29, 29, 31, 0.08);
+}
+
+.detail-main-visual img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+}
+
 .resume-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
@@ -1351,12 +1369,18 @@ dd {
 
 .detail-content {
   display: grid;
-  gap: 18px;
+  gap: 30px;
 }
 
 .detail-card {
   padding: 30px;
   border-radius: var(--radius);
+}
+
+.overview-helper {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 .detail-card p {

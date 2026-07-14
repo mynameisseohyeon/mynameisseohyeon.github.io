@@ -16,12 +16,22 @@
       </a>
       <nav class="nav" aria-label="주요 섹션">
         <a href="/">Portfolio</a>
-        <a href="/#projects">Projects</a>
-        <a href="/#awards">Awards</a>
-        <a href="/#education">Education</a>
-        <a href="/#contact">Contact</a>
+        <a href="#skills">Skills</a>
+        <a href="#awards">Awards</a>
+        <a href="#education">Education</a>
       </nav>
     </header>
+
+    <aside class="profile-rail" aria-label="스크롤 프로필 요약">
+      <p class="rail-role">Backend Developer</p>
+      <h2>이서현</h2>
+      <p class="rail-copy">서비스의 목적을 이해하고, 견고한 서버 구조로 구현합니다.</p>
+      <div class="rail-links">
+        <a href="mailto:seohyeon.leee.dev@gmail.com" aria-label="이메일 보내기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg></a>
+        <a href="https://github.com/mynameisseohyeon" target="_blank" rel="noreferrer" aria-label="GitHub 열기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 19c-4 .9-4-2-6-2"></path></svg></a>
+        <a href="https://backenddevelopercorinne.tistory.com/" target="_blank" rel="noreferrer" aria-label="블로그 열기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11.5A2.5 2.5 0 0 1 20 5.5V21H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg></a>
+      </div>
+    </aside>
 
     <main class="page-shell resume-page">
       <section class="resume-hero section glass">
@@ -43,7 +53,7 @@
         </div>
       </section>
 
-      <section class="section resume-section resume-dense-section">
+      <section id="skills" class="section resume-section resume-dense-section">
         <div class="section-heading compact-heading">
           <p class="eyebrow">Skills</p>
           <h2>Skills</h2>
@@ -56,75 +66,7 @@
         </div>
       </section>
 
-      <section class="section resume-section">
-        <div class="section-heading compact-heading">
-          <p class="eyebrow">Projects</p>
-          <h2>Projects</h2>
-        </div>
-        <div class="resume-project-list">
-          <article class="resume-project-card glass">
-            <div class="resume-project-head">
-              <div>
-                <h3>감자무봤나</h3>
-                <p>강원도 관광지를 지도, 미션, 스탬프와 보상으로 연결한 위치 기반 관광 서비스</p>
-              </div>
-              <a href="/projects/gamja">View Details</a>
-            </div>
-            <dl class="resume-project-meta">
-              <div><dt>기간</dt><dd>2026.06 - 진행 중</dd></div>
-              <div><dt>역할</dt><dd>Backend Developer / Full-stack Contributor</dd></div>
-              <div><dt>기술</dt><dd>Spring Boot, PostgreSQL, JPA, Flyway, JWT, Redis, Flutter</dd></div>
-            </dl>
-            <ul class="resume-bullets">
-              <li>미션 유형별 인증 정책을 분리해 퀴즈, 걸음 수, 사진, QR 검증을 확장 가능한 구조로 설계했습니다.</li>
-              <li>사용자별 미션 완료와 보상 이력 중복 생성을 막기 위해 완료 조건과 저장 흐름을 분리했습니다.</li>
-              <li>TourAPI와 Kakao Local 기반 관광 데이터 수집 흐름을 정리하고 DB 변경 이력을 Flyway로 관리했습니다.</li>
-            </ul>
-          </article>
-
-          <article class="resume-project-card glass">
-            <div class="resume-project-head">
-              <div>
-                <h3>SPOTL</h3>
-                <p>소규모 공연의 등록, 예약, 입장 관리를 연결한 공연 운영 서비스</p>
-              </div>
-              <a href="/projects/spotl">View Details</a>
-            </div>
-            <dl class="resume-project-meta">
-              <div><dt>기간</dt><dd>2024.09 - 2024.12</dd></div>
-              <div><dt>역할</dt><dd>Backend Developer / Product Owner</dd></div>
-              <div><dt>기술</dt><dd>Spring Boot 3.3, JPA, MySQL, AWS S3, CoolSMS, Swagger</dd></div>
-            </dl>
-            <ul class="resume-bullets">
-              <li>예약 생성 전 공연, 사용자, 취소되지 않은 예약 상태를 검증해 중복 예약을 방지했습니다.</li>
-              <li>공연 등록, 승인, 예약, QR 기반 입장 관리 API를 기능별 컨트롤러와 서비스 흐름으로 분리했습니다.</li>
-              <li>API 응답 형식을 data, message, code 구조로 통일해 프론트엔드 예외 처리를 단순화했습니다.</li>
-            </ul>
-          </article>
-
-          <article class="resume-project-card glass">
-            <div class="resume-project-head">
-              <div>
-                <h3>Turtle Neck Buddy</h3>
-                <p>장시간 브라우저 사용자를 위한 스트레칭 리마인더 Chrome 확장 프로그램</p>
-              </div>
-              <a href="/projects/turtle-neck-buddy">View Details</a>
-            </div>
-            <dl class="resume-project-meta">
-              <div><dt>기간</dt><dd>2026.07</dd></div>
-              <div><dt>역할</dt><dd>Product Owner / AI-assisted Developer</dd></div>
-              <div><dt>기술</dt><dd>React 18, TypeScript 5, Vite 5, Chrome Extension Manifest V3</dd></div>
-            </dl>
-            <ul class="resume-bullets">
-              <li>chrome.alarms와 Local Storage를 활용해 서버 없이 반복 알림과 일일 기록을 유지했습니다.</li>
-              <li>알림 온오프, 간격 설정, 완료 기록을 분리해 사용자가 방해받지 않고 습관을 유지하도록 설계했습니다.</li>
-              <li>온보딩, 스트레칭 안내, 기록 확인 화면을 반복 개선해 가벼운 확장 프로그램 경험으로 정리했습니다.</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section class="section resume-section">
+      <section id="awards" class="section resume-section">
         <div class="section-heading compact-heading">
           <p class="eyebrow">Awards</p>
           <h2>Awards</h2>
@@ -132,36 +74,42 @@
         <div class="resume-list">
           <article class="resume-row glass">
             <div>
-              <h3>KOSA JAVA 개발자 양성과정 파이널 프로젝트 대상</h3>
-              <p>직장인이 자투리 시간과 업무 역량을 활용해 시간을 판매하는 N잡 마이크로 컨설팅 플랫폼 FILL을 개발했습니다. 스케줄 도메인에서 예약 생성, 상세 및 조건별 조회, 멘토 승인·거절 흐름을 담당했습니다.</p>
+              <h3>JAVA 개발자 양성과정 파이널 프로젝트</h3>
+              <p>
+                직장인이 자투리 시간과 업무 역량을 활용해 자신의 시간을 판매하고,
+                추가 수익을 창출할 수 있도록 돕는 N잡 마이크로 컨설팅 플랫폼 FILL:IN을 기획·개발했습니다.
+                백엔드에서는 예약 생성·상세 및 조건별 조회, 멘토의 신청 승인·거절 등 스케줄 도메인을 담당했으며,
+                조회 로직 분리와 쿼리 최적화를 통해 성능과 유지보수성을 높였습니다.
+                서비스의 문제 해결력과 구현 완성도를 인정받아 KOSA 파이널 프로젝트에서 대상을 수상했습니다.
+              </p>
             </div>
-            <time>2026.01</time>
+            <time>대상 · 2026.01</time>
           </article>
           <article class="resume-row glass">
             <div>
-              <h3>생성형 AI 단기 프로젝트 우수상</h3>
+              <h3>생성형 AI 단기 프로젝트</h3>
               <p>구직 상담사의 업무 효율화를 위한 생성형 AI 기반 상담 지원 서비스를 개발했습니다. Spring Boot와 React 기반 AI 추천 서버 연동 API, 분석·통계·상담 준비 화면 구현에 기여했습니다.</p>
             </div>
-            <time>2026.02</time>
+            <time>우수상 · 2026.02</time>
           </article>
           <article class="resume-row glass">
             <div>
-              <h3>강남대학교 캡스톤 디자인 우수상</h3>
+              <h3>강남대학교 캡스톤 디자인</h3>
               <p>AI 기반 학습 피드백 앱 개발에 팀장으로 참여해 문제 정의, 기능 방향, 역할 분담, 일정 관리를 담당했습니다.</p>
             </div>
-            <time>2024.11</time>
+            <time>우수상 · 2024.11</time>
           </article>
           <article class="resume-row glass">
             <div>
-              <h3>연세대 공동주최·Google·Tencent 후원 사회문제 해결 해커톤 장려상</h3>
+              <h3>연세대 공동주최·Google·Tencent 후원 사회문제 해결 해커톤</h3>
               <p>건강검진 데이터를 활용해 뇌동맥류 위험도를 예측하고 주변 병원을 안내하는 Brain Protect 서비스를 개발했습니다. 개발 리더로서 Spring Boot API 설계·구현과 지도 API 연동을 담당했습니다.</p>
             </div>
-            <time>2023.12</time>
+            <time>장려상 · 2023.12</time>
           </article>
         </div>
       </section>
 
-      <section class="section resume-section">
+      <section id="education" class="section resume-section">
         <div class="section-heading compact-heading">
           <p class="eyebrow">Education</p>
           <h2>Education</h2>
@@ -177,19 +125,64 @@
           <article class="resume-row glass">
             <div>
               <h3>KOSA JAVA 개발자 양성과정</h3>
-              <p>Java와 Spring Boot 중심의 백엔드 과정을 수료했습니다. 객체지향 프로그래밍, 데이터베이스 연동, API 개발을 학습하고 파이널 프로젝트에서 대상을 수상했습니다.</p>
+              <p>
+                Java와 Spring Boot를 중심으로 백엔드 개발 과정을 수료했습니다.
+                객체지향 프로그래밍, 데이터베이스 연동, API 개발을 학습하고 알고리즘 스터디를 통해 문제 해결 능력을 길렀습니다.
+                파이널 프로젝트에서는 팀원들과 요구사항을 정리하고 기능을 구현했으며, 최종 발표에서 대상을 수상했습니다.
+              </p>
             </div>
             <time>2025.11 - 2026.01</time>
           </article>
           <article class="resume-row glass">
             <div>
+              <h3>강남대학교 캡스톤 디자인</h3>
+              <p>
+                AI를 활용해 사용자의 학습 과정을 점검하고 메타인지 향상을 돕는 앱 개발에 팀장으로 참여했습니다.
+                프로젝트의 문제 정의와 기능 방향을 정리하고 팀원별 역할과 일정을 조율했습니다.
+                기획과 개발 진행 상황을 공유하며 프로젝트를 완성했고, 결과물의 기획성과 구현 완성도를 인정받아 우수상을 수상했습니다.
+              </p>
+            </div>
+            <time>2024.03 - 2024.11</time>
+          </article>
+          <article class="resume-row glass">
+            <div>
+              <h3>강남대학교 동아리 아우내</h3>
+              <p>
+                팀원들과 스터디를 진행하고 사회문제 해결 해커톤에 참여했습니다.
+                해결하고자 하는 문제를 정리하고 아이디어를 서비스 형태로 구체화하는 과정에 참여했으며, 팀원들과 역할을 나누어 결과물을 완성했습니다.
+                협업 과정과 문제 해결 방향을 인정받아 장려상을 수상했습니다.
+              </p>
+            </div>
+            <time>2023.09 - 2023.12</time>
+          </article>
+          <article class="resume-row glass">
+            <div>
               <h3>강남대학교 멋쟁이사자처럼 11기</h3>
-              <p>React Native 스터디와 아이디어톤, 해커톤에 참여하며 기획, 역할 분담, 기능 구현, 결과 발표까지 프로젝트 전반을 경험했습니다.</p>
+              <p>
+                React Native 스터디를 통해 모바일 애플리케이션 개발의 기초를 익혔습니다.
+                아이디어톤과 해커톤에 참여하며 서비스 아이디어를 구체화하고, 제한된 시간 안에 팀원들과 기능을 구현하는 경험을 쌓았습니다.
+                이 활동을 통해 개발뿐만 아니라 기획, 역할 분담, 결과 발표까지 프로젝트 전반의 과정을 경험했습니다.
+              </p>
             </div>
             <time>2023.03 - 2023.12</time>
           </article>
         </div>
       </section>
     </main>
+    <script>
+      const profileRail = document.querySelector(".profile-rail");
+      const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
+      const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      const activateSection = () => {
+        const hasScrolled = window.scrollY > 180;
+        profileRail?.classList.toggle("is-visible", hasScrolled);
+        document.body.classList.toggle("is-scrolled", hasScrolled);
+        const marker = window.scrollY + 150;
+        const current = [...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0];
+        navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${current?.id}`));
+      };
+      activateSection();
+      window.addEventListener("scroll", activateSection, { passive: true });
+    </script>
   </body>
 </html>
