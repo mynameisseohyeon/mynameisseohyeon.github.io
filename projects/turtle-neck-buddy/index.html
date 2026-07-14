@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Turtle Neck Buddy 프로젝트 기술 상세 페이지입니다.">
+    <meta name="robots" content="max-image-preview:none">
+    <title>Turtle Neck Buddy | Project Details</title>
+    <link rel="stylesheet" href="/assets/css/portfolio.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="이서현 포트폴리오 홈">
+        <span class="brand-mark">SH</span>
+        <span>이서현</span>
+      </a>
+      <nav class="nav" aria-label="주요 섹션">
+        <a href="/#skills">Skills</a>
+        <a class="is-active" href="/#projects">Projects</a>
+        <a href="/#awards">Awards</a>
+        <a href="/#education">Education</a>
+        <a href="/resume">Resume</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="detail-hero section">
+        <p class="eyebrow">Project Case Study</p>
+        <h1>
+          <span>Turtle Neck Buddy</span>
+          <span class="headline-strong">거북목 방지 스트레칭 리마인더</span>
+        </h1>
+        <p class="hero-description">
+          장시간 브라우저를 사용하는 사용자가 작업 흐름을 크게 방해받지 않고<br>
+          스트레칭 습관을 만들 수 있도록 설계한 Chrome Extension입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="/#projects">Back to Projects</a>
+        </div>
+      </section>
+
+      <section class="section detail-layout">
+        <aside class="detail-toc glass">
+          <a href="#overview">Overview</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#challenges">Technical Challenges</a>
+          <a href="#paar">PAAR</a>
+          <a href="#testing">Testing</a>
+          <a href="#retrospective">Retrospective</a>
+        </aside>
+
+        <div class="detail-content">
+          <article id="overview" class="detail-card glass">
+            <p class="eyebrow">Overview</p>
+            <h2>작업 흐름을 방해하지 않는 건강 습관 도구</h2>
+            <div class="fact-grid">
+              <p><strong>기간</strong><span>2026.07</span></p>
+              <p><strong>역할</strong><span>Product Owner / AI-assisted Developer</span></p>
+              <p><strong>핵심 스택</strong><span>React 18, TypeScript 5, Vite 5, Manifest V3</span></p>
+              <p><strong>저장 방식</strong><span>Local Storage 기반 Local-first</span></p>
+            </div>
+            <p>
+              집중 중에는 스트레칭 시점을 놓치기 쉽고, 강한 알림은 오히려 사용을 중단하게 만듭니다.
+              Turtle Neck Buddy는 사용자가 알림 간격과 완료 기록을 직접 관리하고, 30초 스트레칭 가이드를 따라 할 수 있게 만든 도구입니다.
+            </p>
+          </article>
+
+          <article id="architecture" class="detail-card glass">
+            <p class="eyebrow">Architecture</p>
+            <h2>Manifest V3 기반 모듈 구조</h2>
+            <p>
+              Popup UI, Service Worker, Chrome APIs, Local Storage를 역할별로 분리했습니다.
+              서버 없이 동작하도록 설계해 개인정보 전송 부담을 줄이고, 설치 즉시 사용할 수 있게 했습니다.
+            </p>
+            <div class="mockup-gallery">
+              <img src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 소개 화면">
+              <img src="/assets/images/projects/turtle-run-02.png" alt="Turtle Neck Buddy 기록 화면">
+              <img src="/assets/images/projects/turtle-run-03.png" alt="Turtle Neck Buddy 스트레칭 가이드 화면">
+            </div>
+          </article>
+
+          <article id="challenges" class="detail-card glass">
+            <p class="eyebrow">Technical Challenges</p>
+            <h2>핵심 기술 문제</h2>
+            <div class="challenge-grid">
+              <section>
+                <h3>알림 피로도</h3>
+                <p>사용자가 작업을 중단하지 않도록 알림 간격과 즉시 스트레칭/나중 알림 행동을 분리했습니다.</p>
+              </section>
+              <section>
+                <h3>상태 유지</h3>
+                <p>확장 프로그램 재실행 후에도 알림 설정과 일일 완료 횟수가 유지되도록 로컬 저장소에 상태를 저장했습니다.</p>
+              </section>
+              <section>
+                <h3>MV3 제약</h3>
+                <p>Service Worker 특성상 항상 살아 있지 않으므로 chrome.alarms 기반으로 일정 관리를 구성했습니다.</p>
+              </section>
+            </div>
+          </article>
+
+          <article id="paar" class="detail-card glass">
+            <p class="eyebrow">PAAR</p>
+            <h2>알림과 완료 기록의 상태 동기화</h2>
+            <div class="paar-grid">
+              <p><strong>Problem</strong><span>알림 On/Off, 완료 기록, 다음 알림 시간은 서로 연결되어 있어 상태가 어긋나기 쉽습니다.</span></p>
+              <p><strong>Decision</strong><span>사용자 설정과 완료 기록을 Local Storage에 저장하고, 알림 트리거는 chrome.alarms로 위임했습니다.</span></p>
+              <p><strong>Implementation</strong><span>Popup UI는 저장된 상태를 읽어 화면을 갱신하고, 완료 버튼 클릭 시 기록 저장과 다음 알림 예약을 함께 처리합니다.</span></p>
+              <p><strong>Result</strong><span>서버 없이도 알림 설정과 일일 완료 기록이 유지되어 간단하고 가벼운 사용 경험을 만들었습니다.</span></p>
+            </div>
+          </article>
+
+          <article id="testing" class="detail-card glass">
+            <p class="eyebrow">Testing</p>
+            <h2>검증 방식</h2>
+            <ul class="detail-list">
+              <li>알림 On/Off 변경 후 Popup UI와 저장 상태가 일치하는지 확인</li>
+              <li>완료 버튼 클릭 시 일일 스트레칭 횟수와 진행률이 갱신되는지 확인</li>
+              <li>확장 프로그램 재실행 후 Local Storage 기반 설정이 유지되는지 확인</li>
+            </ul>
+          </article>
+
+          <article id="retrospective" class="detail-card glass">
+            <p class="eyebrow">Retrospective</p>
+            <h2>회고와 개선 방향</h2>
+            <p>
+              작은 생산성 도구일수록 기능보다 사용 지속성이 중요하다는 점을 배웠습니다.
+              이후에는 사용자의 업무 시간대와 휴식 패턴에 따라 알림 강도를 조절하고, 통계 화면을 더 정교하게 개선하고 싶습니다.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
