@@ -63,8 +63,20 @@
           <div><dt>주요 기여</dt><dd>알림 상태, Local Storage, UX 개선</dd></div>
         </dl>
         <div class="hero-actions">
-          <a class="button" href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="button" href="/#projects">Back to Projects</a>
+          <a class="button" href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 19c-4 .9-4-2-6-2"></path></svg>
+              GitHub
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
+          <a class="button" href="/#projects">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
+              Back to Projects
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
         </div>
       </section>
 
@@ -146,6 +158,11 @@
                 </tbody>
               </table>
             </div>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Validation Image 01</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+              <div class="detail-media-card"><strong>Validation Image 02</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+              <div class="detail-media-card"><strong>Validation Image 03</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+            </div>
           </article>
 
           <article id="retrospective" class="detail-card glass">
@@ -176,7 +193,7 @@
         prev?.addEventListener("click", () => show(index - 1));
         next?.addEventListener("click", () => show(index + 1));
         if (slides.length > 1) {
-          window.setInterval(() => show(index + 1), 20000);
+          window.setInterval(() => show(index + 1), 15000);
         }
       });
       const activateSection = () => {

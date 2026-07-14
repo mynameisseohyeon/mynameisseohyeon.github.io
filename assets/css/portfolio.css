@@ -1137,7 +1137,7 @@ dd {
   gap: 22px;
   min-height: 0;
   padding-top: clamp(54px, 9vh, 90px);
-  padding-bottom: clamp(112px, 16vh, 188px);
+  padding-bottom: clamp(220px, 28vh, 360px);
 }
 
 .resume-hero h1 {
@@ -1280,15 +1280,36 @@ dd {
 .detail-meta {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 24px;
+  gap: 14px;
+  margin-top: 28px;
 }
 
 .detail-meta div {
-  padding: 14px;
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.detail-meta dt {
+  display: block;
+  margin-left: 4px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.detail-meta dd {
+  min-height: 100%;
+  margin: 0;
+  padding: 16px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.56);
+  color: var(--muted);
+  font-weight: 620;
+  line-height: 1.55;
 }
 
 .detail-main-visual {
@@ -1334,21 +1355,22 @@ dd {
   top: 50%;
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.58);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.34);
   color: var(--accent);
   font-size: 24px;
   font-weight: 760;
   line-height: 1;
   transform: translateY(-50%);
   cursor: pointer;
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.08);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
 }
 
 .detail-carousel-button:hover {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .detail-carousel-button.prev {
@@ -1461,13 +1483,17 @@ dd {
 
 #overview,
 #challenges {
-  margin-bottom: 36px;
+  margin-bottom: 54px;
 }
 
 .overview-helper {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+#overview > .fact-grid {
+  margin-top: 28px;
 }
 
 .detail-card p {
@@ -1855,7 +1881,7 @@ dd {
   }
 
   .resume-hero {
-    padding: 28px 24px 104px;
+    padding: 28px 24px 180px;
   }
 
   .resume-skill-table p,
