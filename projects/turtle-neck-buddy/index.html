@@ -15,11 +15,10 @@
         <span>이서현</span>
       </a>
       <nav class="nav" aria-label="주요 섹션">
-        <a href="/#skills">Skills</a>
+        <a href="/">Portfolio</a>
         <a class="is-active" href="/#projects">Projects</a>
         <a href="/#awards">Awards</a>
         <a href="/#education">Education</a>
-        <a href="/resume">Resume</a>
         <a href="/#contact">Contact</a>
       </nav>
     </header>
@@ -35,6 +34,12 @@
           장시간 브라우저를 사용하는 사용자가 작업 흐름을 크게 방해받지 않고<br>
           스트레칭 습관을 만들 수 있도록 설계한 Chrome Extension입니다.
         </p>
+        <dl class="detail-meta">
+          <div><dt>기간</dt><dd>2026.07</dd></div>
+          <div><dt>역할</dt><dd>Product Owner / Developer</dd></div>
+          <div><dt>핵심 스택</dt><dd>React, TypeScript, Vite, Manifest V3</dd></div>
+          <div><dt>주요 기여</dt><dd>알림 상태, Local Storage, UX 개선</dd></div>
+        </dl>
         <div class="hero-actions">
           <a class="button" href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer">GitHub</a>
           <a class="button" href="/#projects">Back to Projects</a>
@@ -42,60 +47,59 @@
       </section>
 
       <section class="section detail-layout">
-        <aside class="detail-toc glass">
-          <a href="#overview">Overview</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#challenges">Technical Challenges</a>
-          <a href="#paar">PAAR</a>
-          <a href="#testing">Testing</a>
-          <a href="#retrospective">Retrospective</a>
-        </aside>
-
         <div class="detail-content">
           <article id="overview" class="detail-card glass">
             <p class="eyebrow">Overview</p>
-            <h2>작업 흐름을 방해하지 않는 건강 습관 도구</h2>
+            <h2>문제, 기여, 결과</h2>
             <div class="fact-grid">
-              <p><strong>기간</strong><span>2026.07</span></p>
-              <p><strong>역할</strong><span>Product Owner / AI-assisted Developer</span></p>
-              <p><strong>핵심 스택</strong><span>React 18, TypeScript 5, Vite 5, Manifest V3</span></p>
-              <p><strong>저장 방식</strong><span>Local Storage 기반 Local-first</span></p>
+              <p><strong>Problem</strong><span>집중 중에는 스트레칭 시점을 놓치기 쉽고, 강한 알림은 오히려 사용을 중단하게 만듭니다.</span></p>
+              <p><strong>My Contribution</strong><span>알림 간격, 완료 기록, 스트레칭 가이드, 온보딩 흐름을 설계하고 구현했습니다.</span></p>
+              <p><strong>Key Challenge</strong><span>Manifest V3의 Service Worker 제약 안에서 알림 예약과 상태 유지를 처리해야 했습니다.</span></p>
+              <p><strong>Outcome</strong><span>서버 없이 설치 즉시 사용할 수 있고, 설정과 완료 기록이 브라우저에 유지되는 흐름을 만들었습니다.</span></p>
             </div>
-            <p>
-              집중 중에는 스트레칭 시점을 놓치기 쉽고, 강한 알림은 오히려 사용을 중단하게 만듭니다.
-              Turtle Neck Buddy는 사용자가 알림 간격과 완료 기록을 직접 관리하고, 30초 스트레칭 가이드를 따라 할 수 있게 만든 도구입니다.
-            </p>
           </article>
 
           <article id="architecture" class="detail-card glass">
             <p class="eyebrow">Architecture</p>
-            <h2>Manifest V3 기반 모듈 구조</h2>
+            <h2>Manifest V3 기반 Local-first 구조</h2>
             <p>
-              Popup UI, Service Worker, Chrome APIs, Local Storage를 역할별로 분리했습니다.
-              서버 없이 동작하도록 설계해 개인정보 전송 부담을 줄이고, 설치 즉시 사용할 수 있게 했습니다.
+              Popup UI는 React로 구성하고, 알림 예약은 chrome.alarms로 처리했습니다.
+              사용자 설정과 일일 스트레칭 기록은 Local Storage에 저장해 서버 없이 동작하도록 만들었습니다.
             </p>
-            <div class="mockup-gallery">
-              <img src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 소개 화면">
-              <img src="/assets/images/projects/turtle-run-02.png" alt="Turtle Neck Buddy 기록 화면">
-              <img src="/assets/images/projects/turtle-run-03.png" alt="Turtle Neck Buddy 스트레칭 가이드 화면">
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Architecture Placeholder</strong><div class="detail-media-placeholder">Popup UI ↔ Service Worker<br>chrome.alarms · notifications · storage.local</div></div>
+              <div class="detail-media-card"><strong>Execution Screen 01</strong><img src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 실행 화면 1"></div>
+              <div class="detail-media-card"><strong>Execution Screen 02</strong><img src="/assets/images/projects/turtle-run-02.png" alt="Turtle Neck Buddy 실행 화면 2"></div>
             </div>
           </article>
 
           <article id="challenges" class="detail-card glass">
             <p class="eyebrow">Technical Challenges</p>
-            <h2>핵심 기술 문제</h2>
-            <div class="challenge-grid">
+            <h2>기술적 판단</h2>
+            <div class="deep-challenge">
               <section>
-                <h3>알림 피로도</h3>
-                <p>사용자가 작업을 중단하지 않도록 알림 간격과 즉시 스트레칭/나중 알림 행동을 분리했습니다.</p>
+                <h3>Challenge 01. 알림 피로도 낮추기</h3>
+                <dl>
+                  <div><dt>Why</dt><dd>건강 알림은 자주 뜨면 유용함보다 방해감이 커져 사용자가 끄게 됩니다.</dd></div>
+                  <div><dt>Decision</dt><dd>즉시 스트레칭, 나중 알림, 알림 On/Off를 분리해 사용자가 직접 강도를 조절하게 했습니다.</dd></div>
+                  <div><dt>Result</dt><dd>작업 흐름을 끊지 않으면서도 스트레칭 행동으로 이어지는 가벼운 흐름을 만들었습니다.</dd></div>
+                </dl>
               </section>
               <section>
-                <h3>상태 유지</h3>
-                <p>확장 프로그램 재실행 후에도 알림 설정과 일일 완료 횟수가 유지되도록 로컬 저장소에 상태를 저장했습니다.</p>
+                <h3>Challenge 02. 상태 유지</h3>
+                <dl>
+                  <div><dt>Why</dt><dd>확장 프로그램 팝업은 닫히면 UI 상태가 사라지기 때문에 설정과 기록을 별도로 저장해야 합니다.</dd></div>
+                  <div><dt>Decision</dt><dd>알림 설정, 다음 알림 시간, 일일 완료 기록을 Local Storage에 저장했습니다.</dd></div>
+                  <div><dt>Result</dt><dd>브라우저를 다시 열어도 사용자 설정과 당일 진행률이 유지됩니다.</dd></div>
+                </dl>
               </section>
               <section>
-                <h3>MV3 제약</h3>
-                <p>Service Worker 특성상 항상 살아 있지 않으므로 chrome.alarms 기반으로 일정 관리를 구성했습니다.</p>
+                <h3>Challenge 03. MV3 Service Worker 제약</h3>
+                <dl>
+                  <div><dt>Why</dt><dd>Manifest V3 Service Worker는 항상 실행되지 않아 setInterval 방식이 안정적이지 않습니다.</dd></div>
+                  <div><dt>Decision</dt><dd>chrome.alarms API로 반복 알림을 예약하고, 필요한 순간에 상태를 읽도록 구성했습니다.</dd></div>
+                  <div><dt>Result</dt><dd>확장 프로그램 환경에 맞는 알림 트리거를 사용해 단순한 구조를 유지했습니다.</dd></div>
+                </dl>
               </section>
             </div>
           </article>
@@ -104,21 +108,31 @@
             <p class="eyebrow">PAAR</p>
             <h2>알림과 완료 기록의 상태 동기화</h2>
             <div class="paar-grid">
-              <p><strong>Problem</strong><span>알림 On/Off, 완료 기록, 다음 알림 시간은 서로 연결되어 있어 상태가 어긋나기 쉽습니다.</span></p>
-              <p><strong>Decision</strong><span>사용자 설정과 완료 기록을 Local Storage에 저장하고, 알림 트리거는 chrome.alarms로 위임했습니다.</span></p>
-              <p><strong>Implementation</strong><span>Popup UI는 저장된 상태를 읽어 화면을 갱신하고, 완료 버튼 클릭 시 기록 저장과 다음 알림 예약을 함께 처리합니다.</span></p>
-              <p><strong>Result</strong><span>서버 없이도 알림 설정과 일일 완료 기록이 유지되어 간단하고 가벼운 사용 경험을 만들었습니다.</span></p>
+              <p><strong>Problem</strong><span>알림 On/Off, 완료 기록, 다음 알림 시간이 서로 어긋나면 사용자는 앱을 신뢰하기 어렵습니다.</span></p>
+              <p><strong>Action</strong><span>완료 버튼 클릭 시 기록 저장과 다음 알림 예약을 함께 처리하고, Popup UI는 저장된 값을 기준으로 렌더링했습니다.</span></p>
+              <p><strong>Alternative</strong><span>메모리 상태만 사용하는 방식은 팝업이 닫힌 뒤 상태가 사라져 장기 사용에 적합하지 않았습니다.</span></p>
+              <p><strong>Result</strong><span>서버 없이도 알림 설정과 일일 완료 기록을 유지하는 Local-first 경험을 만들었습니다.</span></p>
             </div>
           </article>
 
           <article id="testing" class="detail-card glass">
             <p class="eyebrow">Testing</p>
-            <h2>검증 방식</h2>
-            <ul class="detail-list">
-              <li>알림 On/Off 변경 후 Popup UI와 저장 상태가 일치하는지 확인</li>
-              <li>완료 버튼 클릭 시 일일 스트레칭 횟수와 진행률이 갱신되는지 확인</li>
-              <li>확장 프로그램 재실행 후 Local Storage 기반 설정이 유지되는지 확인</li>
-            </ul>
+            <h2>검증 결과</h2>
+            <div class="detail-table-wrap">
+              <table class="detail-table">
+                <thead><tr><th>테스트 케이스</th><th>기대 결과</th><th>확인 결과</th></tr></thead>
+                <tbody>
+                  <tr><td>알림 On/Off 변경</td><td>저장 상태와 UI 상태 일치</td><td>수동 시나리오 기준 통과</td></tr>
+                  <tr><td>스트레칭 완료 클릭</td><td>일일 완료 횟수와 진행률 갱신</td><td>Popup UI에서 확인</td></tr>
+                  <tr><td>확장 프로그램 재실행</td><td>알림 설정과 완료 기록 유지</td><td>Local Storage 기준 확인</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Execution Screen 03</strong><img src="/assets/images/projects/turtle-run-03.png" alt="Turtle Neck Buddy 실행 화면 3"></div>
+              <div class="detail-media-card"><strong>Performance Test</strong><div class="detail-media-placeholder">Lighthouse / Extension QA<br>결과 이미지 추가 영역</div></div>
+              <div class="detail-media-card"><strong>Interaction Flow</strong><div class="detail-media-placeholder">알림 → 팝업 → 완료 처리<br>플로우 이미지 추가 영역</div></div>
+            </div>
           </article>
 
           <article id="retrospective" class="detail-card glass">
@@ -126,7 +140,8 @@
             <h2>회고와 개선 방향</h2>
             <p>
               작은 생산성 도구일수록 기능보다 사용 지속성이 중요하다는 점을 배웠습니다.
-              이후에는 사용자의 업무 시간대와 휴식 패턴에 따라 알림 강도를 조절하고, 통계 화면을 더 정교하게 개선하고 싶습니다.
+              현재는 알림 주기와 완료 기록 중심이지만, 이후에는 사용자의 업무 시간대와 휴식 패턴에 따라 알림 강도를 조절하고
+              통계 화면을 더 정교하게 개선할 계획입니다.
             </p>
           </article>
         </div>
