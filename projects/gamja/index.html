@@ -47,8 +47,14 @@
           강원도 18개 시·군 관광지를 지도, 미션, 스탬프와 보상으로 연결해<br>
           조회에서 실제 방문까지 이어지도록 설계한 관광 서비스입니다.
         </p>
-        <div class="detail-main-visual">
-          <img src="/assets/images/projects/potato-run-01.png" alt="감자무봤나 프로젝트 대표 이미지">
+        <div class="detail-main-visual detail-carousel" data-carousel>
+          <button class="detail-carousel-button prev" type="button" data-carousel-prev aria-label="이전 이미지 보기">&lt;</button>
+          <div class="detail-carousel-track">
+            <img class="detail-carousel-slide is-active" src="/assets/images/projects/potato-run-01.png" alt="감자무봤나 프로젝트 대표 이미지 1">
+            <img class="detail-carousel-slide" src="/assets/images/projects/potato-run-02.png" alt="감자무봤나 프로젝트 대표 이미지 2">
+            <img class="detail-carousel-slide" src="/assets/images/projects/potato-run-03.png" alt="감자무봤나 프로젝트 대표 이미지 3">
+          </div>
+          <button class="detail-carousel-button next" type="button" data-carousel-next aria-label="다음 이미지 보기">&gt;</button>
         </div>
         <dl class="detail-meta">
           <div><dt>기간</dt><dd>2026.06 - 진행 중</dd></div>
@@ -83,20 +89,6 @@
               앱은 Flutter 클라이언트에서 Spring Boot API로 요청하고, 관광지·미션·보상 이력은 PostgreSQL에 저장합니다.
               관광 데이터는 TourAPI와 Kakao Local을 통해 수집하며, Redis는 반복 조회가 많은 데이터의 캐싱 지점으로 고려했습니다.
             </p>
-            <div class="detail-media-grid">
-              <div class="detail-media-card">
-                <strong>Architecture Diagram</strong>
-                <div class="detail-media-placeholder">Flutter → Spring Boot API → PostgreSQL<br>TourAPI · Kakao Local · Redis</div>
-              </div>
-              <div class="detail-media-card">
-                <strong>Execution Screen 01</strong>
-                <img src="/assets/images/projects/potato-run-01.png" alt="감자무봤나 실행 화면 1">
-              </div>
-              <div class="detail-media-card">
-                <strong>Execution Screen 02</strong>
-                <img src="/assets/images/projects/potato-run-02.png" alt="감자무봤나 실행 화면 2">
-              </div>
-            </div>
           </article>
 
           <article id="challenges" class="detail-card glass">
@@ -154,11 +146,6 @@
                 </tbody>
               </table>
             </div>
-            <div class="detail-media-grid">
-              <div class="detail-media-card"><strong>Execution Screen 01</strong><img src="/assets/images/projects/potato-run-01.png" alt="감자무봤나 실행 화면 1"></div>
-              <div class="detail-media-card"><strong>Execution Screen 02</strong><img src="/assets/images/projects/potato-run-02.png" alt="감자무봤나 실행 화면 2"></div>
-              <div class="detail-media-card"><strong>Validation Result</strong><div class="detail-media-placeholder">미션 완료 / 보상 이력<br>검증 이미지 추가 영역</div></div>
-            </div>
           </article>
 
           <article id="retrospective" class="detail-card glass">
@@ -177,6 +164,21 @@
       const profileRail = document.querySelector(".profile-rail");
       const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
       const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
+        const prev = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        let index = 0;
+        const show = (nextIndex) => {
+          index = (nextIndex + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => slide.classList.toggle("is-active", slideIndex === index));
+        };
+        prev?.addEventListener("click", () => show(index - 1));
+        next?.addEventListener("click", () => show(index + 1));
+        if (slides.length > 1) {
+          window.setInterval(() => show(index + 1), 20000);
+        }
+      });
       const activateSection = () => {
         const hasScrolled = window.scrollY > 180;
         profileRail?.classList.toggle("is-visible", hasScrolled);

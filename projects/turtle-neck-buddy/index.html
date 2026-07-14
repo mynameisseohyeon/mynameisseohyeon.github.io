@@ -47,8 +47,14 @@
           장시간 브라우저를 사용하는 사용자가 작업 흐름을 크게 방해받지 않고<br>
           스트레칭 습관을 만들 수 있도록 설계한 Chrome Extension입니다.
         </p>
-        <div class="detail-main-visual">
-          <img src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 프로젝트 대표 이미지">
+        <div class="detail-main-visual detail-carousel" data-carousel>
+          <button class="detail-carousel-button prev" type="button" data-carousel-prev aria-label="이전 이미지 보기">&lt;</button>
+          <div class="detail-carousel-track">
+            <img class="detail-carousel-slide is-active" src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 프로젝트 대표 이미지 1">
+            <img class="detail-carousel-slide" src="/assets/images/projects/turtle-run-02.png" alt="Turtle Neck Buddy 프로젝트 대표 이미지 2">
+            <img class="detail-carousel-slide" src="/assets/images/projects/turtle-run-03.png" alt="Turtle Neck Buddy 프로젝트 대표 이미지 3">
+          </div>
+          <button class="detail-carousel-button next" type="button" data-carousel-next aria-label="다음 이미지 보기">&gt;</button>
         </div>
         <dl class="detail-meta">
           <div><dt>기간</dt><dd>2026.07</dd></div>
@@ -83,11 +89,6 @@
               Popup UI는 React로 구성하고, 알림 예약은 chrome.alarms로 처리했습니다.
               사용자 설정과 일일 스트레칭 기록은 Local Storage에 저장해 서버 없이 동작하도록 만들었습니다.
             </p>
-            <div class="detail-media-grid">
-              <div class="detail-media-card"><strong>Architecture Placeholder</strong><div class="detail-media-placeholder">Popup UI ↔ Service Worker<br>chrome.alarms · notifications · storage.local</div></div>
-              <div class="detail-media-card"><strong>Execution Screen 01</strong><img src="/assets/images/projects/turtle-run-01.png" alt="Turtle Neck Buddy 실행 화면 1"></div>
-              <div class="detail-media-card"><strong>Execution Screen 02</strong><img src="/assets/images/projects/turtle-run-02.png" alt="Turtle Neck Buddy 실행 화면 2"></div>
-            </div>
           </article>
 
           <article id="challenges" class="detail-card glass">
@@ -145,11 +146,6 @@
                 </tbody>
               </table>
             </div>
-            <div class="detail-media-grid">
-              <div class="detail-media-card"><strong>Execution Screen 03</strong><img src="/assets/images/projects/turtle-run-03.png" alt="Turtle Neck Buddy 실행 화면 3"></div>
-              <div class="detail-media-card"><strong>Performance Test</strong><div class="detail-media-placeholder">Lighthouse / Extension QA<br>결과 이미지 추가 영역</div></div>
-              <div class="detail-media-card"><strong>Interaction Flow</strong><div class="detail-media-placeholder">알림 → 팝업 → 완료 처리<br>플로우 이미지 추가 영역</div></div>
-            </div>
           </article>
 
           <article id="retrospective" class="detail-card glass">
@@ -168,6 +164,21 @@
       const profileRail = document.querySelector(".profile-rail");
       const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
       const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
+        const prev = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        let index = 0;
+        const show = (nextIndex) => {
+          index = (nextIndex + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => slide.classList.toggle("is-active", slideIndex === index));
+        };
+        prev?.addEventListener("click", () => show(index - 1));
+        next?.addEventListener("click", () => show(index + 1));
+        if (slides.length > 1) {
+          window.setInterval(() => show(index + 1), 20000);
+        }
+      });
       const activateSection = () => {
         const hasScrolled = window.scrollY > 180;
         profileRail?.classList.toggle("is-visible", hasScrolled);
