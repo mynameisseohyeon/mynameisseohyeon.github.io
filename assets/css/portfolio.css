@@ -738,6 +738,29 @@ dd {
   font-weight: 760;
 }
 
+.mockup-result {
+  margin-top: 12px;
+  padding: 13px 14px;
+  border: 1px solid rgba(0, 113, 227, 0.14);
+  border-radius: 14px;
+  background: rgba(0, 113, 227, 0.055);
+}
+
+.mockup-result strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.mockup-result span {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
 .mockup-gallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1113,8 +1136,8 @@ dd {
   display: grid;
   gap: 18px;
   min-height: 0;
-  padding: 34px;
-  border-radius: var(--radius);
+  padding-top: clamp(54px, 9vh, 90px);
+  padding-bottom: clamp(64px, 10vh, 112px);
 }
 
 .resume-hero h1 {
@@ -1141,6 +1164,10 @@ dd {
 
 .resume-actions {
   margin-top: 0;
+}
+
+.resume-hero .hero-profile {
+  max-width: 820px;
 }
 
 .resume-dense-section {
@@ -1344,6 +1371,53 @@ dd {
   font-weight: 760;
 }
 
+.resume-page .resume-list {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.resume-page .resume-list::before {
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 23.5%;
+  width: 1px;
+  background: rgba(29, 29, 31, 0.1);
+  content: "";
+}
+
+.resume-page .resume-row {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.24fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding: 24px;
+}
+
+.resume-page .resume-row > div {
+  order: 2;
+}
+
+.resume-page .resume-row > time {
+  position: relative;
+  order: 1;
+  padding-right: 28px;
+}
+
+.resume-page .resume-row > time::after {
+  position: absolute;
+  top: 5px;
+  right: -31px;
+  width: 9px;
+  height: 9px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px rgba(0, 113, 227, 0.16);
+  content: "";
+}
+
 .detail-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -1378,9 +1452,70 @@ dd {
   gap: 42px;
 }
 
+.detail-section {
+  display: grid;
+  gap: 14px;
+}
+
+.detail-section.is-spacious {
+  margin-bottom: 18px;
+}
+
+.detail-section-heading {
+  padding-left: 4px;
+}
+
+.detail-section-heading .eyebrow {
+  margin-bottom: 6px;
+}
+
+.detail-section-heading h2 {
+  margin-bottom: 0;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
 .detail-card {
   padding: 30px;
   border-radius: var(--radius);
+}
+
+.detail-card.glass {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.detail-card > .eyebrow,
+.detail-card > h2 {
+  padding-left: 4px;
+}
+
+.detail-card > h2 {
+  margin-bottom: 14px;
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+.detail-card > p:not(.eyebrow):not(.overview-helper),
+.detail-card > .fact-grid,
+.detail-card > .deep-challenge,
+.detail-card > .paar-grid,
+.detail-card > .detail-table-wrap,
+.detail-card > .detail-media-grid {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.08);
+}
+
+.detail-card > .detail-media-grid {
+  margin-top: 16px;
+}
+
+#overview,
+#challenges {
+  margin-bottom: 18px;
 }
 
 .overview-helper {
