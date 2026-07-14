@@ -286,6 +286,15 @@ h3 {
   line-height: 1.2;
 }
 
+.project-title-link {
+  color: inherit;
+  transition: color 160ms ease;
+}
+
+.project-title-link:hover {
+  color: var(--accent);
+}
+
 h4 {
   margin-bottom: 10px;
   font-size: 15px;

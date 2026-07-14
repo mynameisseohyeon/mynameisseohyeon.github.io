@@ -29,6 +29,7 @@
         <a href="#projects">Projects</a>
         <a href="#awards">Awards</a>
         <a href="#education">Education</a>
+        <a href="/resume">Resume</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -113,6 +114,21 @@
                   <path d="M8 15h5"></path>
                 </svg>
                 Blog
+              </span>
+              <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="M7 17 17 7"></path>
+                <path d="M9 7h8v8"></path>
+              </svg>
+            </a>
+            <a class="button" href="/resume">
+              <span class="button-label">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M6 3h9l3 3v15H6z"></path>
+                  <path d="M14 3v4h4"></path>
+                  <path d="M9 12h6"></path>
+                  <path d="M9 16h6"></path>
+                </svg>
+                Resume
               </span>
               <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24">
                 <path d="M7 17 17 7"></path>
@@ -213,7 +229,7 @@
           <article class="entry-card project-card glass">
             <aside class="entry-meta project-summary">
               <p class="project-label">Project 01</p>
-              <h3>감자무봤나</h3>
+              <h3><a class="project-title-link" href="/projects/gamja">감자무봤나</a></h3>
               <dl>
                 <div>
                   <dt>개발 기간</dt>
@@ -222,6 +238,13 @@
                 <div>
                   <dt>관련 링크</dt>
                   <dd class="link-list">
+                    <a href="/projects/gamja" aria-label="감자무봤나 상세 보기">
+                      <span class="link-label">View Details</span>
+                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M7 17 17 7"></path>
+                        <path d="M9 7h8v8"></path>
+                      </svg>
+                    </a>
                     <a href="https://github.com/Code-Badgers/potato-mubwanna" target="_blank" rel="noreferrer" aria-label="감자무봤나 GitHub 열기">
                       <span class="link-label">
                         <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -287,7 +310,7 @@
           <article class="entry-card project-card glass muted">
             <aside class="entry-meta project-summary">
               <p class="project-label">Project 02</p>
-              <h3>Turtle Neck Buddy</h3>
+              <h3><a class="project-title-link" href="/projects/turtle-neck-buddy">Turtle Neck Buddy</a></h3>
               <dl>
                 <div>
                   <dt>개발 기간</dt>
@@ -296,6 +319,13 @@
                 <div>
                   <dt>관련 링크</dt>
                   <dd class="link-list">
+                    <a href="/projects/turtle-neck-buddy" aria-label="Turtle Neck Buddy 상세 보기">
+                      <span class="link-label">View Details</span>
+                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M7 17 17 7"></path>
+                        <path d="M9 7h8v8"></path>
+                      </svg>
+                    </a>
                     <a href="https://github.com/mynameisseohyeon/Turtle_Neck_Buddy" target="_blank" rel="noreferrer" aria-label="Turtle Neck Buddy GitHub 열기">
                       <span class="link-label">
                         <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -358,7 +388,7 @@
           <article class="entry-card project-card glass">
             <aside class="entry-meta project-summary">
               <p class="project-label">Project 03</p>
-              <h3>SPOTL</h3>
+              <h3><a class="project-title-link" href="/projects/spotl">SPOTL</a></h3>
               <dl>
                 <div>
                   <dt>개발 기간</dt>
@@ -367,6 +397,13 @@
                 <div>
                   <dt>관련 링크</dt>
                   <dd class="link-list">
+                    <a href="/projects/spotl" aria-label="SPOTL 상세 보기">
+                      <span class="link-label">View Details</span>
+                      <svg class="external-icon" aria-hidden="true" viewBox="0 0 24 24">
+                        <path d="M7 17 17 7"></path>
+                        <path d="M9 7h8v8"></path>
+                      </svg>
+                    </a>
                     <a href="https://github.com/mynameisseohyeon/SPOTL" target="_blank" rel="noreferrer" aria-label="SPOTL GitHub 열기">
                       <span class="link-label">
                         <svg aria-hidden="true" viewBox="0 0 24 24">
@@ -652,7 +689,8 @@
       const lightbox = document.querySelector("[data-image-lightbox]");
       const lightboxImage = lightbox?.querySelector("img");
       const lightboxClose = document.querySelector("[data-lightbox-close]");
-      const sections = navLinks
+      const navSectionLinks = navLinks.filter((link) => link.getAttribute("href")?.startsWith("#"));
+      const sections = navSectionLinks
         .map((link) => document.querySelector(link.getAttribute("href")))
         .filter(Boolean);
 
@@ -662,7 +700,7 @@
         document.body.classList.toggle("is-scrolled", hasScrolled);
         const marker = window.scrollY + 150;
         const current = [...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0];
-        navLinks.forEach((link) => {
+        navSectionLinks.forEach((link) => {
           link.classList.toggle("is-active", link.getAttribute("href") === `#${current.id}`);
         });
       };
