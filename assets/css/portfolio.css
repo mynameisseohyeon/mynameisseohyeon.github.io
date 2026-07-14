@@ -1004,6 +1004,52 @@ dd {
   line-height: 1.72;
 }
 
+.compact-timeline {
+  gap: 12px;
+}
+
+.compact-timeline .timeline-entry {
+  min-height: 0;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.compact-timeline .timeline-body h4 {
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.timeline-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.timeline-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 760;
+}
+
+.timeline-links svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
 .contact-section {
   display: grid;
   min-height: 100svh;
