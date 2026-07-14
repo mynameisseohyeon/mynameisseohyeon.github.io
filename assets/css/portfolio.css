@@ -958,6 +958,7 @@ dd {
 
 .timeline-entry {
   position: relative;
+  align-items: center;
   gap: 38px;
   padding-top: 26px;
   padding-bottom: 26px;
@@ -985,19 +986,22 @@ dd {
 }
 
 .timeline-body {
+  display: grid;
+  align-content: center;
   padding-left: 8px;
 }
 
 .timeline-body h4 {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--text);
-  font-size: 17px;
+  font-size: 24px;
 }
 
 .timeline-body p {
   margin-bottom: 0;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 18px;
+  line-height: 1.72;
 }
 
 .contact-section {
@@ -1154,12 +1158,17 @@ dd {
 }
 
 .resume-summary {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0;
+  color: #515154;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.68;
+}
+
+.resume-summary strong {
   color: var(--text);
-  font-size: 17px;
-  font-weight: 620;
-  line-height: 1.75;
+  font-weight: 800;
 }
 
 .resume-actions {
@@ -1213,6 +1222,13 @@ dd {
   gap: 18px;
   padding: 26px;
   border-radius: var(--radius);
+}
+
+.resume-project-card > p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.72;
 }
 
 .resume-project-head {
@@ -1467,6 +1483,7 @@ dd {
 .detail-card > p:not(.eyebrow):not(.overview-helper),
 .detail-card > .fact-grid,
 .detail-card > .deep-challenge,
+.detail-card > .troubleshooting-grid,
 .detail-card > .paar-grid,
 .detail-card > .detail-table-wrap,
 .detail-card > .detail-media-grid {
@@ -1483,7 +1500,7 @@ dd {
 
 #overview,
 #challenges {
-  margin-bottom: 54px;
+  margin-bottom: 108px;
 }
 
 .overview-helper {
@@ -1562,40 +1579,51 @@ dd {
   gap: 12px;
 }
 
-.deep-challenge section {
+.deep-challenge section,
+.troubleshooting-grid section {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.58);
 }
 
-.deep-challenge h3 {
+.deep-challenge h3,
+.troubleshooting-grid h3 {
   margin-bottom: 10px;
 }
 
-.deep-challenge dl {
+.deep-challenge dl,
+.troubleshooting-grid dl {
   display: grid;
   gap: 8px;
 }
 
-.deep-challenge div {
+.deep-challenge div,
+.troubleshooting-grid div {
   display: grid;
   grid-template-columns: 108px minmax(0, 1fr);
   gap: 12px;
 }
 
-.deep-challenge dt {
+.deep-challenge dt,
+.troubleshooting-grid dt {
   color: var(--accent);
   font-size: 12px;
   font-weight: 720;
 }
 
-.deep-challenge dd {
+.deep-challenge dd,
+.troubleshooting-grid dd {
   margin: 0;
   color: var(--muted);
   font-size: 15px;
   font-weight: 520;
   line-height: 1.68;
+}
+
+.troubleshooting-grid {
+  display: grid;
+  gap: 12px;
 }
 
 .detail-media-grid {

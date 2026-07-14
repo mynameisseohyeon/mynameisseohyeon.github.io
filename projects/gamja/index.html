@@ -19,6 +19,7 @@
         <a href="#overview">Overview</a>
         <a href="#architecture">Architecture</a>
         <a href="#challenges">Technical Challenges</a>
+        <a href="#troubleshooting">Troubleshooting</a>
         <a href="#paar">PAAR</a>
         <a href="#testing">Testing</a>
         <a href="#retrospective">Retrospective</a>
@@ -101,6 +102,11 @@
               앱은 Flutter 클라이언트에서 Spring Boot API로 요청하고, 관광지·미션·보상 이력은 PostgreSQL에 저장합니다.
               관광 데이터는 TourAPI와 Kakao Local을 통해 수집하며, Redis는 반복 조회가 많은 데이터의 캐싱 지점으로 고려했습니다.
             </p>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Backend Architecture</strong><div class="detail-media-placeholder">감자무봤나 백엔드 아키텍처<br>이미지 추가 영역</div></div>
+              <div class="detail-media-card"><strong>ERD</strong><div class="detail-media-placeholder">감자무봤나 ERD<br>이미지 추가 영역</div></div>
+              <div class="detail-media-card"><strong>Swagger</strong><div class="detail-media-placeholder">감자무봤나 Swagger API 문서<br>이미지 추가 영역</div></div>
+            </div>
           </article>
 
           <article id="challenges" class="detail-card glass">
@@ -129,6 +135,40 @@
                   <div><dt>Why</dt><dd>외부 API 응답에는 좌표 누락, 카테고리 차이, 지역 표기 불일치가 섞일 수 있습니다.</dd></div>
                   <div><dt>Decision</dt><dd>서비스에서 필요한 좌표, 지역, 카테고리 값을 중심으로 저장 전 정규화 단계를 두었습니다.</dd></div>
                   <div><dt>Result</dt><dd>지도 표시와 지역별 탐색에서 사용할 수 있는 형태로 관광지 데이터를 관리했습니다.</dd></div>
+                </dl>
+              </section>
+            </div>
+          </article>
+
+          <article id="troubleshooting" class="detail-card glass">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>문제, 분석, 적용, 결과</h2>
+            <div class="troubleshooting-grid">
+              <section>
+                <h3>01. 미션 완료 요청 중복</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>사용자가 완료 버튼을 반복 클릭하거나 네트워크 재시도로 같은 미션 완료 요청이 중복될 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>프론트엔드 버튼 제어만으로는 재요청을 보장할 수 없어 서버와 DB 기준의 중복 방지가 필요했습니다.</dd></div>
+                  <div><dt>적용</dt><dd>사용자·미션 조합을 기준으로 완료 이력을 확인하고, 보상 이력 생성을 완료 처리와 분리했습니다.</dd></div>
+                  <div><dt>결과</dt><dd>반복 요청에서도 완료 이력과 보상 이력이 각각 1건만 남도록 데이터 흐름을 정리했습니다.</dd></div>
+                </dl>
+              </section>
+              <section>
+                <h3>02. 미션 유형 확장</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>퀴즈, 걸음 수, 사진, QR처럼 검증 조건이 다른 미션이 늘어나면 서비스 로직이 비대해질 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>유형별 입력값과 성공 조건은 다르지만 완료 이력 저장 흐름은 공통으로 유지할 수 있었습니다.</dd></div>
+                  <div><dt>적용</dt><dd>검증 기준을 미션 정책으로 분리하고 완료 요청 흐름은 공통 처리하도록 설계했습니다.</dd></div>
+                  <div><dt>결과</dt><dd>신규 미션 유형을 추가해도 기존 완료 이력 정책의 수정 범위를 줄였습니다.</dd></div>
+                </dl>
+              </section>
+              <section>
+                <h3>03. 외부 관광 데이터 정합성</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>외부 API 응답에는 좌표 누락, 지역 표기 차이, 카테고리 불일치가 섞일 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>지도와 지역 탐색에 필요한 필드는 저장 전에 일관된 형식으로 정리되어야 했습니다.</dd></div>
+                  <div><dt>적용</dt><dd>좌표, 지역, 카테고리를 중심으로 저장 전 검증과 정규화 단계를 두었습니다.</dd></div>
+                  <div><dt>결과</dt><dd>지도 표시와 지역별 탐색에서 사용할 수 있는 형태로 관광지 데이터를 관리했습니다.</dd></div>
                 </dl>
               </section>
             </div>

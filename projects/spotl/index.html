@@ -19,6 +19,7 @@
         <a href="#overview">Overview</a>
         <a href="#architecture">Architecture</a>
         <a href="#challenges">Technical Challenges</a>
+        <a href="#troubleshooting">Troubleshooting</a>
         <a href="#paar">PAAR</a>
         <a href="#testing">Testing</a>
         <a href="#retrospective">Retrospective</a>
@@ -133,6 +134,40 @@
                   <div><dt>Why</dt><dd>기능별 응답 형식이 달라지면 프론트엔드 예외 처리 비용이 커집니다.</dd></div>
                   <div><dt>Decision</dt><dd>data, message, code 형식의 공통 응답을 적용하고 Swagger에서 요청·응답을 반복 확인했습니다.</dd></div>
                   <div><dt>Result</dt><dd>성공과 실패 응답의 모양이 통일되어 기능 연결과 디버깅이 쉬워졌습니다.</dd></div>
+                </dl>
+              </section>
+            </div>
+          </article>
+
+          <article id="troubleshooting" class="detail-card glass">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>문제, 분석, 적용, 결과</h2>
+            <div class="troubleshooting-grid">
+              <section>
+                <h3>01. 중복 예약 검증</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>동일 사용자가 같은 공연을 반복 예약하면 예약자 수와 현장 입장 데이터가 흔들릴 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>예약 생성 시 공연, 사용자, 기존 예약 상태를 한 흐름에서 확인해야 했습니다.</dd></div>
+                  <div><dt>적용</dt><dd>예약 생성 전에 공연 존재 여부, 사용자 존재 여부, 취소되지 않은 예약을 순서대로 검증했습니다.</dd></div>
+                  <div><dt>결과</dt><dd>중복 예약 예외를 명확히 반환하고 프론트엔드가 같은 형식으로 실패 응답을 처리할 수 있게 했습니다.</dd></div>
+                </dl>
+              </section>
+              <section>
+                <h3>02. 공연 공개 승인 흐름</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>등록된 공연이 즉시 공개되면 검수되지 않은 정보가 사용자에게 노출될 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>공연 등록과 사용자 목록 조회 사이에 관리자 승인 상태가 필요했습니다.</dd></div>
+                  <div><dt>적용</dt><dd>승인 상태를 공연 조회 조건에 포함하고, 관리자 승인 후에만 사용자에게 노출되도록 분리했습니다.</dd></div>
+                  <div><dt>결과</dt><dd>운영자가 공연 정보를 확인한 뒤 공개하는 흐름을 만들었습니다.</dd></div>
+                </dl>
+              </section>
+              <section>
+                <h3>03. API 응답 형식 통일</h3>
+                <dl>
+                  <div><dt>문제</dt><dd>기능마다 응답 구조가 달라지면 프론트엔드 예외 처리와 디버깅 비용이 커질 수 있었습니다.</dd></div>
+                  <div><dt>분석</dt><dd>성공, 실패, 검증 오류를 같은 응답 틀에서 해석할 수 있어야 했습니다.</dd></div>
+                  <div><dt>적용</dt><dd>data, message, code 형식의 공통 응답을 적용하고 Swagger로 요청·응답을 반복 확인했습니다.</dd></div>
+                  <div><dt>결과</dt><dd>기능 연결 과정에서 응답 해석이 쉬워지고 오류 처리 기준이 명확해졌습니다.</dd></div>
                 </dl>
               </section>
             </div>
