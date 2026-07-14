@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SPOTL 프로젝트 기술 상세 페이지입니다.">
+    <meta name="robots" content="max-image-preview:none">
+    <title>SPOTL | Project Details</title>
+    <link rel="stylesheet" href="/assets/css/portfolio.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="이서현 포트폴리오 홈">
+        <span class="brand-mark">SH</span>
+        <span>이서현</span>
+      </a>
+      <nav class="nav" aria-label="주요 섹션">
+        <a href="/#skills">Skills</a>
+        <a class="is-active" href="/#projects">Projects</a>
+        <a href="/#awards">Awards</a>
+        <a href="/#education">Education</a>
+        <a href="/resume">Resume</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="detail-hero section">
+        <p class="eyebrow">Project Case Study</p>
+        <h1>
+          <span>SPOTL</span>
+          <span class="headline-strong">소규모 공연 예약·입장 관리 플랫폼</span>
+        </h1>
+        <p class="hero-description">
+          공연 등록, 관객 예약, QR 기반 입장 확인을 하나의 운영 흐름으로 연결한 서비스입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="https://github.com/mynameisseohyeon/SPOTL" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="/#projects">Back to Projects</a>
+        </div>
+      </section>
+
+      <section class="section detail-layout">
+        <aside class="detail-toc glass">
+          <a href="#overview">Overview</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#challenges">Technical Challenges</a>
+          <a href="#paar">PAAR</a>
+          <a href="#testing">Testing</a>
+          <a href="#retrospective">Retrospective</a>
+        </aside>
+
+        <div class="detail-content">
+          <article id="overview" class="detail-card glass">
+            <p class="eyebrow">Overview</p>
+            <h2>운영자가 관리 가능한 공연 예약 서비스</h2>
+            <div class="fact-grid">
+              <p><strong>기간</strong><span>2024.09 - 2024.12</span></p>
+              <p><strong>역할</strong><span>Backend Developer / Product Owner</span></p>
+              <p><strong>핵심 스택</strong><span>Java 17, Spring Boot 3.3, JPA, MySQL, AWS S3</span></p>
+              <p><strong>문서화</strong><span>Swagger 기반 API 테스트 및 문서 조회</span></p>
+            </div>
+            <p>
+              공연 정보와 예약 현황이 분산되어 관리되는 문제를 해결하기 위해 공연 등록, 예약, 관리자 승인,
+              QR 입장 확인을 연결했습니다. 백엔드에서는 예약 중복 방지, 공연 공개 상태, 사용자 인증, 입장 검증 흐름을 담당했습니다.
+            </p>
+          </article>
+
+          <article id="architecture" class="detail-card glass">
+            <p class="eyebrow">Architecture</p>
+            <h2>역할별 API와 외부 서비스 연동</h2>
+            <p>
+              일반 사용자, 공연 주최자, 관리자 역할을 나누고 각 역할의 API 접근 범위를 분리했습니다.
+              공연 포스터는 S3에 저장하고, SMS 본인 인증과 지도 API를 외부 서비스로 연동했습니다.
+            </p>
+            <div class="mockup-gallery">
+              <img src="/assets/images/projects/spotl-artifact-02.png" alt="SPOTL 백엔드 아키텍처">
+              <img src="/assets/images/projects/spotl-artifact-01.png" alt="SPOTL ERD">
+              <img src="/assets/images/projects/spotl-artifact-03.png" alt="SPOTL Swagger API 문서">
+            </div>
+          </article>
+
+          <article id="challenges" class="detail-card glass">
+            <p class="eyebrow">Technical Challenges</p>
+            <h2>핵심 기술 문제</h2>
+            <div class="challenge-grid">
+              <section>
+                <h3>예약 중복 방지</h3>
+                <p>동일 사용자가 취소되지 않은 예약을 중복 생성하지 않도록 예약 생성 전 조건 조회를 수행했습니다.</p>
+              </section>
+              <section>
+                <h3>공연 공개 정책</h3>
+                <p>관리자 승인 상태에 따라 사용자에게 노출되는 공연을 제한해 운영 품질을 관리했습니다.</p>
+              </section>
+              <section>
+                <h3>QR 입장 검증</h3>
+                <p>예약자 정보와 QR 인식 결과를 연결해 현장 입장 여부를 빠르게 확인하는 흐름을 구성했습니다.</p>
+              </section>
+            </div>
+          </article>
+
+          <article id="paar" class="detail-card glass">
+            <p class="eyebrow">PAAR</p>
+            <h2>예약 생성 로직의 안정성</h2>
+            <div class="paar-grid">
+              <p><strong>Problem</strong><span>공연 예약은 중복 생성되면 좌석·입장 관리가 흔들리고 운영자가 수동으로 정리해야 합니다.</span></p>
+              <p><strong>Decision</strong><span>예약 생성 전에 공연 존재 여부, 사용자 존재 여부, 취소되지 않은 기존 예약을 순서대로 검증했습니다.</span></p>
+              <p><strong>Implementation</strong><span>조회 로직을 분리해 조건별 예약 목록과 단건 조회를 명확히 나누고, API 응답 형식을 통일했습니다.</span></p>
+              <p><strong>Result</strong><span>예약 생성 흐름의 예외 조건이 명확해지고, 프론트엔드와 API 계약을 안정적으로 맞출 수 있었습니다.</span></p>
+            </div>
+          </article>
+
+          <article id="testing" class="detail-card glass">
+            <p class="eyebrow">Testing</p>
+            <h2>검증 방식</h2>
+            <ul class="detail-list">
+              <li>Swagger에서 공연 생성, 예약 생성, SMS 인증 API의 요청·응답을 반복 확인</li>
+              <li>취소되지 않은 예약이 있는 사용자의 중복 예약 요청을 예외 케이스로 검증</li>
+              <li>공연 승인 상태에 따라 목록 노출 여부가 달라지는지 시나리오 기반 확인</li>
+            </ul>
+          </article>
+
+          <article id="retrospective" class="detail-card glass">
+            <p class="eyebrow">Retrospective</p>
+            <h2>회고와 개선 방향</h2>
+            <p>
+              예약과 입장 관리처럼 운영 리스크가 큰 도메인은 예외 조건을 먼저 명확히 해야 한다는 점을 배웠습니다.
+              이후에는 동시 예약 상황의 트랜잭션 격리와 부하 테스트를 추가해 더 높은 안정성을 검증하고 싶습니다.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
