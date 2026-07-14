@@ -1101,6 +1101,82 @@ dd {
   backdrop-filter: blur(18px) saturate(160%);
 }
 
+.page-shell {
+  padding-bottom: 80px;
+}
+
+.detail-hero {
+  min-height: auto;
+  padding-top: clamp(88px, 12vh, 136px);
+  padding-bottom: clamp(56px, 8vh, 88px);
+}
+
+.detail-hero h1 {
+  min-height: 0;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 18px;
+}
+
+.resume-card,
+.resume-row {
+  border-radius: var(--radius);
+}
+
+.resume-card {
+  padding: 28px;
+}
+
+.resume-card p,
+.resume-row p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.resume-skill-list {
+  display: grid;
+  gap: 14px;
+}
+
+.resume-skill-list p {
+  display: grid;
+  gap: 4px;
+}
+
+.resume-skill-list strong {
+  color: var(--text);
+}
+
+.resume-section {
+  padding-top: 34px;
+  padding-bottom: 34px;
+}
+
+.resume-list {
+  display: grid;
+  gap: 12px;
+}
+
+.resume-row {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px;
+}
+
+.resume-row a,
+.resume-row time {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 760;
+}
+
 @media (max-width: 1180px) {
   :root {
     --page-gutter: 20px;
@@ -1298,6 +1374,20 @@ dd {
   .project-detail,
   .compact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .resume-grid,
+  .resume-row {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-grid {
+    display: grid;
+  }
+
+  .resume-row {
+    display: grid;
+    align-items: start;
   }
 
   .mockup-frame {
