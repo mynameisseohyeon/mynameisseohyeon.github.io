@@ -172,8 +172,9 @@
         const hasScrolled = window.scrollY > 180;
         profileRail?.classList.toggle("is-visible", hasScrolled);
         document.body.classList.toggle("is-scrolled", hasScrolled);
-        const marker = window.scrollY + 150;
-        const current = [...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0];
+        const marker = window.scrollY + window.innerHeight * 0.4;
+        const isBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8;
+        const current = isBottom ? sections[sections.length - 1] : ([...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0]);
         navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${current?.id}`));
       };
       activateSection();

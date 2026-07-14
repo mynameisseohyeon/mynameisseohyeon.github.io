@@ -485,7 +485,7 @@ h4 {
 
 .project-list {
   display: grid;
-  gap: 18px;
+  gap: 27px;
 }
 
 .entry-card {
@@ -1244,6 +1244,12 @@ dd {
   min-height: 0;
 }
 
+.detail-hero .headline-strong {
+  color: #3f4248;
+  font-size: clamp(30px, 4.4vw, 58px);
+  font-weight: 760;
+}
+
 .detail-meta {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1369,7 +1375,7 @@ dd {
 
 .detail-content {
   display: grid;
-  gap: 30px;
+  gap: 42px;
 }
 
 .detail-card {
@@ -1396,7 +1402,6 @@ dd {
   margin: 18px 0;
 }
 
-.fact-grid p,
 .paar-grid p,
 .challenge-grid section {
   display: grid;
@@ -1407,9 +1412,34 @@ dd {
   background: rgba(255, 255, 255, 0.58);
 }
 
-.fact-grid strong,
 .paar-grid strong {
   color: var(--text);
+}
+
+.fact-grid p {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.fact-grid strong {
+  display: block;
+  margin-left: 4px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fact-grid span {
+  display: block;
+  min-height: 100%;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+  color: var(--muted);
 }
 
 .detail-list {
@@ -1445,6 +1475,20 @@ dd {
   display: grid;
   grid-template-columns: 108px minmax(0, 1fr);
   gap: 12px;
+}
+
+.deep-challenge dt {
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 720;
+}
+
+.deep-challenge dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 520;
+  line-height: 1.68;
 }
 
 .detail-media-grid {

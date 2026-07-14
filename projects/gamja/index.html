@@ -52,7 +52,7 @@
         </div>
         <dl class="detail-meta">
           <div><dt>기간</dt><dd>2026.06 - 진행 중</dd></div>
-          <div><dt>팀 / 역할</dt><dd>4인 팀 · Backend Developer</dd></div>
+          <div><dt>팀 / 역할</dt><dd>2인 팀 · Backend Developer</dd></div>
           <div><dt>핵심 스택</dt><dd>Spring Boot, PostgreSQL, Redis, Flyway</dd></div>
           <div><dt>주요 기여</dt><dd>미션 검증, 보상 이력, 관광 데이터 수집</dd></div>
         </dl>
@@ -154,6 +154,11 @@
                 </tbody>
               </table>
             </div>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Execution Screen 01</strong><img src="/assets/images/projects/potato-run-01.png" alt="감자무봤나 실행 화면 1"></div>
+              <div class="detail-media-card"><strong>Execution Screen 02</strong><img src="/assets/images/projects/potato-run-02.png" alt="감자무봤나 실행 화면 2"></div>
+              <div class="detail-media-card"><strong>Validation Result</strong><div class="detail-media-placeholder">미션 완료 / 보상 이력<br>검증 이미지 추가 영역</div></div>
+            </div>
           </article>
 
           <article id="retrospective" class="detail-card glass">
@@ -176,8 +181,9 @@
         const hasScrolled = window.scrollY > 180;
         profileRail?.classList.toggle("is-visible", hasScrolled);
         document.body.classList.toggle("is-scrolled", hasScrolled);
-        const marker = window.scrollY + 150;
-        const current = [...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0];
+        const marker = window.scrollY + window.innerHeight * 0.4;
+        const isBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8;
+        const current = isBottom ? sections[sections.length - 1] : ([...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0]);
         navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${current?.id}`));
       };
       activateSection();
