@@ -1177,6 +1177,82 @@ dd {
   font-weight: 760;
 }
 
+.detail-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.detail-toc {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border-radius: 20px;
+}
+
+.detail-toc a {
+  padding: 8px 10px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.detail-toc a:hover {
+  background: rgba(0, 113, 227, 0.08);
+  color: var(--accent);
+}
+
+.detail-content {
+  display: grid;
+  gap: 18px;
+}
+
+.detail-card {
+  padding: 30px;
+  border-radius: var(--radius);
+}
+
+.detail-card p {
+  color: var(--muted);
+}
+
+.fact-grid,
+.challenge-grid,
+.paar-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.fact-grid p,
+.paar-grid p,
+.challenge-grid section {
+  display: grid;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.fact-grid strong,
+.paar-grid strong {
+  color: var(--text);
+}
+
+.detail-list {
+  display: grid;
+  gap: 10px;
+  padding-left: 18px;
+  margin: 18px 0 0;
+  color: var(--muted);
+}
+
 @media (max-width: 1180px) {
   :root {
     --page-gutter: 20px;
@@ -1388,6 +1464,17 @@ dd {
   .resume-row {
     display: grid;
     align-items: start;
+  }
+
+  .detail-layout,
+  .fact-grid,
+  .challenge-grid,
+  .paar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-toc {
+    position: static;
   }
 
   .mockup-frame {

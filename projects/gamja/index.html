@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="감자무봤나 프로젝트 기술 상세 페이지입니다.">
+    <meta name="robots" content="max-image-preview:none">
+    <title>감자무봤나 | Project Details</title>
+    <link rel="stylesheet" href="/assets/css/portfolio.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="이서현 포트폴리오 홈">
+        <span class="brand-mark">SH</span>
+        <span>이서현</span>
+      </a>
+      <nav class="nav" aria-label="주요 섹션">
+        <a href="/#skills">Skills</a>
+        <a class="is-active" href="/#projects">Projects</a>
+        <a href="/#awards">Awards</a>
+        <a href="/#education">Education</a>
+        <a href="/resume">Resume</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="detail-hero section">
+        <p class="eyebrow">Project Case Study</p>
+        <h1>
+          <span>감자무봤나</span>
+          <span class="headline-strong">위치 기반 관광 미션 서비스</span>
+        </h1>
+        <p class="hero-description">
+          강원도 18개 시·군 관광지를 지도, 미션, 스탬프와 보상으로 연결해<br>
+          조회에서 실제 방문까지 이어지도록 설계한 관광 서비스입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="button" href="https://github.com/Code-Badgers/potato-mubwanna" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button" href="/#projects">Back to Projects</a>
+        </div>
+      </section>
+
+      <section class="section detail-layout">
+        <aside class="detail-toc glass">
+          <a href="#overview">Overview</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#challenges">Technical Challenges</a>
+          <a href="#paar">PAAR</a>
+          <a href="#testing">Testing</a>
+          <a href="#retrospective">Retrospective</a>
+        </aside>
+
+        <div class="detail-content">
+          <article id="overview" class="detail-card glass">
+            <p class="eyebrow">Overview</p>
+            <h2>프로젝트 개요</h2>
+            <div class="fact-grid">
+              <p><strong>기간</strong><span>2026.06 - 진행 중</span></p>
+              <p><strong>역할</strong><span>Backend Developer / Full-stack Contributor</span></p>
+              <p><strong>핵심 스택</strong><span>Spring Boot, JPA, PostgreSQL, Flyway, JWT, Redis</span></p>
+              <p><strong>외부 연동</strong><span>TourAPI, Kakao Local, Kakao Login</span></p>
+            </div>
+            <p>
+              관광지 정보를 단순히 보여주는 데서 끝나지 않고, 사용자의 위치 기반 방문과 미션 수행, 스탬프 수집,
+              보상 이력까지 이어지는 흐름을 만들었습니다. 백엔드에서는 관광 데이터 수집, 인증 흐름, 미션 검증,
+              사용자별 완료 이력의 중복 방지를 중심으로 설계했습니다.
+            </p>
+          </article>
+
+          <article id="architecture" class="detail-card glass">
+            <p class="eyebrow">Architecture</p>
+            <h2>도메인 중심 구조와 데이터 변경 이력 관리</h2>
+            <p>
+              관광지, 미션, 사용자 미션 상태, 보상 이력을 분리해 도메인별 책임을 명확히 했습니다.
+              PostgreSQL에는 미션 완료와 보상 지급의 중복 생성을 막는 제약 조건을 두고, Flyway로 스키마 변경 이력을 관리했습니다.
+            </p>
+            <ul class="detail-list">
+              <li>TourAPI와 Kakao Local에서 관광 데이터를 수집하고 좌표, 지역, 카테고리 정보를 정규화</li>
+              <li>JWT 기반 사용자 인증과 Kakao Login 연동으로 앱 접근 흐름 구성</li>
+              <li>Redis를 활용해 반복 조회가 많은 데이터의 캐싱 여지를 확보</li>
+            </ul>
+          </article>
+
+          <article id="challenges" class="detail-card glass">
+            <p class="eyebrow">Technical Challenges</p>
+            <h2>핵심 기술 문제</h2>
+            <div class="challenge-grid">
+              <section>
+                <h3>미션 유형 확장</h3>
+                <p>퀴즈, 걸음 수, 사진, QR 등 미션 검증 기준이 달라지는 상황을 고려해 검증 정책을 분리했습니다.</p>
+              </section>
+              <section>
+                <h3>중복 완료 방지</h3>
+                <p>사용자가 같은 미션을 반복 완료하거나 보상을 중복 수령하지 않도록 사용자·미션 단위 이력을 분리했습니다.</p>
+              </section>
+              <section>
+                <h3>외부 데이터 정합성</h3>
+                <p>외부 API 응답의 누락, 좌표 차이, 카테고리 불일치를 서비스 도메인에 맞게 정제했습니다.</p>
+              </section>
+            </div>
+          </article>
+
+          <article id="paar" class="detail-card glass">
+            <p class="eyebrow">PAAR</p>
+            <h2>미션 완료와 보상 이력의 정합성</h2>
+            <div class="paar-grid">
+              <p><strong>Problem</strong><span>위치 기반 미션은 네트워크 재시도나 중복 클릭으로 완료 요청이 반복될 수 있습니다.</span></p>
+              <p><strong>Decision</strong><span>완료 상태와 보상 이력을 사용자·미션 기준으로 분리하고, DB 제약 조건을 함께 사용했습니다.</span></p>
+              <p><strong>Implementation</strong><span>서비스 레이어에서 상태를 선검증한 뒤 저장하고, 동일 미션 완료 요청은 기존 이력을 반환하도록 구성했습니다.</span></p>
+              <p><strong>Result</strong><span>중복 보상 지급 가능성을 줄이고, 미션 유형이 추가되어도 완료 이력 정책은 유지되도록 만들었습니다.</span></p>
+            </div>
+          </article>
+
+          <article id="testing" class="detail-card glass">
+            <p class="eyebrow">Testing</p>
+            <h2>검증 방식</h2>
+            <ul class="detail-list">
+              <li>미션 완료 요청 반복 시 중복 이력이 생성되지 않는지 서비스 로직 중심으로 검증</li>
+              <li>외부 관광 데이터 수집 후 필수 좌표와 지역 정보가 누락되지 않는지 샘플 데이터로 확인</li>
+              <li>Flyway 마이그레이션으로 로컬과 배포 DB 스키마가 동일하게 재현되는지 확인</li>
+            </ul>
+          </article>
+
+          <article id="retrospective" class="detail-card glass">
+            <p class="eyebrow">Retrospective</p>
+            <h2>회고와 개선 방향</h2>
+            <p>
+              초기에는 관광지 조회 기능 자체에 집중했지만, 실제 서비스 경험은 방문 인증과 보상 흐름에서 결정된다는 점을 확인했습니다.
+              이후에는 미션 정책을 관리자 화면에서 조정할 수 있도록 만들고, Redis 캐시 전략과 위치 검증 기준을 더 정교화할 계획입니다.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
