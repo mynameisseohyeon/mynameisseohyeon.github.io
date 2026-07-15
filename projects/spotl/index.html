@@ -16,12 +16,12 @@
       </a>
       <nav class="nav" aria-label="주요 섹션">
         <a href="/">Portfolio</a>
-        <a href="#overview">Overview</a>
+        <!-- <a href="#overview">Overview</a> -->
         <a href="#architecture">Architecture</a>
         <a href="#challenges">Technical Challenges</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#testing">Testing</a>
-        <a href="#retrospective">Retrospective</a>
+        <!-- <a href="#retrospective">Retrospective</a> -->
       </nav>
     </header>
 
@@ -81,7 +81,7 @@
 
       <section class="section detail-layout">
         <div class="detail-content">
-          <article id="overview" class="detail-card glass">
+          <!-- <article id="overview" class="detail-card glass">
             <p class="eyebrow">Overview</p>
             <h2>프로젝트 핵심 요약</h2>
             <p class="overview-helper">각 카드는 문제 정의, 직접 기여, 핵심 난점, 결과를 같은 기준으로 요약합니다.</p>
@@ -91,7 +91,7 @@
               <p><strong>Key Challenge</strong><span>예약 생성 시 공연·사용자·취소 상태·승인 상태를 일관되게 검증해야 했습니다.</span></p>
               <p><strong>Outcome</strong><span>예약 검증 로직을 정책별로 분리해 예외 조건을 명확히 하고 API 응답 형식을 통일했습니다.</span></p>
             </div>
-          </article>
+          </article> -->
 
           <article id="architecture" class="detail-card glass">
             <p class="eyebrow">Architecture</p>
@@ -129,17 +129,21 @@
             <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
             <div class="troubleshooting-case">
               <section class="trouble-problem">
-                <span class="trouble-label">⚠ 문제</span>
+                <span class="trouble-label">Problem</span>
                 <p>예약 생성은 공연 존재, 사용자 상태, 중복 예약 여부가 모두 맞아야 성공할 수 있었습니다.</p>
               </section>
-              <div class="trouble-compare">
+              <div class="trouble-compare trouble-steps">
                 <section>
-                  <h3>Before</h3>
-                  <p>검증 조건이 기능 흐름에 흩어지면 중복 예약이나 실패 응답 기준이 흔들릴 수 있었습니다.</p>
+                  <h3>Approach</h3>
+                  <p>예약 검증 조건을 서비스 레이어 정책으로 분리하기로 했습니다.</p>
                 </section>
                 <section>
-                  <h3>After</h3>
-                  <p>조건별 조회와 검증 순서를 서비스 레이어에 모아 예약 생성 전 실패 조건을 먼저 반환했습니다.</p>
+                  <h3>Action</h3>
+                  <p>공연, 사용자, 기존 예약 상태를 순서대로 검증했습니다.</p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>중복 예약과 실패 응답 기준을 일관되게 유지했습니다.</p>
                 </section>
               </div>
               <div class="trouble-media">
@@ -170,7 +174,7 @@
             </div>
           </article>
 
-          <article id="retrospective" class="detail-card glass">
+          <!-- <article id="retrospective" class="detail-card glass">
             <p class="eyebrow">Retrospective</p>
             <h2>회고</h2>
             <p>
@@ -178,7 +182,7 @@
               현재는 기능별 API 검증 중심으로 안정성을 확인했지만, 이후에는 동시 예약 상황의 트랜잭션 격리와 부하 테스트를 추가해
               실제 공연 오픈 시점의 요청 집중 상황까지 검증하고 싶습니다.
             </p>
-          </article>
+          </article> -->
         </div>
       </section>
     </main>

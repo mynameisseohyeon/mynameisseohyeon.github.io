@@ -1761,6 +1761,10 @@ dd {
   overflow: hidden;
 }
 
+.trouble-steps {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .trouble-compare section {
   display: grid;
   gap: 8px;

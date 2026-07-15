@@ -16,12 +16,12 @@
       </a>
       <nav class="nav" aria-label="주요 섹션">
         <a href="/">Portfolio</a>
-        <a href="#overview">Overview</a>
+        <!-- <a href="#overview">Overview</a> -->
         <a href="#architecture">Architecture</a>
         <a href="#challenges">Technical Challenges</a>
         <a href="#troubleshooting">Troubleshooting</a>
         <a href="#testing">Testing</a>
-        <a href="#retrospective">Retrospective</a>
+        <!-- <a href="#retrospective">Retrospective</a> -->
       </nav>
     </header>
 
@@ -82,7 +82,7 @@
 
       <section class="section detail-layout">
         <div class="detail-content">
-          <article id="overview" class="detail-card glass">
+          <!-- <article id="overview" class="detail-card glass">
             <p class="eyebrow">Overview</p>
             <h2>프로젝트 핵심 요약</h2>
             <p class="overview-helper">직접 담당한 일정 조회 도메인을 중심으로 문제, 기여, 난점, 결과를 요약합니다.</p>
@@ -92,7 +92,7 @@
               <p><strong>Key Challenge</strong><span>사용자는 KST 날짜로 조회하지만 DB에는 Instant 기준 시간이 저장되어 날짜 경계가 어긋날 수 있었습니다.</span></p>
               <p><strong>Outcome</strong><span>KST 하루 범위를 UTC Instant로 변환해 조회 기준을 맞추고, 공통 필터링 로직으로 API 중복을 줄였습니다.</span></p>
             </div>
-          </article>
+          </article> -->
 
           <article id="architecture" class="detail-card glass">
             <p class="eyebrow">Architecture</p>
@@ -131,17 +131,21 @@
             <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
             <div class="troubleshooting-case">
               <section class="trouble-problem">
-                <span class="trouble-label">⚠ 문제</span>
+                <span class="trouble-label">Problem</span>
                 <p>KST 날짜와 UTC 조회 범위가 달라 일정이 누락될 수 있었습니다.</p>
               </section>
-              <div class="trouble-compare">
+              <div class="trouble-compare trouble-steps">
                 <section>
-                  <h3>Before</h3>
-                  <p>KST 입력값을 그대로 조회 조건에 사용해 서버 시간대에 따라 날짜 경계가 흔들렸습니다.</p>
+                  <h3>Approach</h3>
+                  <p>시간 기준을 UTC <code>Instant</code>로 통일하기로 결정했습니다.</p>
                 </section>
                 <section>
-                  <h3>After</h3>
-                  <p>KST 하루 범위를 계산한 뒤 UTC <code>Instant</code>로 변환해 정확한 기간을 조회했습니다.</p>
+                  <h3>Action</h3>
+                  <p><code>Asia/Seoul</code> 기준 범위를 계산한 뒤 <code>Instant</code>로 변환했습니다.</p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>날짜 경계의 조회 오류 가능성을 줄였습니다.</p>
                 </section>
               </div>
               <div class="trouble-media">
@@ -152,17 +156,21 @@
             </div>
             <div class="troubleshooting-case">
               <section class="trouble-problem">
-                <span class="trouble-label">⚠ 문제</span>
+                <span class="trouble-label">Problem</span>
                 <p>Schedule 저장 후 ScheduleTime 저장이 실패하면 시간 정보가 없는 예약 데이터가 남을 수 있었습니다.</p>
               </section>
-              <div class="trouble-compare">
+              <div class="trouble-compare trouble-steps">
                 <section>
-                  <h3>Before</h3>
-                  <p>예약 기본 정보와 실제 수업 시간이 각각 저장되어 중간 실패 시 데이터가 불완전해질 수 있었습니다.</p>
+                  <h3>Approach</h3>
+                  <p>예약 기본 정보와 시간 저장을 하나의 트랜잭션 단위로 처리하기로 했습니다.</p>
                 </section>
                 <section>
-                  <h3>After</h3>
-                  <p><code>@Transactional</code>로 두 저장 작업을 하나의 작업 단위로 묶어 함께 커밋하거나 롤백했습니다.</p>
+                  <h3>Action</h3>
+                  <p><code>@Transactional</code>로 Schedule과 ScheduleTime 저장을 함께 묶었습니다.</p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>시간 정보가 없는 불완전한 예약 데이터 생성을 방지했습니다.</p>
                 </section>
               </div>
               <div class="trouble-media">
@@ -193,7 +201,7 @@
             </div>
           </article>
 
-          <article id="retrospective" class="detail-card glass">
+          <!-- <article id="retrospective" class="detail-card glass">
             <p class="eyebrow">Retrospective</p>
             <h2>회고</h2>
             <p>
@@ -201,7 +209,7 @@
               다음 단계에서는 동시 예약 상황의 충돌 방지와 결제 승인 이후 상태 전이를 더 세밀하게 검증하고,
               조회 조건이 늘어나도 정책을 안정적으로 확장할 수 있도록 테스트 케이스를 보강하고 싶습니다.
             </p>
-          </article>
+          </article> -->
         </div>
       </section>
     </main>
