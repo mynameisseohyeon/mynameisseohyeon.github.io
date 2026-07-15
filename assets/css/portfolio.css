@@ -1789,11 +1789,13 @@ dd {
 
 .trouble-media {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   padding: 14px;
 }
 
 .trouble-media strong {
+  grid-column: 1 / -1;
   color: var(--accent);
   font-size: 12px;
   font-weight: 780;
@@ -2104,7 +2106,8 @@ dd {
   .paar-grid,
   .detail-meta,
   .detail-media-grid,
-  .trouble-compare {
+  .trouble-compare,
+  .trouble-media {
     grid-template-columns: 1fr;
   }
 
