@@ -111,42 +111,52 @@
           <article id="challenges" class="detail-card glass">
             <p class="eyebrow">Technical Challenges</p>
             <h2>핵심 기술 과제</h2>
-            <div class="deep-challenge">
-              <section>
-                <h3>Challenge 01. 알림 피로도 낮추기</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>건강 알림은 자주 뜨면 유용함보다 방해감이 커져 사용자가 끄게 됩니다.</dd></div>
-                  <div><dt>Decision</dt><dd>즉시 스트레칭, 나중 알림, 알림 On/Off를 분리해 사용자가 직접 강도를 조절하게 했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>작업 흐름을 끊지 않으면서도 스트레칭 행동으로 이어지는 가벼운 흐름을 만들었습니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 02. 상태 유지</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>확장 프로그램 팝업은 닫히면 UI 상태가 사라지기 때문에 설정과 기록을 별도로 저장해야 합니다.</dd></div>
-                  <div><dt>Decision</dt><dd>알림 설정, 다음 알림 시간, 일일 완료 기록을 Local Storage에 저장했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>브라우저를 다시 열어도 사용자 설정과 당일 진행률이 유지됩니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 03. MV3 Service Worker 제약</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>Manifest V3 Service Worker는 항상 실행되지 않아 setInterval 방식이 안정적이지 않습니다.</dd></div>
-                  <div><dt>Decision</dt><dd>chrome.alarms API로 반복 알림을 예약하고, 필요한 순간에 상태를 읽도록 구성했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>확장 프로그램 환경에 맞는 알림 트리거를 사용해 단순한 구조를 유지했습니다.</dd></div>
-                </dl>
-              </section>
+            <p class="overview-helper">무엇을 중요하게 설계했는가</p>
+            <div class="tech-summary-table">
+              <table>
+                <thead><tr><th>과제</th><th>설계 방향</th></tr></thead>
+                <tbody>
+                  <tr><td>알림 피로도 낮추기</td><td>즉시 스트레칭, 나중 알림, 알림 On/Off 흐름 분리</td></tr>
+                  <tr><td>상태 유지</td><td>알림 설정과 일일 완료 기록을 Local Storage에 저장</td></tr>
+                  <tr><td>MV3 제약 대응</td><td><code>chrome.alarms</code> API 기반으로 반복 알림 예약</td></tr>
+                </tbody>
+              </table>
             </div>
           </article>
 
           <article id="troubleshooting" class="detail-card glass">
             <p class="eyebrow">Troubleshooting</p>
             <h2>트러블슈팅</h2>
-            <div class="paar-grid">
-              <p><strong>Problem</strong><span>알림 On/Off, 완료 기록, 다음 알림 시간이 서로 어긋나면 사용자는 앱을 신뢰하기 어렵습니다.</span></p>
-              <p><strong>Action</strong><span>완료 버튼 클릭 시 기록 저장과 다음 알림 예약을 함께 처리하고, Popup UI는 저장된 값을 기준으로 렌더링했습니다.</span></p>
-              <p><strong>Alternative</strong><span>메모리 상태만 사용하는 방식은 팝업이 닫힌 뒤 상태가 사라져 장기 사용에 적합하지 않았습니다.</span></p>
-              <p><strong>Result</strong><span>서버 없이도 알림 설정과 일일 완료 기록을 유지하는 Local-first 경험을 만들었습니다.</span></p>
+            <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
+            <div class="troubleshooting-case">
+              <section class="trouble-problem">
+                <span class="trouble-label">⚠ 문제</span>
+                <p>알림 On/Off, 완료 기록, 다음 알림 시간이 서로 어긋나면 사용자가 앱을 신뢰하기 어려웠습니다.</p>
+              </section>
+              <div class="trouble-compare">
+                <section>
+                  <h3>Before</h3>
+                  <p>메모리 상태만 사용하면 팝업이 닫힌 뒤 설정과 기록이 사라져 장기 사용에 적합하지 않았습니다.</p>
+                </section>
+                <section>
+                  <h3>After</h3>
+                  <p>완료 버튼 클릭 시 기록 저장과 다음 알림 예약을 함께 처리하고 저장된 값을 기준으로 UI를 렌더링했습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-compare">
+                <section>
+                  <h3>선택 이유</h3>
+                  <p>Chrome Extension 팝업은 닫히면 UI 상태가 사라지므로 Local-first 방식으로 상태를 유지했습니다.</p>
+                </section>
+                <section>
+                  <h3>결과</h3>
+                  <p>서버 없이도 알림 설정과 일일 완료 기록을 유지하는 가벼운 사용 경험을 만들었습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Image</strong>
+                <div class="detail-media-placeholder">트러블슈팅 이미지<br>추가 영역</div>
+              </div>
             </div>
           </article>
 
@@ -172,7 +182,7 @@
 
           <article id="retrospective" class="detail-card glass">
             <p class="eyebrow">Retrospective</p>
-            <h2>한계와 개선 방향</h2>
+            <h2>회고</h2>
             <p>
               작은 생산성 도구일수록 기능보다 사용 지속성이 중요하다는 점을 배웠습니다.
               현재는 알림 주기와 완료 기록 중심이지만, 이후에는 사용자의 업무 시간대와 휴식 패턴에 따라 알림 강도를 조절하고
@@ -182,10 +192,17 @@
         </div>
       </section>
     </main>
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="확대 이미지 닫기">×</button>
+      <img src="" alt="">
+    </div>
     <script>
       const profileRail = document.querySelector(".profile-rail");
       const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
       const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      const lightbox = document.querySelector("[data-image-lightbox]");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxClose = document.querySelector("[data-lightbox-close]");
       document.querySelectorAll("[data-carousel]").forEach((carousel) => {
         const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
         const prev = carousel.querySelector("[data-carousel-prev]");
@@ -200,6 +217,29 @@
         if (slides.length > 1) {
           window.setInterval(() => show(index + 1), 15000);
         }
+      });
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("is-lightbox-open");
+      };
+      document.querySelectorAll(".detail-media-card img, .trouble-media img").forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          document.body.classList.add("is-lightbox-open");
+        });
+      });
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
       });
       const activateSection = () => {
         const hasScrolled = window.scrollY > 180;

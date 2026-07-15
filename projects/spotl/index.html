@@ -110,42 +110,52 @@
           <article id="challenges" class="detail-card glass">
             <p class="eyebrow">Technical Challenges</p>
             <h2>핵심 기술 과제</h2>
-            <div class="deep-challenge">
-              <section>
-                <h3>Challenge 01. 예약 중복 방지</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>동일 사용자가 같은 공연을 여러 번 예약하면 현장 입장과 예약자 통계가 흔들립니다.</dd></div>
-                  <div><dt>Decision</dt><dd>예약 생성 전에 공연 존재 여부, 사용자 존재 여부, 취소되지 않은 기존 예약을 순서대로 검증했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>중복 예약 예외 조건이 명확해져 프론트엔드가 사용자에게 같은 형식의 실패 응답을 보여줄 수 있었습니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 02. 공연 승인 정책</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>등록된 모든 공연을 즉시 공개하면 부정확한 정보가 사용자에게 노출될 수 있습니다.</dd></div>
-                  <div><dt>Decision</dt><dd>관리자 승인 상태를 공연 목록 조회 조건에 포함해 승인된 공연만 공개되도록 분리했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>운영자가 공연 품질을 확인한 뒤 사용자에게 노출하는 흐름을 만들었습니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 03. API 계약 일관성</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>기능별 응답 형식이 달라지면 프론트엔드 예외 처리 비용이 커집니다.</dd></div>
-                  <div><dt>Decision</dt><dd>data, message, code 형식의 공통 응답을 적용하고 Swagger에서 요청·응답을 반복 확인했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>성공과 실패 응답의 모양이 통일되어 기능 연결과 디버깅이 쉬워졌습니다.</dd></div>
-                </dl>
-              </section>
+            <p class="overview-helper">무엇을 중요하게 설계했는가</p>
+            <div class="tech-summary-table">
+              <table>
+                <thead><tr><th>과제</th><th>설계 방향</th></tr></thead>
+                <tbody>
+                  <tr><td>예약 중복 방지</td><td>공연·사용자·기존 예약 상태를 순서대로 검증</td></tr>
+                  <tr><td>공연 승인 정책</td><td>관리자 승인 상태를 공연 공개 조건에 포함</td></tr>
+                  <tr><td>API 계약 일관성</td><td>공통 응답 구조와 Swagger를 기준으로 요청·응답 규격 관리</td></tr>
+                </tbody>
+              </table>
             </div>
           </article>
 
           <article id="troubleshooting" class="detail-card glass">
             <p class="eyebrow">Troubleshooting</p>
             <h2>트러블슈팅</h2>
-            <div class="paar-grid">
-              <p><strong>Problem</strong><span>예약 생성은 공연 존재, 사용자 상태, 중복 예약 여부가 모두 맞아야 성공할 수 있습니다.</span></p>
-              <p><strong>Action</strong><span>조건별 조회와 검증 순서를 서비스 레이어에 모아 예약 생성 전 실패 조건을 먼저 반환했습니다.</span></p>
-              <p><strong>Alternative</strong><span>컨트롤러에서 조건을 직접 처리하는 방식은 기능이 늘어날수록 중복 코드가 커진다고 판단했습니다.</span></p>
-              <p><strong>Result</strong><span>예약 검증 정책을 독립적으로 수정할 수 있게 되었고 API 응답 계약도 안정적으로 유지했습니다.</span></p>
+            <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
+            <div class="troubleshooting-case">
+              <section class="trouble-problem">
+                <span class="trouble-label">⚠ 문제</span>
+                <p>예약 생성은 공연 존재, 사용자 상태, 중복 예약 여부가 모두 맞아야 성공할 수 있었습니다.</p>
+              </section>
+              <div class="trouble-compare">
+                <section>
+                  <h3>Before</h3>
+                  <p>검증 조건이 기능 흐름에 흩어지면 중복 예약이나 실패 응답 기준이 흔들릴 수 있었습니다.</p>
+                </section>
+                <section>
+                  <h3>After</h3>
+                  <p>조건별 조회와 검증 순서를 서비스 레이어에 모아 예약 생성 전 실패 조건을 먼저 반환했습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-compare">
+                <section>
+                  <h3>선택 이유</h3>
+                  <p>컨트롤러에서 조건을 직접 처리하면 기능이 늘어날수록 중복 코드가 커진다고 판단했습니다.</p>
+                </section>
+                <section>
+                  <h3>결과</h3>
+                  <p>예약 검증 정책을 독립적으로 수정할 수 있게 되었고 API 응답 계약도 안정적으로 유지했습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Image</strong>
+                <div class="detail-media-placeholder">트러블슈팅 이미지<br>추가 영역</div>
+              </div>
             </div>
           </article>
 
@@ -171,7 +181,7 @@
 
           <article id="retrospective" class="detail-card glass">
             <p class="eyebrow">Retrospective</p>
-            <h2>한계와 개선 방향</h2>
+            <h2>회고</h2>
             <p>
               예약과 입장 관리처럼 운영 리스크가 큰 도메인은 예외 조건을 먼저 명확히 해야 한다는 점을 배웠습니다.
               현재는 기능별 API 검증 중심으로 안정성을 확인했지만, 이후에는 동시 예약 상황의 트랜잭션 격리와 부하 테스트를 추가해
@@ -181,10 +191,17 @@
         </div>
       </section>
     </main>
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="확대 이미지 닫기">×</button>
+      <img src="" alt="">
+    </div>
     <script>
       const profileRail = document.querySelector(".profile-rail");
       const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
       const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      const lightbox = document.querySelector("[data-image-lightbox]");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxClose = document.querySelector("[data-lightbox-close]");
       document.querySelectorAll("[data-carousel]").forEach((carousel) => {
         const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
         const prev = carousel.querySelector("[data-carousel-prev]");
@@ -199,6 +216,29 @@
         if (slides.length > 1) {
           window.setInterval(() => show(index + 1), 15000);
         }
+      });
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("is-lightbox-open");
+      };
+      document.querySelectorAll(".detail-media-card img, .trouble-media img").forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          document.body.classList.add("is-lightbox-open");
+        });
+      });
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
       });
       const activateSection = () => {
         const hasScrolled = window.scrollY > 180;

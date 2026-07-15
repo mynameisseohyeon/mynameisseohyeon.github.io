@@ -111,42 +111,52 @@
           <article id="challenges" class="detail-card glass">
             <p class="eyebrow">Technical Challenges</p>
             <h2>핵심 기술 과제</h2>
-            <div class="deep-challenge">
-              <section>
-                <h3>Challenge 01. 미션 유형별 검증 구조</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>미션 유형마다 검증 입력과 성공 조건이 달라 if 분기가 늘어날 가능성이 컸습니다.</dd></div>
-                  <div><dt>Decision</dt><dd>미션 유형과 검증 기준을 정책으로 분리해 신규 유형 추가 시 기존 완료 흐름 변경을 줄였습니다.</dd></div>
-                  <div><dt>Result</dt><dd>퀴즈, 걸음 수, 사진, QR 검증을 동일한 완료 요청 흐름 안에서 다룰 수 있게 했습니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 02. 중복 완료 및 보상 방지</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>네트워크 재시도나 중복 클릭으로 동일 미션 완료 요청이 반복될 수 있었습니다.</dd></div>
-                  <div><dt>Decision</dt><dd>사용자·미션 조합을 기준으로 완료 이력과 보상 이력을 분리하고 중복 저장을 제한했습니다.</dd></div>
-                  <div><dt>Result</dt><dd>반복 요청에서도 완료 이력과 보상 이력이 각각 1건만 남도록 데이터 흐름을 정리했습니다.</dd></div>
-                </dl>
-              </section>
-              <section>
-                <h3>Challenge 03. 외부 관광 데이터 정제</h3>
-                <dl>
-                  <div><dt>Why</dt><dd>외부 API 응답에는 좌표 누락, 카테고리 차이, 지역 표기 불일치가 섞일 수 있습니다.</dd></div>
-                  <div><dt>Decision</dt><dd>서비스에서 필요한 좌표, 지역, 카테고리 값을 중심으로 저장 전 정규화 단계를 두었습니다.</dd></div>
-                  <div><dt>Result</dt><dd>지도 표시와 지역별 탐색에서 사용할 수 있는 형태로 관광지 데이터를 관리했습니다.</dd></div>
-                </dl>
-              </section>
+            <p class="overview-helper">무엇을 중요하게 설계했는가</p>
+            <div class="tech-summary-table">
+              <table>
+                <thead><tr><th>과제</th><th>설계 방향</th></tr></thead>
+                <tbody>
+                  <tr><td>미션 유형별 검증</td><td>미션 유형과 검증 기준을 정책으로 분리</td></tr>
+                  <tr><td>중복 완료 및 보상 방지</td><td>사용자·미션 조합 기준으로 완료 이력과 보상 이력 관리</td></tr>
+                  <tr><td>외부 관광 데이터 정제</td><td>좌표, 지역, 카테고리 값을 저장 전 정규화</td></tr>
+                </tbody>
+              </table>
             </div>
           </article>
 
           <article id="troubleshooting" class="detail-card glass">
             <p class="eyebrow">Troubleshooting</p>
             <h2>트러블슈팅</h2>
-            <div class="paar-grid">
-              <p><strong>Problem</strong><span>사용자가 같은 미션을 여러 번 완료 요청하면 보상이 중복 지급될 수 있습니다.</span></p>
-              <p><strong>Action</strong><span>완료 상태를 먼저 조회하고, 저장 시 사용자·미션 기준으로 중복 생성을 차단했습니다.</span></p>
-              <p><strong>Alternative</strong><span>프론트엔드 버튼 비활성화만으로 막는 방식은 재요청과 네트워크 재시도에 취약하다고 판단했습니다.</span></p>
-              <p><strong>Result</strong><span>동일 사용자·미션 반복 요청에서도 완료 이력과 보상 이력이 각각 1건만 생성되는 흐름을 만들었습니다.</span></p>
+            <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
+            <div class="troubleshooting-case">
+              <section class="trouble-problem">
+                <span class="trouble-label">⚠ 문제</span>
+                <p>사용자가 같은 미션을 여러 번 완료 요청하면 보상이 중복 지급될 수 있었습니다.</p>
+              </section>
+              <div class="trouble-compare">
+                <section>
+                  <h3>Before</h3>
+                  <p>프론트엔드 버튼 비활성화만으로 막으면 재요청과 네트워크 재시도에 취약했습니다.</p>
+                </section>
+                <section>
+                  <h3>After</h3>
+                  <p>완료 상태를 먼저 조회하고 저장 시 사용자·미션 기준으로 중복 생성을 차단했습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-compare">
+                <section>
+                  <h3>선택 이유</h3>
+                  <p>보상 지급은 서버 데이터 기준으로 보장되어야 하므로 완료 이력과 보상 이력을 분리해 관리했습니다.</p>
+                </section>
+                <section>
+                  <h3>결과</h3>
+                  <p>동일 사용자·미션 반복 요청에서도 완료 이력과 보상 이력이 각각 1건만 남는 흐름을 만들었습니다.</p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Image</strong>
+                <div class="detail-media-placeholder">트러블슈팅 이미지<br>추가 영역</div>
+              </div>
             </div>
           </article>
 
@@ -172,7 +182,7 @@
 
           <article id="retrospective" class="detail-card glass">
             <p class="eyebrow">Retrospective</p>
-            <h2>한계와 개선 방향</h2>
+            <h2>회고</h2>
             <p>
               현재 중복 방지는 DB 제약조건과 서비스 선검증을 중심으로 처리했습니다.
               이후 트래픽이 늘어나면 같은 사용자 요청이 짧은 시간에 몰릴 수 있으므로, 요청 멱등키와 락 전략을 비교해 보상 지급 흐름을 개선할 계획입니다.
@@ -182,10 +192,17 @@
         </div>
       </section>
     </main>
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="확대 이미지 닫기">×</button>
+      <img src="" alt="">
+    </div>
     <script>
       const profileRail = document.querySelector(".profile-rail");
       const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
       const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      const lightbox = document.querySelector("[data-image-lightbox]");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxClose = document.querySelector("[data-lightbox-close]");
       document.querySelectorAll("[data-carousel]").forEach((carousel) => {
         const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
         const prev = carousel.querySelector("[data-carousel-prev]");
@@ -200,6 +217,29 @@
         if (slides.length > 1) {
           window.setInterval(() => show(index + 1), 15000);
         }
+      });
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("is-lightbox-open");
+      };
+      document.querySelectorAll(".detail-media-card img, .trouble-media img").forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          document.body.classList.add("is-lightbox-open");
+        });
+      });
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
       });
       const activateSection = () => {
         const hasScrolled = window.scrollY > 180;
