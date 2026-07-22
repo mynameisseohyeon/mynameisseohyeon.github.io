@@ -70,6 +70,13 @@
             </span>
             <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
           </a>
+          <a class="button" href="https://youtu.be/k8KJDbXQj2k" target="_blank" rel="noreferrer">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5.5h14A2.5 2.5 0 0 1 21.5 8v8a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 16V8A2.5 2.5 0 0 1 5 5.5z"></path><path d="m10 9 5 3-5 3z"></path></svg>
+              YouTube
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
           <a class="button" href="/">
             <span class="button-label">
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path></svg>
@@ -99,8 +106,8 @@
             <h2>프로젝트 아키텍처</h2>
             <div class="detail-media-grid">
               <div class="detail-media-card"><strong>Schedule Flow</strong><img src="/assets/images/projects/fillin-schedule-01.png" alt="FILL:IN 스케줄링 및 예약 시스템"></div>
-              <div class="detail-media-card"><strong>Transaction & Time Model</strong><img src="/assets/images/projects/fillin-trouble-01.png" alt="FILL:IN 트랜잭션과 시간 변환 전략"></div>
-              <div class="detail-media-card"><strong>Error Response</strong><img src="/assets/images/projects/fillin-error-01.png" alt="FILL:IN 전역 에러 처리 시스템"></div>
+              <div class="detail-media-card"><strong>Backend Architecture</strong><img src="/assets/images/projects/fillin-architecture.png" alt="FILL:IN 백엔드 아키텍처"></div>
+              <div class="detail-media-card"><strong>ERD</strong><img src="/assets/images/projects/fillin-erd.png" alt="FILL:IN ERD"></div>
             </div>
             <p>
               수업, 예약, 결제, 리뷰가 멘토와 멘티 역할을 기준으로 연결되는 구조입니다.
@@ -132,51 +139,149 @@
             <div class="troubleshooting-case">
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <p>KST 날짜와 UTC 조회 범위가 달라 일정이 누락될 수 있었습니다.</p>
+                <h3>1. UTC/KST 날짜 경계 불일치</h3>
+                <p>
+                  스케줄 시간은 데이터베이스에 UTC 기준으로 저장했지만, 사용자가 캘린더에서 선택하는 날짜는 KST 기준이었습니다.
+                  이 상태에서 사용자가 선택한 날짜 문자열을 그대로 조회 조건에 사용하면 KST 자정과 UTC 자정 사이에 9시간의 차이가 발생해,
+                  일부 스케줄이 이전 날짜나 다음 날짜에 포함되거나 조회 결과에서 누락될 수 있었습니다.
+                </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
-                  <p>시간 기준을 UTC <code>Instant</code>로 통일하기로 결정했습니다.</p>
+                  <p>
+                    시간 저장 기준과 사용자 입력 기준을 분리했습니다.
+                    데이터베이스에는 지역과 서버 환경에 영향을 받지 않는 Instant 타입으로 시간을 저장하고,
+                    사용자가 선택한 KST 날짜는 Asia/Seoul 기준의 하루 시작 시각과 다음 날 시작 시각으로 변환한 뒤 UTC Instant 범위로 조회하도록 설계했습니다.
+                  </p>
                 </section>
                 <section>
                   <h3>Action</h3>
-                  <p><code>Asia/Seoul</code> 기준 범위를 계산한 뒤 <code>Instant</code>로 변환했습니다.</p>
+                  <p>
+                    ScheduleTime의 시작·종료 시간을 Instant로 통일했습니다.
+                    조회 요청에서 전달된 날짜는 atStartOfDay()로 KST 하루의 시작을 계산하고, plusDays(1)로 다음 날의 시작 시각을 계산했습니다.
+                    이후 두 값을 Asia/Seoul 기준으로 UTC Instant로 변환했습니다.
+                    Repository에서는 startTime &gt;= start와 startTime &lt; end 조건을 사용하는 반개방 구간 [start, end) 방식으로 조회하도록 변경했습니다.
+                  </p>
                 </section>
                 <section>
                   <h3>Result</h3>
-                  <p>날짜 경계의 조회 오류 가능성을 줄였습니다.</p>
+                  <p>
+                    서버나 데이터베이스의 기본 타임존 설정과 관계없이 사용자가 선택한 KST 날짜에 해당하는 스케줄을 일관되게 조회할 수 있게 됐습니다.
+                    또한 23:59:59.999와 같은 마지막 시각 계산에 의존하지 않아 날짜 경계에서 발생할 수 있는 데이터 중복과 누락 가능성을 줄였습니다.
+                  </p>
                 </section>
               </div>
               <div class="trouble-media">
                 <strong>Related Images</strong>
-                <div class="detail-media-placeholder">트러블슈팅 이미지 01<br>추가 영역</div>
-                <div class="detail-media-placeholder">트러블슈팅 이미지 02<br>추가 영역</div>
+                <figure>
+                  <img src="/assets/images/projects/fillin-trouble-01.png" alt="Instant 시간 모델과 KST에서 UTC로 변환하는 코드">
+                  <figcaption>Instant 시간 모델과 KST to UTC 변환 코드</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/utc-kst-half-open-query.png" alt="Repository의 반개방 구간 조회 조건">
+                  <figcaption>Repository의 [start, end) 조회 조건</figcaption>
+                </figure>
               </div>
             </div>
             <div class="troubleshooting-case">
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <p>Schedule 저장 후 ScheduleTime 저장이 실패하면 시간 정보가 없는 예약 데이터가 남을 수 있었습니다.</p>
+                <h3>2. 스케줄 목록의 멘티 정보 N+1 제거</h3>
+                <p>
+                  스케줄 목록을 응답 DTO로 변환하는 과정에서 각 스케줄의 멘티 닉네임을 개별적으로 조회하고 있었습니다.
+                  스케줄이 N개라면 DTO 변환 반복문 안에서 멤버 조회가 최대 N번 추가로 수행될 수 있어,
+                  목록 크기가 증가할수록 데이터베이스 접근 횟수도 함께 증가하는 구조였습니다.
+                </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
-                  <p>예약 기본 정보와 시간 저장을 하나의 트랜잭션 단위로 처리하기로 했습니다.</p>
+                  <p>
+                    페이지에 포함된 스케줄의 멘티 ID를 먼저 수집한 뒤, 필요한 멤버 정보를 한 번에 조회하는 방식으로 변경했습니다.
+                    일괄 조회 결과를 Map&lt;memberId, nickname&gt; 형태로 구성하고,
+                    DTO 변환 과정에서는 추가 Repository 호출 없이 Map에서 닉네임을 가져오도록 설계했습니다.
+                  </p>
                 </section>
                 <section>
                   <h3>Action</h3>
-                  <p><code>@Transactional</code>로 Schedule과 ScheduleTime 저장을 함께 묶었습니다.</p>
+                  <p>
+                    스케줄 목록에서 menteeId를 추출하고 distinct()를 적용해 중복 ID를 제거했습니다.
+                    이후 memberRepository.findAllById(menteeIds)로 필요한 멤버 정보를 일괄 조회하고,
+                    결과를 멤버 ID와 닉네임의 Map으로 변환했습니다.
+                    DTO 생성 반복문에서는 기존의 validator.getNickname() 호출을 제거하고 menteeNicknameMap.get()으로 값을 조회했습니다.
+                    목록 API에는 Pageable을 적용해 한 번에 반환되는 데이터 크기도 제한했습니다.
+                  </p>
                 </section>
                 <section>
                   <h3>Result</h3>
-                  <p>시간 정보가 없는 불완전한 예약 데이터 생성을 방지했습니다.</p>
+                  <p>
+                    스케줄마다 멘티 정보를 개별 조회하던 구조를 페이지 단위의 일괄 조회 방식으로 변경했습니다.
+                    이에 따라 스케줄 수에 비례해 멤버 조회 쿼리가 증가하는 N+1 구조를 제거하고,
+                    DTO 변환 과정에서 반복적으로 발생하던 데이터베이스 접근을 줄였습니다.
+                    구체적인 쿼리 횟수나 응답 시간은 별도로 측정하지 않았기 때문에,
+                    임의의 성능 개선 수치 대신 반복 조회를 일괄 조회로 변경했다는 구조적 개선 결과를 표시했습니다.
+                  </p>
                 </section>
               </div>
               <div class="trouble-media">
                 <strong>Related Images</strong>
-                <div class="detail-media-placeholder">트러블슈팅 이미지 01<br>추가 영역</div>
-                <div class="detail-media-placeholder">트러블슈팅 이미지 02<br>추가 영역</div>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/n-plus-one-before.png" alt="개선 전 반복문 내부의 validator.getNickname 호출">
+                  <figcaption>개선 전 반복문 내부의 validator.getNickname() 호출</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/n-plus-one-after.png" alt="개선 후 ID 일괄 조회와 Map 재사용 코드">
+                  <figcaption>개선 후 ID 일괄 조회와 Map 재사용 코드</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="troubleshooting-case">
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <h3>3. 도메인 예외 응답 표준화</h3>
+                <p>
+                  각 Controller와 Service에서 예외를 개별적으로 처리하면 HTTP 상태 코드, 오류 코드와 메시지 형식이 기능마다 달라질 수 있었습니다.
+                  이 경우 프론트엔드는 API별 오류 응답 구조를 별도로 처리해야 했으며,
+                  예상하지 못한 서버 예외 메시지를 그대로 반환하면 내부 구현 정보가 클라이언트에 노출될 가능성도 있었습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    도메인별 오류 정보를 ErrorCode Enum으로 중앙화하고,
+                    업무 예외와 예상하지 못한 서버 예외를 전역 예외 처리기에서 구분하도록 설계했습니다.
+                    업무 예외에는 정의된 HTTP 상태와 도메인 코드를 반환하고,
+                    알 수 없는 서버 예외에는 내부 메시지를 숨긴 공통 오류 응답을 반환하도록 했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    ErrorCode에 HTTP 상태, 도메인 오류 코드와 기본 메시지를 정의했습니다.
+                    각 도메인 예외는 공통 상위 예외인 CustomGlobalException을 사용하도록 구성했습니다.
+                    @RestControllerAdvice 기반의 GlobalExceptionHandler에서는 업무 예외 발생 시 해당 오류의 상태·코드·메시지를 반환하고,
+                    일반 Exception 발생 시에는 상세 내용을 서버 로그에 기록한 뒤 고정된 서버 오류 응답을 반환했습니다.
+                    또한 MockMvc 테스트를 통해 업무 예외가 404와 도메인 코드를 반환하는지,
+                    예상하지 못한 예외가 500과 공통 오류 메시지를 반환하는지 검증했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    API마다 달랐던 오류 처리 방식을 하나의 공통 응답 규격으로 통일했습니다.
+                    프론트엔드는 문자열 메시지가 아니라 HTTP 상태와 도메인 오류 코드를 기준으로 일관되게 오류를 처리할 수 있게 됐습니다.
+                    또한 예상하지 못한 서버 오류의 내부 예외 메시지를 응답에서 분리해 불필요한 내부 정보 노출을 방지했습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Images</strong>
+                <figure>
+                  <img src="/assets/images/projects/fillin-error-01.png" alt="GlobalExceptionHandler와 ErrorCode 구성 및 MockMvc 검증">
+                  <figcaption>GlobalExceptionHandler와 ErrorCode 구성, MockMvc 검증</figcaption>
+                </figure>
               </div>
             </div>
           </article>
