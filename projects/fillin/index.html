@@ -137,105 +137,100 @@
             <h2>트러블슈팅</h2>
             <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
             <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">Troubleshooting 1. Schedule–ScheduleTime 부분 저장 방지</h3>
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>Troubleshooting 1. Schedule–ScheduleTime 부분 저장 방지</h3>
                 <p>
-                  예약 생성 과정에서 기본 예약 정보인 Schedule과 실제 수업 시간인 ScheduleTime이 서로 다른 테이블에 저장됐습니다.
-                  두 저장 작업이 독립적으로 처리되면 Schedule 저장은 성공했지만 ScheduleTime 저장이 실패해,
-                  시간 정보가 없는 불완전한 예약 데이터가 남을 수 있었습니다.
+                  Schedule과 ScheduleTime이 별도 테이블에 저장돼,
+                  한쪽 저장만 성공하면 시간 정보가 없는 불완전한 예약이 남을 수 있었습니다.
                 </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
                   <p>
-                    Schedule과 ScheduleTime 저장을 하나의 예약 생성 작업으로 간주했습니다.
-                    서비스 계층에 트랜잭션을 적용하고, Schedule을 부모 엔티티, ScheduleTime을 자식 엔티티로 연결해 부모 저장 시 시간 정보도 함께 저장되도록 설계했습니다.
+                    예약 기본 정보와 시간 정보 저장을 하나의 작업으로 보고,
+                    트랜잭션과 Cascade 저장을 적용했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Action</h3>
                   <p>
-                    ScheduleCreateService에 @Transactional을 적용해 예약 생성, 시간 정보 연결과 재고 변경 과정을 하나의 작업 단위로 묶었습니다.
-                    Schedule의 scheduleTimeList에는 cascade = CascadeType.ALL을 설정하고,
-                    addScheduleTime()에서 자식 엔티티의 schedule 참조를 함께 설정했습니다.
+                    ScheduleCreateService에 @Transactional을 적용하고,
+                    Schedule-ScheduleTime 관계에 CascadeType.ALL과 양방향 연관관계 설정 메서드를 구성했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Result</h3>
                   <p>
-                    저장 과정 중 오류가 발생하면 전체 작업이 롤백되도록 하여 예약 정보와 시간 정보의 부분 저장을 방지했습니다.
-                    이후 캘린더 및 예정·과거 일정 조회가 항상 완전한 예약 데이터를 기준으로 처리되도록 만들었습니다.
+                    저장 과정 중 오류가 발생하면 전체 작업이 롤백되도록 하여
+                    예약 정보와 시간 정보의 부분 저장을 방지했습니다.
                   </p>
                 </section>
               </div>
               <div class="trouble-media trouble-code-media">
                 <strong>Related Code</strong>
                 <figure class="trouble-code-card">
-                  <pre><code>@Service
-@Transactional
-public class ScheduleCreateService {
-    // 예약 생성 로직
+                  <div class="code-window-title">ScheduleCreateService.java</div>
+                  <pre><code><span class="code-annotation">@Service</span>
+<span class="code-annotation">@Transactional</span>
+<span class="code-keyword">public class</span> <span class="code-type">ScheduleCreateService</span> {
+    <span class="code-comment">// 예약 생성 로직</span>
 }
 
-Schedule schedule = switch (lesson.getLessonType()) {
-    case MENTORING -> createMentoringSchedule(...);
-    case ONEDAY -> createOnedaySchedule(...);
-    case STUDY -> createStudySchedule(...);
+<span class="code-type">Schedule</span> schedule = <span class="code-keyword">switch</span> (lesson.<span class="code-method">getLessonType</span>()) {
+    <span class="code-keyword">case</span> MENTORING -&gt; <span class="code-method">createMentoringSchedule</span>(...);
+    <span class="code-keyword">case</span> ONEDAY -&gt; <span class="code-method">createOnedaySchedule</span>(...);
+    <span class="code-keyword">case</span> STUDY -&gt; <span class="code-method">createStudySchedule</span>(...);
 };
 
-return scheduleRepository.save(schedule).getId();</code></pre>
+<span class="code-keyword">return</span> scheduleRepository.<span class="code-method">save</span>(schedule).<span class="code-method">getId</span>();</code></pre>
                   <figcaption>예약 생성과 시간 정보 저장을 하나의 트랜잭션 단위로 처리했습니다.</figcaption>
                 </figure>
                 <figure class="trouble-code-card">
-                  <pre><code>@OneToMany(
-    mappedBy = "schedule",
-    cascade = CascadeType.ALL
+                  <div class="code-window-title">Schedule.java</div>
+                  <pre><code><span class="code-annotation">@OneToMany</span>(
+    mappedBy = <span class="code-string">"schedule"</span>,
+    cascade = <span class="code-type">CascadeType</span>.ALL
 )
-private List&lt;ScheduleTime&gt; scheduleTimeList;
+<span class="code-keyword">private</span> <span class="code-type">List</span>&lt;<span class="code-type">ScheduleTime</span>&gt; scheduleTimeList;
 
-public void addScheduleTime(ScheduleTime scheduleTime) {
-    scheduleTime.setSchedule(this);
-    this.scheduleTimeList.add(scheduleTime);
+<span class="code-keyword">public void</span> <span class="code-method">addScheduleTime</span>(<span class="code-type">ScheduleTime</span> scheduleTime) {
+    scheduleTime.<span class="code-method">setSchedule</span>(<span class="code-keyword">this</span>);
+    <span class="code-keyword">this</span>.scheduleTimeList.<span class="code-method">add</span>(scheduleTime);
 }</code></pre>
                   <figcaption>부모 Schedule 저장 시 ScheduleTime도 함께 영속화하고, 양방향 관계를 동시에 설정했습니다.</figcaption>
                 </figure>
               </div>
             </div>
             <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">Troubleshooting 2. UTC/KST 날짜 경계 불일치 해결</h3>
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>Troubleshooting 2. UTC/KST 날짜 경계 불일치 해결</h3>
                 <p>
-                  스케줄 시간은 데이터베이스에 UTC 기준으로 저장했지만, 사용자가 캘린더에서 선택하는 날짜는 KST 기준이었습니다.
-                  이 상태에서 사용자가 선택한 날짜 문자열을 그대로 조회 조건에 사용하면 KST 자정과 UTC 자정 사이에 9시간의 차이가 발생해,
-                  일부 스케줄이 이전 날짜나 다음 날짜에 포함되거나 조회 결과에서 누락될 수 있었습니다.
+                  DB에는 UTC 기준 시간이 저장되고 사용자는 KST 날짜로 조회해,
+                  날짜 경계에서 일부 스케줄이 누락될 수 있었습니다.
                 </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
                   <p>
-                    시간 저장 기준과 사용자 입력 기준을 분리했습니다.
-                    데이터베이스에는 지역과 서버 환경에 영향을 받지 않는 Instant 타입으로 시간을 저장하고,
-                    사용자가 선택한 KST 날짜는 Asia/Seoul 기준의 하루 시작 시각과 다음 날 시작 시각으로 변환한 뒤 UTC Instant 범위로 조회하도록 설계했습니다.
+                    저장 기준은 Instant로 통일하고,
+                    사용자가 선택한 KST 날짜만 UTC Instant 범위로 변환했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Action</h3>
                   <p>
-                    ScheduleTime의 시작·종료 시간을 Instant로 통일했습니다.
-                    조회 요청에서 전달된 날짜는 atStartOfDay()로 KST 하루의 시작을 계산하고, plusDays(1)로 다음 날의 시작 시각을 계산했습니다.
-                    이후 두 값을 Asia/Seoul 기준으로 UTC Instant로 변환했습니다.
-                    Repository에서는 startTime &gt;= start와 startTime &lt; end 조건을 사용하는 반개방 구간 [start, end) 방식으로 조회하도록 변경했습니다.
+                    KST 하루 시작과 다음 날 시작을 계산한 뒤 UTC Instant로 변환하고,
+                    Repository에서는 [start, end) 반개방 구간으로 조회했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Result</h3>
                   <p>
-                    서버나 데이터베이스의 기본 타임존 설정과 관계없이 사용자가 선택한 KST 날짜에 해당하는 스케줄을 일관되게 조회할 수 있게 됐습니다.
-                    또한 23:59:59.999와 같은 마지막 시각 계산에 의존하지 않아 날짜 경계에서 발생할 수 있는 데이터 중복과 누락 가능성을 줄였습니다.
+                    서버나 DB의 기본 타임존과 관계없이 선택한 KST 날짜의 스케줄을 일관되게 조회할 수 있게 됐습니다.
                   </p>
                 </section>
               </div>
@@ -252,42 +247,34 @@ public void addScheduleTime(ScheduleTime scheduleTime) {
               </div>
             </div>
             <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">Troubleshooting 3. 스케줄 목록 멘티 정보 N+1 제거</h3>
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>Troubleshooting 3. 스케줄 목록 멘티 정보 N+1 제거</h3>
                 <p>
-                  스케줄 목록을 응답 DTO로 변환하는 과정에서 각 스케줄의 멘티 닉네임을 개별적으로 조회하고 있었습니다.
-                  스케줄이 N개라면 DTO 변환 반복문 안에서 멤버 조회가 최대 N번 추가로 수행될 수 있어,
-                  목록 크기가 증가할수록 데이터베이스 접근 횟수도 함께 증가하는 구조였습니다.
+                  DTO 변환 반복문 안에서 멘티 닉네임을 개별 조회해,
+                  목록 크기에 따라 멤버 조회가 반복되는 구조였습니다.
                 </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
                   <p>
-                    페이지에 포함된 스케줄의 멘티 ID를 먼저 수집한 뒤, 필요한 멤버 정보를 한 번에 조회하는 방식으로 변경했습니다.
-                    일괄 조회 결과를 Map&lt;memberId, nickname&gt; 형태로 구성하고,
-                    DTO 변환 과정에서는 추가 Repository 호출 없이 Map에서 닉네임을 가져오도록 설계했습니다.
+                    페이지에 포함된 멘티 ID를 먼저 모으고,
+                    필요한 멤버 정보를 한 번에 조회해 Map으로 재사용했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Action</h3>
                   <p>
-                    스케줄 목록에서 menteeId를 추출하고 distinct()를 적용해 중복 ID를 제거했습니다.
-                    이후 memberRepository.findAllById(menteeIds)로 필요한 멤버 정보를 일괄 조회하고,
-                    결과를 멤버 ID와 닉네임의 Map으로 변환했습니다.
-                    DTO 생성 반복문에서는 기존의 validator.getNickname() 호출을 제거하고 menteeNicknameMap.get()으로 값을 조회했습니다.
-                    목록 API에는 Pageable을 적용해 한 번에 반환되는 데이터 크기도 제한했습니다.
+                    menteeId를 distinct()로 정리한 뒤 findAllById()로 일괄 조회하고,
+                    DTO 생성 시에는 menteeNicknameMap.get()으로 값을 가져오도록 변경했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Result</h3>
                   <p>
-                    스케줄마다 멘티 정보를 개별 조회하던 구조를 페이지 단위의 일괄 조회 방식으로 변경했습니다.
-                    이에 따라 스케줄 수에 비례해 멤버 조회 쿼리가 증가하는 N+1 구조를 제거하고,
-                    DTO 변환 과정에서 반복적으로 발생하던 데이터베이스 접근을 줄였습니다.
-                    구체적인 쿼리 횟수나 응답 시간은 별도로 측정하지 않았기 때문에,
-                    임의의 성능 개선 수치 대신 반복 조회를 일괄 조회로 변경했다는 구조적 개선 결과를 표시했습니다.
+                    반복 조회를 페이지 단위 일괄 조회로 바꿔,
+                    DTO 변환 과정에서 발생하던 추가 Repository 접근을 줄였습니다.
                   </p>
                 </section>
               </div>
@@ -304,42 +291,34 @@ public void addScheduleTime(ScheduleTime scheduleTime) {
               </div>
             </div>
             <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">Troubleshooting 4. 예외 응답 표준화</h3>
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>Troubleshooting 4. 예외 응답 표준화</h3>
                 <p>
-                  각 Controller와 Service에서 예외를 개별적으로 처리하면 HTTP 상태 코드, 오류 코드와 메시지 형식이 기능마다 달라질 수 있었습니다.
-                  이 경우 프론트엔드는 API별 오류 응답 구조를 별도로 처리해야 했으며,
-                  예상하지 못한 서버 예외 메시지를 그대로 반환하면 내부 구현 정보가 클라이언트에 노출될 가능성도 있었습니다.
+                  기능마다 예외를 개별 처리하면 HTTP 상태, 오류 코드, 메시지 형식이 달라져
+                  프론트엔드의 오류 처리 기준이 흔들릴 수 있었습니다.
                 </p>
               </section>
               <div class="trouble-compare trouble-steps">
                 <section>
                   <h3>Approach</h3>
                   <p>
-                    도메인별 오류 정보를 ErrorCode Enum으로 중앙화하고,
-                    업무 예외와 예상하지 못한 서버 예외를 전역 예외 처리기에서 구분하도록 설계했습니다.
-                    업무 예외에는 정의된 HTTP 상태와 도메인 코드를 반환하고,
-                    알 수 없는 서버 예외에는 내부 메시지를 숨긴 공통 오류 응답을 반환하도록 했습니다.
+                    ErrorCode Enum으로 도메인 오류를 중앙화하고,
+                    업무 예외와 알 수 없는 서버 예외를 전역 처리기에서 구분했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Action</h3>
                   <p>
-                    ErrorCode에 HTTP 상태, 도메인 오류 코드와 기본 메시지를 정의했습니다.
-                    각 도메인 예외는 공통 상위 예외인 CustomGlobalException을 사용하도록 구성했습니다.
-                    @RestControllerAdvice 기반의 GlobalExceptionHandler에서는 업무 예외 발생 시 해당 오류의 상태·코드·메시지를 반환하고,
-                    일반 Exception 발생 시에는 상세 내용을 서버 로그에 기록한 뒤 고정된 서버 오류 응답을 반환했습니다.
-                    또한 MockMvc 테스트를 통해 업무 예외가 404와 도메인 코드를 반환하는지,
-                    예상하지 못한 예외가 500과 공통 오류 메시지를 반환하는지 검증했습니다.
+                    @RestControllerAdvice에서 업무 예외는 정의된 상태·코드·메시지로 반환하고,
+                    일반 Exception은 로그 기록 후 고정된 서버 오류 응답으로 분리했습니다.
                   </p>
                 </section>
                 <section>
                   <h3>Result</h3>
                   <p>
-                    API마다 달랐던 오류 처리 방식을 하나의 공통 응답 규격으로 통일했습니다.
-                    프론트엔드는 문자열 메시지가 아니라 HTTP 상태와 도메인 오류 코드를 기준으로 일관되게 오류를 처리할 수 있게 됐습니다.
-                    또한 예상하지 못한 서버 오류의 내부 예외 메시지를 응답에서 분리해 불필요한 내부 정보 노출을 방지했습니다.
+                    API 오류 응답을 공통 규격으로 통일해,
+                    클라이언트가 HTTP 상태와 도메인 오류 코드를 기준으로 처리할 수 있게 했습니다.
                   </p>
                 </section>
               </div>
