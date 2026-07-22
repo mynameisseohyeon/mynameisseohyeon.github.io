@@ -1467,6 +1467,11 @@ dd {
   padding-bottom: 68px;
 }
 
+.resume-page #awards .timeline-body p,
+.resume-page #education .timeline-body p {
+  font-size: 16px;
+}
+
 .detail-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -1841,6 +1846,24 @@ dd {
   font-size: 13px;
   font-weight: 680;
   line-height: 1.5;
+}
+
+.trouble-code-card pre {
+  overflow: auto;
+  min-height: 260px;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid rgba(29, 29, 31, 0.08);
+  border-radius: 13px;
+  background: #14171d;
+  color: #e8edf7;
+  font-size: 13px;
+  font-weight: 560;
+  line-height: 1.58;
+}
+
+.trouble-code-card code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
 .detail-media-grid {

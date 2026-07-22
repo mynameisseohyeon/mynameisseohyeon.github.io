@@ -139,7 +139,74 @@
             <div class="troubleshooting-case">
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>1. UTC/KST 날짜 경계 불일치</h3>
+                <h3>Troubleshooting 1. Schedule–ScheduleTime 부분 저장 방지</h3>
+                <p>
+                  예약 생성 과정에서 기본 예약 정보인 Schedule과 실제 수업 시간인 ScheduleTime이 서로 다른 테이블에 저장됐습니다.
+                  두 저장 작업이 독립적으로 처리되면 Schedule 저장은 성공했지만 ScheduleTime 저장이 실패해,
+                  시간 정보가 없는 불완전한 예약 데이터가 남을 수 있었습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    Schedule과 ScheduleTime 저장을 하나의 예약 생성 작업으로 간주했습니다.
+                    서비스 계층에 트랜잭션을 적용하고, Schedule을 부모 엔티티, ScheduleTime을 자식 엔티티로 연결해 부모 저장 시 시간 정보도 함께 저장되도록 설계했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    ScheduleCreateService에 @Transactional을 적용해 예약 생성, 시간 정보 연결과 재고 변경 과정을 하나의 작업 단위로 묶었습니다.
+                    Schedule의 scheduleTimeList에는 cascade = CascadeType.ALL을 설정하고,
+                    addScheduleTime()에서 자식 엔티티의 schedule 참조를 함께 설정했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    저장 과정 중 오류가 발생하면 전체 작업이 롤백되도록 하여 예약 정보와 시간 정보의 부분 저장을 방지했습니다.
+                    이후 캘린더 및 예정·과거 일정 조회가 항상 완전한 예약 데이터를 기준으로 처리되도록 만들었습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media trouble-code-media">
+                <strong>Related Code</strong>
+                <figure class="trouble-code-card">
+                  <pre><code>@Service
+@Transactional
+public class ScheduleCreateService {
+    // 예약 생성 로직
+}
+
+Schedule schedule = switch (lesson.getLessonType()) {
+    case MENTORING -> createMentoringSchedule(...);
+    case ONEDAY -> createOnedaySchedule(...);
+    case STUDY -> createStudySchedule(...);
+};
+
+return scheduleRepository.save(schedule).getId();</code></pre>
+                  <figcaption>예약 생성과 시간 정보 저장을 하나의 트랜잭션 단위로 처리했습니다.</figcaption>
+                </figure>
+                <figure class="trouble-code-card">
+                  <pre><code>@OneToMany(
+    mappedBy = "schedule",
+    cascade = CascadeType.ALL
+)
+private List&lt;ScheduleTime&gt; scheduleTimeList;
+
+public void addScheduleTime(ScheduleTime scheduleTime) {
+    scheduleTime.setSchedule(this);
+    this.scheduleTimeList.add(scheduleTime);
+}</code></pre>
+                  <figcaption>부모 Schedule 저장 시 ScheduleTime도 함께 영속화하고, 양방향 관계를 동시에 설정했습니다.</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="troubleshooting-case">
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <h3>Troubleshooting 2. UTC/KST 날짜 경계 불일치 해결</h3>
                 <p>
                   스케줄 시간은 데이터베이스에 UTC 기준으로 저장했지만, 사용자가 캘린더에서 선택하는 날짜는 KST 기준이었습니다.
                   이 상태에서 사용자가 선택한 날짜 문자열을 그대로 조회 조건에 사용하면 KST 자정과 UTC 자정 사이에 9시간의 차이가 발생해,
@@ -187,7 +254,7 @@
             <div class="troubleshooting-case">
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>2. 스케줄 목록의 멘티 정보 N+1 제거</h3>
+                <h3>Troubleshooting 3. 스케줄 목록 멘티 정보 N+1 제거</h3>
                 <p>
                   스케줄 목록을 응답 DTO로 변환하는 과정에서 각 스케줄의 멘티 닉네임을 개별적으로 조회하고 있었습니다.
                   스케줄이 N개라면 DTO 변환 반복문 안에서 멤버 조회가 최대 N번 추가로 수행될 수 있어,
@@ -239,7 +306,7 @@
             <div class="troubleshooting-case">
               <section class="trouble-problem">
                 <span class="trouble-label">Problem</span>
-                <h3>3. 도메인 예외 응답 표준화</h3>
+                <h3>Troubleshooting 4. 예외 응답 표준화</h3>
                 <p>
                   각 Controller와 Service에서 예외를 개별적으로 처리하면 HTTP 상태 코드, 오류 코드와 메시지 형식이 기능마다 달라질 수 있었습니다.
                   이 경우 프론트엔드는 API별 오류 응답 구조를 별도로 처리해야 했으며,
