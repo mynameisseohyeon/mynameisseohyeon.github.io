@@ -1739,20 +1739,33 @@ dd {
 
 .troubleshooting-case {
   display: grid;
-  gap: 14px;
-  margin: 34px 0;
+  gap: 16px;
+  margin: 42px 0;
 }
 
 .troubleshooting-case + .troubleshooting-case {
-  margin-top: 52px;
+  margin-top: 64px;
 }
 
 .troubleshooting-title {
-  margin: 0 0 4px;
-  color: var(--text);
-  font-size: clamp(20px, 2.4vw, 28px);
-  font-weight: 780;
-  line-height: 1.36;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  margin: 0 0 8px;
+  line-height: 1.32;
+}
+
+.troubleshooting-title span {
+  color: var(--accent);
+  font-size: clamp(22px, 2.6vw, 32px);
+  font-weight: 820;
+  letter-spacing: 0;
+}
+
+.troubleshooting-title small {
+  color: #5f6b7a;
+  font-size: clamp(15px, 1.7vw, 19px);
+  font-weight: 620;
   letter-spacing: 0;
 }
 
