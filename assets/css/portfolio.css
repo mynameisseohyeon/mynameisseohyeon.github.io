@@ -1019,6 +1019,14 @@ dd {
   font-size: 20px;
 }
 
+.compact-timeline .compact-item-title {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
 .timeline-links {
   display: flex;
   flex-wrap: wrap;
@@ -1450,6 +1458,13 @@ dd {
 .resume-section {
   padding-top: 34px;
   padding-bottom: 34px;
+}
+
+.resume-page #projects.resume-section,
+.resume-page #awards.resume-section,
+.resume-page #education.resume-section {
+  padding-top: 68px;
+  padding-bottom: 68px;
 }
 
 .detail-layout {
