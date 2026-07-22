@@ -1755,6 +1755,14 @@ dd {
   line-height: 1.6;
 }
 
+.trouble-problem h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 780;
+  line-height: 1.42;
+}
+
 .trouble-compare {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1805,6 +1813,19 @@ dd {
   font-weight: 780;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.trouble-media figure {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.trouble-media figcaption {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 680;
+  line-height: 1.5;
 }
 
 .detail-media-grid {
