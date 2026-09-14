@@ -2523,3 +2523,12 @@ dd {
     width: min(820px, 100%);
   }
 }
+
+.resume-summary,
+.resume-project-head p,
+.resume-project-card > p,
+.resume-skill-table span,
+.resume-page .timeline-body p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
