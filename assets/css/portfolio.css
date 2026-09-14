@@ -2324,3 +2324,193 @@ dd {
     gap: 9px;
   }
 }
+
+/* Reading width and spacing shared by the portfolio and resume. */
+:root {
+  --page-gutter: clamp(40px, 6vw, 120px);
+}
+
+.section {
+  scroll-margin-top: 90px;
+}
+
+.profile-rail {
+  left: max(28px, calc((100vw - var(--max)) / 2 - 220px));
+}
+
+.hero {
+  min-height: 0;
+  padding-top: clamp(64px, 9vh, 96px);
+  padding-bottom: 72px;
+}
+
+.hero h1 {
+  min-height: 0;
+  max-width: 940px;
+  font-size: clamp(32px, 3.7vw, 52px);
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.hero-description {
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.hero > .hero-profile {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 720px;
+  gap: 24px;
+}
+
+.skills-section {
+  padding-bottom: 28px;
+}
+
+.capability-section {
+  padding-top: 0;
+  padding-bottom: 32px;
+}
+
+.capability span {
+  margin-bottom: 16px;
+}
+
+.capability h3 {
+  font-size: 19px;
+  line-height: 1.4;
+}
+
+.capability p {
+  margin-bottom: 0;
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.project-card .project-label {
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.project-headline {
+  margin-bottom: 22px;
+}
+
+.project-detail {
+  gap: 16px;
+}
+
+.project-detail p {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.project-detail h4 {
+  line-height: 1.5;
+}
+
+.project-content-grid {
+  gap: 20px;
+}
+
+.resume-page {
+  padding-top: 32px;
+}
+
+.resume-hero {
+  padding-top: 48px;
+  padding-bottom: 64px;
+}
+
+.resume-project-head {
+  flex-wrap: wrap;
+}
+
+.contact-section {
+  min-height: 0;
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+.contact-card h2 {
+  font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.45;
+}
+
+.contact-card h2 span {
+  display: block;
+}
+
+.contact-card h2 span + span {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+@media (max-width: 1699px) {
+  .profile-rail {
+    display: none;
+  }
+
+  .is-scrolled .brand {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+}
+
+@media (min-width: 821px) and (max-width: 1100px) {
+  .skills-row,
+  .project-detail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(26px, 5.8vw, 38px);
+    line-height: 1.35;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero > .hero-profile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .resume-page {
+    padding-top: 16px;
+  }
+
+  .resume-hero {
+    padding: 28px 0 48px;
+  }
+
+  .contact-section {
+    padding: 64px 0 80px;
+  }
+
+  .contact-card {
+    padding: 0;
+  }
+
+  .timeline-entry .entry-meta::before {
+    display: none;
+  }
+}
+
+@media (min-width: 821px) {
+  .resume-hero {
+    min-height: calc(100svh - 110px);
+    align-content: start;
+  }
+}
