@@ -2515,6 +2515,11 @@ dd {
 
   .resume-hero {
     min-height: calc(100svh + 24px);
-    align-content: start;
+    align-content: center;
+    justify-items: center;
+  }
+
+  .resume-hero > * {
+    width: min(820px, 100%);
   }
 }
