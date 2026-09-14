@@ -2510,7 +2510,7 @@ dd {
 
 @media (min-width: 821px) {
   .resume-hero {
-    min-height: calc(100svh - 110px);
+    min-height: calc(100svh + 24px);
     align-content: start;
   }
 }
