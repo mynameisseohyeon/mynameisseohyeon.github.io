@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="FILL:IN 프로젝트 기술 상세 페이지입니다.">
+    <meta name="robots" content="max-image-preview:none">
+    <title>FILL:IN | Project Details</title>
+    <link rel="stylesheet" href="/assets/css/portfolio.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="이서현 포트폴리오 홈">
+        <span class="brand-mark">SH</span>
+        <span>이서현</span>
+      </a>
+      <nav class="nav" aria-label="주요 섹션">
+        <a href="/">Portfolio</a>
+        <!-- <a href="#overview">Overview</a> -->
+        <a href="#architecture">Architecture</a>
+        <!-- <a href="#challenges">Technical Challenges</a> -->
+        <a href="#troubleshooting">Troubleshooting</a>
+        <!-- <a href="#testing">Testing</a> -->
+        <!-- <a href="#retrospective">Retrospective</a> -->
+      </nav>
+    </header>
+
+    <aside class="profile-rail" aria-label="스크롤 프로필 요약">
+      <p class="rail-role">Backend Developer</p>
+      <h2>이서현</h2>
+      <p class="rail-copy">서비스의 목적을 이해하고, 견고한 서버 구조로 구현합니다.</p>
+      <div class="rail-links">
+        <a href="mailto:seohyeon.leee.dev@gmail.com" aria-label="이메일 보내기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="m4 7 8 6 8-6"></path></svg></a>
+        <a href="https://github.com/mynameisseohyeon" target="_blank" rel="noreferrer" aria-label="GitHub 열기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 19c-4 .9-4-2-6-2"></path></svg></a>
+        <a href="https://backenddevelopercorinne.tistory.com/" target="_blank" rel="noreferrer" aria-label="블로그 열기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 19.5V5a2 2 0 0 1 2-2h11.5A2.5 2.5 0 0 1 20 5.5V21H6a2 2 0 0 1-2-1.5z"></path><path d="M8 7h8"></path><path d="M8 11h8"></path><path d="M8 15h5"></path></svg></a>
+      </div>
+    </aside>
+
+    <main class="page-shell">
+      <section class="detail-hero section">
+        <p class="eyebrow">PROJECT OVERVIEW</p>
+        <h1>
+          <span>FILL:IN</span>
+          <span class="headline-strong">N잡 마이크로 컨설팅 플랫폼</span>
+        </h1>
+        <p class="hero-description">
+          직장인과 은퇴 전문가가 경험과 전문성을 수업으로 등록하고,
+          멘티가 필요한 시간에 직접 예약할 수 있도록 설계한 멘토링 서비스입니다.
+        </p>
+        <div class="detail-main-visual detail-carousel" data-carousel>
+          <button class="detail-carousel-button prev" type="button" data-carousel-prev aria-label="이전 이미지 보기">&lt;</button>
+          <div class="detail-carousel-track">
+            <img class="detail-carousel-slide is-active" src="/assets/images/projects/fillin-overview-01.png" alt="FILL:IN 프로젝트 기획 배경 1">
+            <img class="detail-carousel-slide" src="/assets/images/projects/fillin-overview-02.png" alt="FILL:IN 프로젝트 기획 배경 2">
+            <img class="detail-carousel-slide" src="/assets/images/projects/fillin-schedule-01.png" alt="FILL:IN 스케줄링 및 예약 시스템">
+          </div>
+          <button class="detail-carousel-button next" type="button" data-carousel-next aria-label="다음 이미지 보기">&gt;</button>
+        </div>
+        <dl class="detail-meta">
+          <div><dt>기간</dt><dd>2026.01.06 - 2026.01.22</dd></div>
+          <div><dt>팀 / 역할</dt><dd>4인 팀 · Backend Developer</dd></div>
+          <div><dt>핵심 스택</dt><dd>Java 21, Spring Boot 3.x, JPA, QueryDSL, MySQL</dd></div>
+          <div><dt>주요 기여</dt><dd>일정 조회, KST·UTC 변환, 조회 조건 통합, Swagger 문서화</dd></div>
+        </dl>
+        <div class="hero-actions">
+          <a class="button" href="https://github.com/mynameisseohyeon/Fillin_backend" target="_blank" rel="noreferrer">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3.2-.4 6.5-1.6 6.5-7A5.4 5.4 0 0 0 19 3.8 5 5 0 0 0 18.9 0S17.6-.4 15 1.5a14 14 0 0 0-6 0C6.4-.4 5.1 0 5.1 0A5 5 0 0 0 5 3.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.5 7A4.8 4.8 0 0 0 9 18v4"></path><path d="M9 19c-4 .9-4-2-6-2"></path></svg>
+              GitHub
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
+          <a class="button" href="https://youtu.be/k8KJDbXQj2k" target="_blank" rel="noreferrer">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 5.5h14A2.5 2.5 0 0 1 21.5 8v8a2.5 2.5 0 0 1-2.5 2.5H5A2.5 2.5 0 0 1 2.5 16V8A2.5 2.5 0 0 1 5 5.5z"></path><path d="m10 9 5 3-5 3z"></path></svg>
+              YouTube
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
+          <a class="button" href="/">
+            <span class="button-label">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h16"></path></svg>
+              Portfolio
+            </span>
+            <svg class="button-external-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 17 17 7"></path><path d="M9 7h8v8"></path></svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="section detail-layout">
+        <div class="detail-content">
+          <!-- <article id="overview" class="detail-card glass">
+            <p class="eyebrow">Overview</p>
+            <h2>프로젝트 핵심 요약</h2>
+            <p class="overview-helper">직접 담당한 일정 조회 도메인을 중심으로 문제, 기여, 난점, 결과를 요약합니다.</p>
+            <div class="fact-grid">
+              <p><strong>Problem</strong><span>멘토와 멘티가 같은 수업을 기준으로 서로 다른 목적의 일정을 조회하므로, 날짜·상태·역할 조건이 복잡해질 수 있었습니다.</span></p>
+              <p><strong>My Contribution</strong><span>전체·예정·과거 일정 조회와 날짜별 캘린더 API, 검색 조건 통합, Swagger 문서화를 담당했습니다.</span></p>
+              <p><strong>Key Challenge</strong><span>사용자는 KST 날짜로 조회하지만 DB에는 Instant 기준 시간이 저장되어 날짜 경계가 어긋날 수 있었습니다.</span></p>
+              <p><strong>Outcome</strong><span>KST 하루 범위를 UTC Instant로 변환해 조회 기준을 맞추고, 공통 필터링 로직으로 API 중복을 줄였습니다.</span></p>
+            </div>
+          </article> -->
+
+          <article id="architecture" class="detail-card glass">
+            <p class="eyebrow">Architecture</p>
+            <h2>프로젝트 아키텍처</h2>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Schedule Flow</strong><img src="/assets/images/projects/fillin-schedule-01.png" alt="FILL:IN 스케줄링 및 예약 시스템"></div>
+              <div class="detail-media-card"><strong>Backend Architecture</strong><img src="/assets/images/projects/fillin-architecture.png" alt="FILL:IN 백엔드 아키텍처"></div>
+              <div class="detail-media-card"><strong>ERD</strong><img src="/assets/images/projects/fillin-erd.png" alt="FILL:IN ERD"></div>
+            </div>
+            <p>
+              수업, 예약, 결제, 리뷰가 멘토와 멘티 역할을 기준으로 연결되는 구조입니다.
+              일정 도메인은 Schedule과 ScheduleTime을 분리해 예약 상태와 실제 수업 시간을 관리하고,
+              조회 시에는 날짜·제목·상태 조건을 하나의 흐름으로 정리했습니다.
+            </p>
+          </article>
+
+          <!-- <article id="challenges" class="detail-card glass">
+            <p class="eyebrow">Technical Challenges</p>
+            <h2>핵심 기술 과제</h2>
+            <p class="overview-helper">무엇을 중요하게 설계했는가</p>
+            <div class="tech-summary-table">
+              <table>
+                <thead><tr><th>과제</th><th>설계 방향</th></tr></thead>
+                <tbody>
+                  <tr><td>시간대 일관성</td><td>KST 조회 범위를 UTC <code>Instant</code>로 변환</td></tr>
+                  <tr><td>일정 조회 구조</td><td>전체·예정·과거 조회 조건을 공통 로직으로 관리</td></tr>
+                  <tr><td>API 응답 규격</td><td>Swagger와 공통 응답 구조를 기준으로 프론트엔드와 협업</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </article> -->
+
+          <article id="troubleshooting" class="detail-card glass">
+            <p class="eyebrow">Troubleshooting</p>
+            <h2>트러블슈팅</h2>
+            <p class="overview-helper">어떤 문제가 있었고 어떻게 해결했는가</p>
+            <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">
+                <span>Troubleshooting 1.</span>
+                <small>Schedule–ScheduleTime 부분 저장 방지</small>
+              </h3>
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <p>
+                  Schedule과 ScheduleTime이 별도 테이블에 저장돼,
+                  한쪽 저장만 성공하면 시간 정보가 없는 불완전한 예약이 남을 수 있었습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    예약 기본 정보와 시간 정보 저장을 하나의 작업으로 보고,
+                    트랜잭션과 Cascade 저장을 적용했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    ScheduleCreateService에 @Transactional을 적용하고,
+                    Schedule-ScheduleTime 관계에 CascadeType.ALL과 양방향 연관관계 설정 메서드를 구성했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    저장 과정 중 오류가 발생하면 전체 작업이 롤백되도록 하여
+                    예약 정보와 시간 정보의 부분 저장을 방지했습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media trouble-code-media">
+                <strong>Related Code</strong>
+                <figure class="trouble-code-card">
+                  <div class="code-window-title">ScheduleCreateService.java</div>
+                  <pre><code><span class="code-annotation">@Service</span>
+<span class="code-annotation">@Transactional</span>
+<span class="code-keyword">public class</span> <span class="code-type">ScheduleCreateService</span> {
+    <span class="code-comment">// 예약 생성 로직</span>
+}
+
+<span class="code-type">Schedule</span> schedule = <span class="code-keyword">switch</span> (lesson.<span class="code-method">getLessonType</span>()) {
+    <span class="code-keyword">case</span> MENTORING -&gt; <span class="code-method">createMentoringSchedule</span>(...);
+    <span class="code-keyword">case</span> ONEDAY -&gt; <span class="code-method">createOnedaySchedule</span>(...);
+    <span class="code-keyword">case</span> STUDY -&gt; <span class="code-method">createStudySchedule</span>(...);
+};
+
+<span class="code-keyword">return</span> scheduleRepository.<span class="code-method">save</span>(schedule).<span class="code-method">getId</span>();</code></pre>
+                  <figcaption>예약 생성과 시간 정보 저장을 하나의 트랜잭션 단위로 처리했습니다.</figcaption>
+                </figure>
+                <figure class="trouble-code-card">
+                  <div class="code-window-title">Schedule.java</div>
+                  <pre><code><span class="code-annotation">@OneToMany</span>(
+    mappedBy = <span class="code-string">"schedule"</span>,
+    cascade = <span class="code-type">CascadeType</span>.ALL
+)
+<span class="code-keyword">private</span> <span class="code-type">List</span>&lt;<span class="code-type">ScheduleTime</span>&gt; scheduleTimeList;
+
+<span class="code-keyword">public void</span> <span class="code-method">addScheduleTime</span>(<span class="code-type">ScheduleTime</span> scheduleTime) {
+    scheduleTime.<span class="code-method">setSchedule</span>(<span class="code-keyword">this</span>);
+    <span class="code-keyword">this</span>.scheduleTimeList.<span class="code-method">add</span>(scheduleTime);
+}</code></pre>
+                  <figcaption>부모 Schedule 저장 시 ScheduleTime도 함께 영속화하고, 양방향 관계를 동시에 설정했습니다.</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">
+                <span>Troubleshooting 2.</span>
+                <small>UTC/KST 날짜 경계 불일치 해결</small>
+              </h3>
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <p>
+                  DB에는 UTC 기준 시간이 저장되고 사용자는 KST 날짜로 조회해,
+                  날짜 경계에서 일부 스케줄이 누락될 수 있었습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    저장 기준은 Instant로 통일하고,
+                    사용자가 선택한 KST 날짜만 UTC Instant 범위로 변환했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    KST 하루 시작과 다음 날 시작을 계산한 뒤 UTC Instant로 변환하고,
+                    Repository에서는 [start, end) 반개방 구간으로 조회했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    서버나 DB의 기본 타임존과 관계없이 선택한 KST 날짜의 스케줄을 일관되게 조회할 수 있게 됐습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Images</strong>
+                <figure>
+                  <img src="/assets/images/projects/fillin-trouble-01.png" alt="Instant 시간 모델과 KST에서 UTC로 변환하는 코드">
+                  <figcaption>Instant 시간 모델과 KST to UTC 변환 코드</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/utc-kst-half-open-query.png" alt="Repository의 반개방 구간 조회 조건">
+                  <figcaption>Repository의 [start, end) 조회 조건</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">
+                <span>Troubleshooting 3.</span>
+                <small>스케줄 목록 멘티 정보 N+1 제거</small>
+              </h3>
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <p>
+                  DTO 변환 반복문 안에서 멘티 닉네임을 개별 조회해,
+                  목록 크기에 따라 멤버 조회가 반복되는 구조였습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    페이지에 포함된 멘티 ID를 먼저 모으고,
+                    필요한 멤버 정보를 한 번에 조회해 Map으로 재사용했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    menteeId를 distinct()로 정리한 뒤 findAllById()로 일괄 조회하고,
+                    DTO 생성 시에는 menteeNicknameMap.get()으로 값을 가져오도록 변경했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    반복 조회를 페이지 단위 일괄 조회로 바꿔,
+                    DTO 변환 과정에서 발생하던 추가 Repository 접근을 줄였습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Images</strong>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/n-plus-one-before.png" alt="개선 전 반복문 내부의 validator.getNickname 호출">
+                  <figcaption>개선 전 반복문 내부의 validator.getNickname() 호출</figcaption>
+                </figure>
+                <figure>
+                  <img src="/assets/images/projects/fillin-troubleshooting/n-plus-one-after.png" alt="개선 후 ID 일괄 조회와 Map 재사용 코드">
+                  <figcaption>개선 후 ID 일괄 조회와 Map 재사용 코드</figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="troubleshooting-case">
+              <h3 class="troubleshooting-title">
+                <span>Troubleshooting 4.</span>
+                <small>예외 응답 표준화</small>
+              </h3>
+              <section class="trouble-problem">
+                <span class="trouble-label">Problem</span>
+                <p>
+                  기능마다 예외를 개별 처리하면 HTTP 상태, 오류 코드, 메시지 형식이 달라져
+                  프론트엔드의 오류 처리 기준이 흔들릴 수 있었습니다.
+                </p>
+              </section>
+              <div class="trouble-compare trouble-steps">
+                <section>
+                  <h3>Approach</h3>
+                  <p>
+                    ErrorCode Enum으로 도메인 오류를 중앙화하고,
+                    업무 예외와 알 수 없는 서버 예외를 전역 처리기에서 구분했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Action</h3>
+                  <p>
+                    @RestControllerAdvice에서 업무 예외는 정의된 상태·코드·메시지로 반환하고,
+                    일반 Exception은 로그 기록 후 고정된 서버 오류 응답으로 분리했습니다.
+                  </p>
+                </section>
+                <section>
+                  <h3>Result</h3>
+                  <p>
+                    API 오류 응답을 공통 규격으로 통일해,
+                    클라이언트가 HTTP 상태와 도메인 오류 코드를 기준으로 처리할 수 있게 했습니다.
+                  </p>
+                </section>
+              </div>
+              <div class="trouble-media">
+                <strong>Related Images</strong>
+                <figure>
+                  <img src="/assets/images/projects/fillin-error-01.png" alt="GlobalExceptionHandler와 ErrorCode 구성 및 MockMvc 검증">
+                  <figcaption>GlobalExceptionHandler와 ErrorCode 구성, MockMvc 검증</figcaption>
+                </figure>
+              </div>
+            </div>
+          </article>
+
+          <!-- <article id="testing" class="detail-card glass">
+            <p class="eyebrow">Testing</p>
+            <h2>테스트와 검증</h2>
+            <div class="detail-table-wrap">
+              <table class="detail-table">
+                <thead><tr><th>테스트 케이스</th><th>기대 결과</th><th>확인 결과</th></tr></thead>
+                <tbody>
+                  <tr><td>KST 날짜별 캘린더 조회</td><td>선택 날짜의 일정만 반환</td><td>UTC Instant 변환 범위 기준 확인</td></tr>
+                  <tr><td>예정·과거 일정 필터링</td><td>상태와 날짜 조건에 맞는 목록 반환</td><td>공통 조회 조건 기준 확인</td></tr>
+                  <tr><td>ScheduleTime 저장 실패</td><td>Schedule 저장까지 함께 롤백</td><td>트랜잭션 단위 기준 확인</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="detail-media-grid">
+              <div class="detail-media-card"><strong>Validation Image 01</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+              <div class="detail-media-card"><strong>Validation Image 02</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+              <div class="detail-media-card"><strong>Validation Image 03</strong><div class="detail-media-placeholder">검증 결과 이미지<br>추가 영역</div></div>
+            </div>
+          </article>
+          -->
+          <!-- <article id="retrospective" class="detail-card glass">
+            <p class="eyebrow">Retrospective</p>
+            <h2>회고</h2>
+            <p>
+              일정 조회는 단순 목록 조회처럼 보이지만, 실제로는 사용자 역할, 일정 상태, 날짜 경계, 페이지네이션이 함께 엮이는 도메인이라는 점을 배웠습니다.
+              다음 단계에서는 동시 예약 상황의 충돌 방지와 결제 승인 이후 상태 전이를 더 세밀하게 검증하고,
+              조회 조건이 늘어나도 정책을 안정적으로 확장할 수 있도록 테스트 케이스를 보강하고 싶습니다.
+            </p>
+          </article> -->
+        </div>
+      </section>
+    </main>
+    <div class="image-lightbox" data-image-lightbox hidden>
+      <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="확대 이미지 닫기">×</button>
+      <img src="" alt="">
+    </div>
+    <script>
+      const profileRail = document.querySelector(".profile-rail");
+      const navLinks = [...document.querySelectorAll(".nav a[href^='#']")];
+      const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      const lightbox = document.querySelector("[data-image-lightbox]");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxClose = document.querySelector("[data-lightbox-close]");
+      document.querySelectorAll("[data-carousel]").forEach((carousel) => {
+        const slides = [...carousel.querySelectorAll(".detail-carousel-slide")];
+        const prev = carousel.querySelector("[data-carousel-prev]");
+        const next = carousel.querySelector("[data-carousel-next]");
+        let index = 0;
+        const show = (nextIndex) => {
+          index = (nextIndex + slides.length) % slides.length;
+          slides.forEach((slide, slideIndex) => slide.classList.toggle("is-active", slideIndex === index));
+        };
+        prev?.addEventListener("click", () => show(index - 1));
+        next?.addEventListener("click", () => show(index + 1));
+        if (slides.length > 1) {
+          window.setInterval(() => show(index + 1), 15000);
+        }
+      });
+      const closeLightbox = () => {
+        if (!lightbox || !lightboxImage) return;
+        lightbox.hidden = true;
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        document.body.classList.remove("is-lightbox-open");
+      };
+      document.querySelectorAll(".detail-media-card img, .trouble-media img").forEach((image) => {
+        image.addEventListener("click", () => {
+          if (!lightbox || !lightboxImage) return;
+          lightboxImage.src = image.currentSrc || image.src;
+          lightboxImage.alt = image.alt;
+          lightbox.hidden = false;
+          document.body.classList.add("is-lightbox-open");
+        });
+      });
+      lightboxClose?.addEventListener("click", closeLightbox);
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeLightbox();
+      });
+      const activateSection = () => {
+        const hasScrolled = window.scrollY > 180;
+        profileRail?.classList.toggle("is-visible", hasScrolled);
+        document.body.classList.toggle("is-scrolled", hasScrolled);
+        const marker = window.scrollY + window.innerHeight * 0.4;
+        const isBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 8;
+        const current = isBottom ? sections[sections.length - 1] : ([...sections].reverse().find((section) => section.offsetTop <= marker) || sections[0]);
+        navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${current?.id}`));
+      };
+      activateSection();
+      window.addEventListener("scroll", activateSection, { passive: true });
+    </script>
+  </body>
+</html>
