@@ -37,6 +37,8 @@ body {
   color: var(--text);
   font-family: Pretendard, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
   line-height: 1.65;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
   word-break: keep-all;
   overflow-x: hidden;
 }
@@ -2490,13 +2492,4 @@ dd {
     justify-items: start;
     text-align: left;
   }
-}
-
-.resume-summary,
-.resume-project-head p,
-.resume-project-card > p,
-.resume-skill-table span,
-.resume-page .timeline-body p {
-  overflow-wrap: break-word;
-  text-wrap: pretty;
 }
