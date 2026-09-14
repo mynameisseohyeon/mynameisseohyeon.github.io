@@ -2426,27 +2426,6 @@ dd {
   flex-wrap: wrap;
 }
 
-.contact-section {
-  min-height: 0;
-  padding-top: 100px;
-  padding-bottom: 120px;
-}
-
-.contact-card h2 {
-  font-size: clamp(26px, 3vw, 38px);
-  line-height: 1.45;
-}
-
-.contact-card h2 span {
-  display: block;
-}
-
-.contact-card h2 span + span {
-  margin-top: 16px;
-  color: var(--muted);
-  font-size: 17px;
-}
-
 @media (max-width: 1699px) {
   .profile-rail {
     display: none;
@@ -2493,14 +2472,6 @@ dd {
 
   .resume-hero {
     padding: 28px 0 48px;
-  }
-
-  .contact-section {
-    padding: 64px 0 80px;
-  }
-
-  .contact-card {
-    padding: 0;
   }
 
   .timeline-entry .entry-meta::before {
