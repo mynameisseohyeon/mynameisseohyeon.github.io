@@ -2485,7 +2485,7 @@ dd {
   }
 
   .resume-hero {
-    min-height: calc(100svh + 24px);
+    min-height: calc(100svh - 72px);
     align-content: center;
     justify-items: center;
   }
